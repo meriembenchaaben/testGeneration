@@ -1,5 +1,5 @@
 # src/junit_agent/prompts.py
-SYSTEM_PROMPT = """Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. The test’s only goal is to ensure that the third-party method from the given third-party package is actually invoked during execution. 
+SYSTEM_PROMPT = """Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to ensure that the third-party method from the given third-party package is actually invoked during execution. 
 
 You are provided with:
 entryPoint - the fully qualified name of the public method that ultimately triggers the third-party library method.
@@ -13,8 +13,8 @@ imports - imports that might be relevant for implementing the test - this includ
 
 Hard constraints:
 - Use spies only when necessary, and only for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
--  Do not use mocks, do not add fake supporting classes and do not override any existing methods.
-- Only use mockito-core, mockito-junit-jupiter, and junit-jupiter libraries as test related libraries.
+- Do not use mocks, do not add fake supporting classes and do not override any existing methods.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
 - Output must be a single Java file (complete source code).
 - The file must include a package declaration consistent with the entryPoint, all required imports, and one executable test method. 
 - Ensure the test compiles in a standard Maven project.
