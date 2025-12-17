@@ -26,6 +26,7 @@ def write_test_file(repo_root: Path, rel_path: str, content: str) -> Path:
     """
     Tool: write the generated Java test under the Maven repo.
     Constrained: always under repo_root, always a text write.
+    todo: Yogya will provide the endpoint for this. (the tool)
     """
     abs_path = (repo_root / rel_path).resolve()
     abs_path.parent.mkdir(parents=True, exist_ok=True)
@@ -37,6 +38,10 @@ def run_maven_test(repo_root: Path, mvn_cmd: str, test_fqcn: Optional[str], time
     """
     Tool: run Maven tests. If test_fqcn is given, runs only that test via -Dtest=<ClassName>.
     Constrained: only runs mvn test, no arbitrary shell.
+    todo: Yogya will provide the endpoint for this. (the tool)
+    Ideally, we want these two functions seperated.
+    # To be changed later.
+
     """
     cmd = [mvn_cmd, "-q", "test"]
     if test_fqcn:

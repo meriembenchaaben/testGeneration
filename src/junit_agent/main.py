@@ -1,4 +1,3 @@
-# src/junit_agent/main.py
 from __future__ import annotations
 
 import argparse
@@ -57,14 +56,13 @@ def main() -> int:
     app = build_graph(llm=llm, cfg=cfg)
     state = initial_state(inp, cfg)
 
-    # Stream execution so you can see what the agent is doing step-by-step.
+   
     final_state = None
     for event in app.stream(state):
-        # event is a dict like {"node_name": updated_state}
+        
         for node, st in event.items():
             trace = st.get("trace", [])
             if trace:
-                # Print only the newest trace line for clarity
                 print(trace[-1])
             final_state = st
 
@@ -84,8 +82,7 @@ def main() -> int:
         print("\n=== LAST MAVEN OUTPUT (tail) ===")
         print(last_output)
 
-    # The “approved version” is what the agent last wrote (if approved=True, it passed).
-    # If not approved, it's still the last attempted version.
+
     print("\n=== FINAL JAVA FILE CONTENT ===")
     print(java_source)
 

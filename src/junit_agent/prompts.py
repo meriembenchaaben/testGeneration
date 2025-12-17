@@ -1,4 +1,4 @@
-# src/junit_agent/prompts.py
+
 SYSTEM_PROMPT = """Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to ensure that the third-party method from the given third-party package is actually invoked during execution. 
 
 You are provided with:
