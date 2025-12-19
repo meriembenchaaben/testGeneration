@@ -1,5 +1,7 @@
 
-SYSTEM_PROMPT = """Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to ensure that the third-party method from the given third-party package is actually invoked during execution. 
+SYSTEM_PROMPT = """You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework."""
+
+USER_PROMPT_TEMPLATE = """Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to ensure that the third-party method from the given third-party package is actually invoked during execution. 
 
 You are provided with:
 entryPoint - the fully qualified name of the public method that ultimately triggers the third-party library method.
@@ -11,6 +13,15 @@ setters - all setters of the class that contains the entry-point method, if any.
 getters - all getters of the class that contains the entry-point method, if any.
 imports - imports that might be relevant for implementing the test - this includes all non-java imports that are involved in any method along the path, if any.
 
+entryPoint: {entryPoint}
+thirdPartyMethod: {thirdPartyMethod}
+path: {path}
+methodSources: {methodSources}
+constructors: {constructors}
+setters: {setters}
+getters: {getters}
+imports: {imports}
+
 Hard constraints:
 - Use spies only when necessary, and only for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
 - Do not use mocks, do not add fake supporting classes and do not override any existing methods.
@@ -20,21 +31,11 @@ Hard constraints:
 - Ensure the test compiles in a standard Maven project.
 - No assertions, no verifications, no inspections of state/logs/output.
 
-Output format:
-- Return ONLY the Java source code.
-- Do NOT include explanations, markdown, or extra text.
-"""
-
-USER_PROMPT_TEMPLATE = """Generate a single Java file containing a valid JUnit 5 test class.
-
-entryPoint: {entryPoint}
-thirdPartyMethod: {thirdPartyMethod}
-path: {path}
-methodSources: {methodSources}
 Output requirements:
 - package declaration MUST be: {test_package}
 - class name MUST be: {test_class_name}
-- exactly ONE @Test method
+- at least ONE @Test method
 - compile in a standard Maven project
-- output ONLY Java code
+- Return ONLY the Java source code.
+- Do NOT include explanations, markdown, or extra text.
 """

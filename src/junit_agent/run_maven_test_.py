@@ -48,10 +48,10 @@ def run_maven_clean(repo_root: Path) -> RunResult:
             clean_cmd,
             capture_output=True,
             text=True,
-            timeout=120  # 2 minute timeout for clean, we should test this and change this for each project
+            timeout=120
         )
         if proc.returncode == 0:
-            logger.debug("Maven clean completed successfully")
+            logger.info("Maven clean completed successfully")
         else:
             logger.warning(f"Maven clean failed with exit code {proc.returncode}")
         return RunResult(
@@ -79,7 +79,7 @@ def run_maven_clean(repo_root: Path) -> RunResult:
 
 def run_maven_test(
     repo_root: Path,
-    mvn_cmd: str = "test",
+    mvn_cmd: str = "mvn",
     test_fqcn: Optional[str] = None,
     timeout_s: int = 300,
     with_jacoco: bool = True,
@@ -103,7 +103,7 @@ def run_maven_test(
     pom_file = repo_root / "pom.xml"
     if not pom_file.exists():
         raise ValueError(f"No pom.xml found in {repo_root}")
-    cmd = ["mvn", mvn_cmd]
+    cmd = [mvn_cmd, "test"]
     if test_fqcn:
         cmd.append(f"-Dtest={test_fqcn}")
         logger.info(f"Running specific test class: {test_fqcn}")
@@ -124,7 +124,8 @@ def run_maven_test(
             capture_output=True,
             text=True,
             timeout=timeout_s,
-            cwd=str(repo_root)
+            cwd=str(repo_root),
+            shell=False
         )
         success = (proc.returncode == 0)
         if success:

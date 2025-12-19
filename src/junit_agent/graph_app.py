@@ -226,6 +226,21 @@ def _format_feedback(output: str) -> str:
     
     return output
 
+def _extract_java_code(generated_text: str) -> str:
+    """
+    Extract Java code from LLM output, looking for ```java code blocks.
+    If no code block found, return the original text.
+    Args:
+        generated_text: Raw LLM output
+    Returns:
+        Extracted Java code
+    """
+    pattern = r'```(?:java)?\s*\n(.*?)```'
+    matches = re.findall(pattern, generated_text, re.DOTALL)
+    if matches:
+        return matches[0].strip()
+    return generated_text.strip()
+
 
 @dataclass(frozen=True)
 class AppConfig:
@@ -241,6 +256,12 @@ class GenerationInput:
     thirdPartyMethod: str
     path: List[str]
     methodSources: List[str]
+    constructors: List[str]
+    setters: List[str]
+    getters: List[str]
+    imports: List[str]
+    testTemplate: str
+    conditionCount: int
     test_package: str = "generated"
     test_class_name: str = "GeneratedReachabilityTest"
 
@@ -257,6 +278,12 @@ class AgentState(TypedDict, total=False):
     thirdPartyMethod: str
     path: List[str]
     methodSources: List[str]
+    constructors: List[str]
+    setters: List[str]
+    getters: List[str]
+    imports: List[str]
+    testTemplate: str
+    conditionCount: int
     test_package: str
     test_class_name: str
 
@@ -284,6 +311,7 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
     prompt = PromptTemplate(
         input_variables=[
             "entryPoint", "thirdPartyMethod", "path", "methodSources", 
+            "constructors", "setters", "getters", "imports",
             "test_package", "test_class_name", "last_run_output"
         ],
         template=(
@@ -295,29 +323,38 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         ),
     )
 
+    def decode_code(code_str):
+            """Convert escaped newlines and tabs to actual characters"""
+            return code_str.replace('\\n', '\n').replace('\\t', '\t')
+
     def node_generate(state: AgentState) -> AgentState:
         it = int(state.get("iteration", 0)) + 1
         state["iteration"] = it
         state.setdefault("trace", []).append(f"[Generate] iteration={it}")
-
+        method_sources = [decode_code(src) for src in state["methodSources"]]
+        constructors = [decode_code(c) for c in state.get("constructors", [])]
+        setters = [decode_code(s) for s in state.get("setters", [])]
+        getters = [decode_code(g) for g in state.get("getters", [])]
         rendered = prompt.format(
             entryPoint=state["entryPoint"],
             thirdPartyMethod=state["thirdPartyMethod"],
             path=" -> ".join(state["path"]),
-            methodSources="\n\n".join(state["methodSources"]),
+            methodSources="\n\n".join(method_sources),
+            constructors="\n\n".join(constructors),
+            setters="\n\n".join(setters),
+            getters="\n\n".join(getters),
+            imports=", ".join(state.get("imports", [])),
+            testTemplate=decode_code(state.get("testTemplate", "")),
             test_package=state["test_package"],
             test_class_name=state["test_class_name"],
             last_run_output=state.get("last_run_output", "") or "",
         )
-
         java = llm.invoke(rendered)
-        # HuggingFacePipeline typically returns a string; normalize cautiously
         if not isinstance(java, str):
             java = str(java)
-
+        java = _extract_java_code(java)
         java = java.replace("\r\n", "\n").strip() + "\n"
         #_validate_generated_java(java, state["test_package"], state["test_class_name"])
-
         state["java_source"] = java
         state.setdefault("trace", []).append(f"[Generate] produced {len(java)} chars")
         return state
@@ -494,6 +531,12 @@ def initial_state(inp: GenerationInput, cfg: AppConfig) -> AgentState:
         thirdPartyMethod=inp.thirdPartyMethod,
         path=inp.path,
         methodSources=inp.methodSources,
+        constructors=inp.constructors,
+        setters=inp.setters,
+        getters=inp.getters,
+        imports=inp.imports,
+        testTemplate=inp.testTemplate,
+        conditionCount=inp.conditionCount,
         test_package=inp.test_package,
         test_class_name=inp.test_class_name,
         iteration=0,
