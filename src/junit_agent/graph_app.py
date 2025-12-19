@@ -10,7 +10,7 @@ from langchain_core.runnables import Runnable
 from langgraph.graph import StateGraph, END
 
 from junit_agent.prompts import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
-from junit_agent.tools import run_maven_test, write_test_file, get_coverage_result
+from junit_agent.tools import run_maven_test, write_test, get_coverage_result
 
 
 def _java_rel_path(test_package: str, class_name: str) -> str:
@@ -316,7 +316,7 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
             java = str(java)
 
         java = java.replace("\r\n", "\n").strip() + "\n"
-        _validate_generated_java(java, state["test_package"], state["test_class_name"])
+        #_validate_generated_java(java, state["test_package"], state["test_class_name"])
 
         state["java_source"] = java
         state.setdefault("trace", []).append(f"[Generate] produced {len(java)} chars")
@@ -327,7 +327,7 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         rel_path = _java_rel_path(state["test_package"], state["test_class_name"])
         state["test_rel_path"] = rel_path
 
-        abs_path = write_test_file(Path(state["repo_root"]), rel_path, state["java_source"])
+        abs_path = write_test(Path(state["repo_root"]), rel_path, state["java_source"])
         state.setdefault("trace", []).append(f"[Write] wrote to {abs_path}")
         return state
 

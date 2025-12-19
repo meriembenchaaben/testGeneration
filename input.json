@@ -1,0 +1,13 @@
+
+{
+    "entryPoint" : "org.apache.fontbox.ttf.TTCDataStream.createSubView",
+    "thirdPartyMethod" : "org.apache.commons.logging.Log.warn",
+    "path" : [ "org.apache.fontbox.ttf.TTCDataStream.createSubView", "org.apache.fontbox.ttf.RandomAccessReadDataStream.createSubView" ],
+    "methodSources" : [ "@Override\npublic RandomAccessRead createSubView(long length) {\n    return stream.createSubView(length);\n}", "@Override\npublic RandomAccessRead createSubView(long length) {\n    try {\n        return new RandomAccessReadBuffer(data).createView(currentPosition, length);\n    } catch (IOException e) {\n        LOG.warn(\"Could not create a SubView\", e);\n        return null;\n    }\n}" ],
+    "constructors" : [ "TTCDataStream(TTFDataStream stream) {\n    this.stream = stream;\n}" ],
+    "setters" : [ ],
+    "getters" : [ "@Override\npublic long getCurrentPosition() throws IOException {\n    return stream.getCurrentPosition();\n}", "@Override\npublic InputStream getOriginalData() throws IOException {\n    return stream.getOriginalData();\n}", "@Override\npublic long getOriginalDataSize() {\n    return stream.getOriginalDataSize();\n}" ],
+    "imports" : [ "org.apache.commons.logging.Log", "org.apache.pdfbox.io.RandomAccessRead", "org.apache.pdfbox.io.RandomAccessReadBuffer", "org.apache.pdfbox.io.RandomAccessReadView" ],
+    "testTemplate" : "package org.apache.fontbox.ttf;\n\nimport org.junit.jupiter.api.Test;\nimport org.mockito.Mockito;\n\npublic class TTCDataStreamBrollTest {\n\n    @Test\n    public void testCreateSubView() {\n        // Create mock objects only for constructor arguments required to instantiate the class that defines the\n        // entry-point method.\n        DummyClassName dummyClassNameclassName = Mockito.mock(DummyClassName.class);\n\n        // Other related method calls if necessary\n\n        // Create an object of the class that defines the entry-point method\n        TTCDataStream tTCDataStream = new TTCDataStream(requiredClassParameters);\n\n        // Call the entry point method to trigger the third-party method\n        tTCDataStream.createSubView(requiredMethodParameters);\n    }\n}",
+    "conditionCount" : 0
+  }

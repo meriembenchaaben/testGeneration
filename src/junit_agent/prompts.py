@@ -31,11 +31,6 @@ entryPoint: {entryPoint}
 thirdPartyMethod: {thirdPartyMethod}
 path: {path}
 methodSources: {methodSources}
-constructors: {constructors}
-setters: {setters}
-getters: {getters}
-imports: {imports}
-
 Output requirements:
 - package declaration MUST be: {test_package}
 - class name MUST be: {test_class_name}

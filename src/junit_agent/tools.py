@@ -4,20 +4,9 @@ import logging
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
-
-from write_test_file import (
-    write_test_file as _write_test_impl,
-    get_test_class_fqn,
-    cleanup_test_file
-)
-from run_maven_test import (
-    run_maven_test as _run_maven_impl,
-    RunResult as _RunResultImpl
-)
-from get_coverage_result import (
-    get_coverage_result as _get_coverage_impl,
-    CoverageResult as _CoverageResultImpl
-)
+from junit_agent.write_test_file_ import write_test_file as _write_test_impl, get_test_class_fqn, cleanup_test_file
+from junit_agent.run_maven_test_ import run_maven_test as _run_maven_impl, RunResult as RunResultImpl
+from junit_agent.get_coverage_result_ import  get_coverage_result as _get_coverage_impl,  CoverageResult as _CoverageResultImpl
 
 logger = logging.getLogger(__name__)
 
@@ -46,7 +35,7 @@ class CoverageResult:
     error: Optional[str] = None
 
 
-def write_test_file(repo_root: Path, rel_path: str, content: str) -> Path:
+def write_test(repo_root: Path, rel_path: str, content: str) -> Path:
     """
     Tool: write the generated Java test under the Maven repo.
     Args:
@@ -120,7 +109,7 @@ def get_coverage_result(
         repo_root: Root directory of the Maven project
         method_class: Fully qualified class name being tested
         target_method: Fully qualified third-party method to check 
-    Returns:
+    Returns:write_test_file
         CoverageResult: Object containing coverage status and details
     """
     try:
