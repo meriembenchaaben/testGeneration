@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
 
 from junit_agent.hf_model import build_local_hf_llm
@@ -39,6 +41,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--max-new", type=int, default=2048, help="Max new tokens")
     p.add_argument("--run-all", action="store_true", help="Run full mvn test suite (default runs only generated test)")
     p.add_argument("--output-json", type=str, help="Optional: Save final state to JSON file")
+    p.add_argument("--log-file", type=str, help="Optional: append detailed per-test JSON logs to this file")
     p.add_argument("--all", action="store_true", help="Process all test cases in input file (default: first only)")
     return p.parse_args()
 
@@ -151,7 +154,45 @@ def main() -> int:
     )
 
     app = build_graph(llm=llm, cfg=cfg)
-    
+    # Configure logging: console INFO, keep large details for file if requested
+    logger = logging.getLogger("junit_agent")
+    logger.setLevel(logging.DEBUG)
+    # Console handler (INFO)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.INFO)
+    ch.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
+    logger.addHandler(ch)
+
+    # Optional text file for detailed iteration logs (prompts, decisions, generated text)
+    text_log_fh = None
+    text_log_path = Path(args.log_file) if args.log_file else None
+    if text_log_path:
+        # Open in append mode so multiple runs append
+        text_log_fh = open(text_log_path, "a", encoding="utf-8")
+
+
+        def _tlog(line: str) -> None:
+            if text_log_fh is None:
+                return
+            text_log_fh.write(line + "\n")
+            text_log_fh.flush()
+
+
+        text_log_fh.write("\n" + "=" * 100 + "\n")
+        text_log_fh.write(f"LOG SESSION STARTED: {datetime.now().isoformat()}\n")
+        text_log_fh.write("=" * 100 + "\n\n")
+        
+
+    # Optional JSONL file for detailed per-test logs
+    log_fh = None
+    json_log_path = None
+    if args.log_file:
+        # Use .jsonl extension for JSON logs alongside text logs
+        base_path = Path(args.log_file)
+        json_log_path = base_path.parent / f"{base_path.stem}.jsonl"
+        # open append so multiple runs append
+        log_fh = open(json_log_path, "a", encoding="utf-8")
+
     # Store results for all test cases
     all_results = []
     total_approved = 0
@@ -164,19 +205,75 @@ def main() -> int:
         print(f"Entry Point: {inp.entryPoint}")
         print(f"Third Party Method: {inp.thirdPartyMethod}")
         print("=" * 80 + "\n")
+        _tlog("=" * 80)
+        _tlog(f"PROCESSING TEST CASE {idx}/{len(cases_to_process)}")
+        _tlog(f"Entry Point: {inp.entryPoint}")
+        _tlog(f"Third Party Method: {inp.thirdPartyMethod}")
+        _tlog("=" * 80)
+
         
         state = initial_state(inp, cfg)
 
         final_state = None
+        logger.info("--- PROCESSING TEST CASE %d/%d ---", idx, len(cases_to_process))
         for event in app.stream(state):
             for node, st in event.items():
                 trace = st.get("trace", [])
                 if trace:
                     print(trace[-1])
+                    _tlog(trace[-1])  # ✅ write trace to file too
+
+                itlog = st.get("iteration_log", [])
+                if not itlog:
+                    final_state = st
+                    continue
+
+                cur = itlog[-1]
+                it = cur.get("iteration", st.get("iteration", "?"))
+
+                if node == "generate":
+                    _tlog("-" * 100)
+                    _tlog(f"ITERATION {it} — PROMPT")
+                    _tlog("-" * 100)
+                    prompt_txt = cur.get("prompt", "")
+                    _tlog(prompt_txt[:5000])
+                    if len(prompt_txt) > 5000:
+                        _tlog(f"... (prompt truncated, total {len(prompt_txt)} chars)")
+
+                    _tlog("-" * 100)
+                    _tlog(f"ITERATION {it} — GENERATED JAVA")
+                    _tlog("-" * 100)
+                    _tlog(cur.get("generated_java", ""))
+
+                elif node == "run":
+                    _tlog("-" * 100)
+                    _tlog(f"ITERATION {it} — MAVEN RESULT")
+                    _tlog("-" * 100)
+                    _tlog(f"success={cur.get('maven_success')} exit_code={cur.get('maven_exit_code')}")
+                    fb = cur.get("maven_feedback") or ""
+                    _tlog(fb[:12000])
+                    if len(fb) > 12000:
+                        _tlog("... (maven feedback truncated)")
+
+                elif node == "check_coverage":
+                    _tlog("-" * 100)
+                    _tlog(f"ITERATION {it} — COVERAGE")
+                    _tlog("-" * 100)
+                    _tlog(json.dumps(cur.get("coverage", {}), indent=2))
+
+                elif node == "decide":
+                    _tlog("-" * 100)
+                    _tlog(f"ITERATION {it} — DECISION")
+                    _tlog("-" * 100)
+                    _tlog(f"approved={cur.get('approved')} reason={cur.get('decision_reason')}")
+
                 final_state = st
 
+        
+             
+
         if not final_state:
-            print(f"No final state produced for test case {idx}.")
+            logger.error("No final state produced for test case %d.", idx)
             all_results.append({
                 "test_case_index": idx,
                 "approved": False,
@@ -228,6 +325,100 @@ def main() -> int:
         }
         all_results.append(result_data)
 
+        # Write detailed log for this test case if requested
+        if log_fh is not None:
+            try:
+                detailed = {
+                    "timestamp": datetime.utcnow().isoformat() + "Z",
+                    "test_case_index": idx,
+                    "input": {
+                        "entryPoint": inp.entryPoint,
+                        "thirdPartyMethod": inp.thirdPartyMethod,
+                    },
+                    "final_state": final_state,
+                    "iteration_log": final_state.get("iteration_log", []),
+                }
+                log_fh.write(json.dumps(detailed, ensure_ascii=False) + "\n")
+                log_fh.flush()
+            except Exception as e:
+                logger.exception("Failed to write to log file: %s", e)
+
+        # Write text log with detailed prompts, decisions, and generated code
+        if text_log_fh is not None:
+            try:
+                text_log_fh.write(f"\n{'='*100}\n")
+                text_log_fh.write(f"TEST CASE {idx}: {inp.entryPoint}\n")
+                text_log_fh.write(f"{'='*100}\n")
+                text_log_fh.write(f"Entry Point: {inp.entryPoint}\n")
+                text_log_fh.write(f"Third Party Method: {inp.thirdPartyMethod}\n")
+                text_log_fh.write(f"Approved: {approved}\n")
+                text_log_fh.write(f"Total Iterations: {iteration}\n")
+                text_log_fh.write(f"Tests Passed: {success}\n")
+                text_log_fh.write(f"Target Method Covered: {target_covered}\n")
+                text_log_fh.write(f"\n{'-'*100}\n")
+                
+                # Write iteration details
+                iteration_log = final_state.get("iteration_log", [])
+                if iteration_log:
+                    text_log_fh.write(f"ITERATION DETAILS ({len(iteration_log)} iterations):\n")
+                    text_log_fh.write(f"{'-'*100}\n\n")
+                    
+                    for iter_data in iteration_log:
+                        iter_num = iter_data.get("iteration", "?")
+                        text_log_fh.write(f"\n>>> ITERATION {iter_num}\n")
+                        text_log_fh.write(f"{'-'*100}\n")
+                        
+                        # Write prompt
+                        prompt = iter_data.get("prompt", "")
+                        if prompt:
+                            text_log_fh.write(f"\n[PROMPT SENT TO LLM]\n")
+                            text_log_fh.write(f"{'-'*50}\n")
+                            text_log_fh.write(prompt[:3000])  # Limit to first 3000 chars
+                            if len(prompt) > 3000:
+                                text_log_fh.write(f"\n... (prompt truncated, total: {len(prompt)} chars)\n")
+                            text_log_fh.write(f"\n{'-'*50}\n\n")
+                        
+                        # Write generated Java code
+                        java_code = iter_data.get("generated_java", "")
+                        if java_code:
+                            text_log_fh.write(f"[GENERATED JAVA CODE]\n")
+                            text_log_fh.write(f"{'-'*50}\n")
+                            text_log_fh.write(java_code)
+                            text_log_fh.write(f"\n{'-'*50}\n\n")
+                        
+                        # Write Maven feedback
+                        maven_feedback = iter_data.get("maven_feedback")
+                        if maven_feedback:
+                            text_log_fh.write(f"[MAVEN FEEDBACK/DECISION]\n")
+                            text_log_fh.write(f"{'-'*50}\n")
+                            text_log_fh.write(maven_feedback[:2000])  # Limit to first 2000 chars
+                            if len(str(maven_feedback)) > 2000:
+                                text_log_fh.write(f"\n... (feedback truncated)\n")
+                            text_log_fh.write(f"\n{'-'*50}\n\n")
+                        
+                        # Write coverage info
+                        coverage = iter_data.get("coverage")
+                        if coverage:
+                            text_log_fh.write(f"[COVERAGE RESULT]\n")
+                            text_log_fh.write(f"{'-'*50}\n")
+                            text_log_fh.write(f"{json.dumps(coverage, indent=2)}\n")
+                            text_log_fh.write(f"{'-'*50}\n\n")
+                
+                # Final summary for this test case
+                text_log_fh.write(f"\n{'='*100}\n")
+                text_log_fh.write(f"FINAL RESULT: {'APPROVED' if approved else 'FAILED'}\n")
+                if not approved:
+                    if not success:
+                        text_log_fh.write("Reason: Tests failed to compile or run successfully\n")
+                    elif not target_covered:
+                        text_log_fh.write(f"Reason: Target method not covered\n")
+                        text_log_fh.write(f"Target: {final_state.get('thirdPartyMethod', 'N/A')}\n")
+                text_log_fh.write(f"{'='*100}\n\n")
+                text_log_fh.flush()
+                
+            except Exception as e:
+                logger.exception("Failed to write text log: %s", e)
+
     # Print overall summary
     print("\n" + "=" * 80)
     print("=== OVERALL SUMMARY ===")
@@ -251,8 +442,17 @@ def main() -> int:
         output_path.write_text(json.dumps(output_data, indent=2), encoding="utf-8")
         print(f"✓ Saved all results to: {output_path}")
 
+    # Close file handles
+    if log_fh is not None:
+        log_fh.close()
+    if text_log_fh is not None:
+        text_log_fh.close()
+
     # Return 0 if all approved, 1 if any failed
     return 0 if total_approved == len(cases_to_process) else 1
+
+
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

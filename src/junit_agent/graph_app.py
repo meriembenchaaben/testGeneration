@@ -302,6 +302,8 @@ class AgentState(TypedDict, total=False):
     coverage_total_lines: int
     coverage_error: Optional[str]
 
+    iteration_log: List[Dict[str, Any]]  
+    last_prompt: str 
 
 def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
     """
@@ -312,7 +314,9 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         input_variables=[
             "entryPoint", "thirdPartyMethod", "path", "methodSources", 
             "constructors", "setters", "getters", "imports",
-            "test_package", "test_class_name", "last_run_output"
+            "test_package", "test_class_name", "last_run_output",
+            "testTemplate", "conditionCount"
+
         ],
         template=(
             SYSTEM_PROMPT
@@ -349,6 +353,8 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
             test_class_name=state["test_class_name"],
             last_run_output=state.get("last_run_output", "") or "",
         )
+        state["last_prompt"] = rendered
+
         java = llm.invoke(rendered)
         if not isinstance(java, str):
             java = str(java)
@@ -357,6 +363,19 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         #_validate_generated_java(java, state["test_package"], state["test_class_name"])
         state["java_source"] = java
         state.setdefault("trace", []).append(f"[Generate] produced {len(java)} chars")
+        # Log iteration details
+        state.setdefault("iteration_log", [])
+        state["iteration_log"].append({
+            "iteration": it,
+            "prompt": rendered,
+            "generated_java": java,
+            "maven_feedback": None,
+            "coverage": None,
+            "approved": None,
+        })
+
+
+        
         return state
 
     def node_write(state: AgentState) -> AgentState:
@@ -389,6 +408,11 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         if formatted_feedback:
             state.setdefault("trace", []).append(f"[Run] feedback_chars={len(formatted_feedback)}")
         
+        # Update iteration log with Maven results
+        state["iteration_log"][-1]["maven_feedback"] = formatted_feedback
+        state["iteration_log"][-1]["maven_exit_code"] = rr.exit_code
+        state["iteration_log"][-1]["maven_success"] = rr.success
+
         return state
 
     def node_check_coverage(state: AgentState) -> AgentState:
@@ -423,6 +447,12 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
                 f"total_lines={coverage_result.total_covered_lines}"
             )
         
+        # Update iteration log with coverage results
+        state["iteration_log"][-1]["coverage"] = {
+            "method_covered": coverage_result.method_covered,
+            "total_covered_lines": coverage_result.total_covered_lines,
+            "error": coverage_result.error,
+        }
         return state
 
     def node_decide(state: AgentState) -> AgentState:
@@ -464,6 +494,14 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
                 f"[Decide] approved=False (tests failed, will retry if iteration<{max_it})"
             )
         
+        # Update iteration log with decision details
+        state["iteration_log"][-1]["approved"] = state["approved"]
+        state["iteration_log"][-1]["decision_reason"] = (
+            "passed+covered" if tests_passed and target_covered
+            else "passed_not_covered" if tests_passed
+            else "tests_failed"
+        )
+
         return state
 
     def route_after_decide(state: AgentState) -> str:
@@ -522,6 +560,7 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
 
 
 def initial_state(inp: GenerationInput, cfg: AppConfig) -> AgentState:
+    
     return AgentState(
         repo_root=str(cfg.repo_root.resolve()),
         mvn_cmd=cfg.mvn_cmd,
@@ -548,4 +587,7 @@ def initial_state(inp: GenerationInput, cfg: AppConfig) -> AgentState:
         target_method_covered=False,
         coverage_total_lines=0,
         coverage_error=None,
+        iteration_log=[],
+        last_prompt="",
+
     )
