@@ -11,6 +11,7 @@ This module provides functionality to:
 
 import subprocess
 import logging
+import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
@@ -43,7 +44,9 @@ def run_maven_clean(repo_root: Path) -> RunResult:
     """
     clean_cmd = ["mvn", "clean", "-f", str(repo_root / "pom.xml")]
     logger.info("Running Maven clean...")
+    original_dir = os.getcwd()
     try:
+        os.chdir(repo_root)
         proc = subprocess.run(
             clean_cmd,
             capture_output=True,
@@ -76,6 +79,8 @@ def run_maven_clean(repo_root: Path) -> RunResult:
             stdout="",
             stderr=str(e),
         )
+    finally:
+        os.chdir(original_dir)
 
 def run_maven_test(
     repo_root: Path,
@@ -89,10 +94,10 @@ def run_maven_test(
     Run Maven tests with optional JaCoCo coverage.
     Args:
         repo_root: Root directory of the Maven project
-        mvn_cmd: Maven command to run (default: "test") If jacoco is not set on the pom, we can call jacoco plugin from cmd
+        mvn_cmd: Maven command to run (default: "mvn")
         test_fqcn: Fully qualified class name of specific test to run
                    If None, runs all tests
-        timeout_s: Timeout in seconds (default: 300) Should be reviewd based on project size
+        timeout_s: Timeout in seconds (default: 300)
         with_jacoco: Whether to generate JaCoCo coverage report (default: True)
         skip_checkstyle: Whether to skip checkstyle checks (default: True)
     Returns:
@@ -118,13 +123,14 @@ def run_maven_test(
     logger.info(f"Executing: {' '.join(cmd)}")
     logger.info(f"Working directory: {repo_root}")
     logger.info(f"Timeout: {timeout_s} seconds")
+    original_dir = os.getcwd()
     try:
+        os.chdir(repo_root)
         proc = subprocess.run(
             cmd,
             capture_output=True,
             text=True,
             timeout=timeout_s,
-            cwd=str(repo_root),
             shell=False
         )
         success = (proc.returncode == 0)
@@ -162,6 +168,8 @@ def run_maven_test(
             stdout="",
             stderr=f"Exception during test execution: {str(e)}",
         )
+    finally:
+        os.chdir(original_dir)
 
 def run_maven_test_with_clean(
     repo_root: Path,
