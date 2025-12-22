@@ -16,10 +16,14 @@ imports - imports that might be relevant for implementing the test - this includ
 entryPoint: {entryPoint}
 thirdPartyMethod: {thirdPartyMethod}
 path: {path}
-methodSources: {methodSources}
-constructors: {constructors}
-setters: {setters}
-getters: {getters}
+methodSources:
+{methodSources}
+constructors:
+{constructors}
+setters:
+{setters}
+getters:
+{getters}
 imports: {imports}
 
 Hard constraints:
