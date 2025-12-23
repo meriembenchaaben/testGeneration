@@ -301,6 +301,7 @@ class AgentState(TypedDict, total=False):
     target_method_covered: bool
     coverage_total_lines: int
     coverage_error: Optional[str]
+    path_coverage_details: List[Dict[str, Any]]  # Details for each method in path
 
     iteration_log: List[Dict[str, Any]]  
     last_prompt: str 
@@ -339,14 +340,21 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         constructors = [decode_code(c) for c in state.get("constructors", [])]
         setters = [decode_code(s) for s in state.get("setters", [])]
         getters = [decode_code(g) for g in state.get("getters", [])]
+        
+        # Build formatted blocks only if non-empty
+        method_sources_str = "```java\n" + "\n\n".join(method_sources) + "\n```" if method_sources else ""
+        constructors_str = "```java\n" + "\n\n".join(constructors) + "\n```" if constructors else ""
+        setters_str = "```java\n" + "\n\n".join(setters) + "\n```" if setters else ""
+        getters_str = "```java\n" + "\n\n".join(getters) + "\n```" if getters else ""
+        
         rendered = prompt.format(
             entryPoint=state["entryPoint"],
             thirdPartyMethod=state["thirdPartyMethod"],
             path=" -> ".join(state["path"]),
-            methodSources="\n\n".join(method_sources),
-            constructors="\n\n".join(constructors),
-            setters="\n\n".join(setters),
-            getters="\n\n".join(getters),
+            methodSources=method_sources_str,
+            constructors=constructors_str,
+            setters=setters_str,
+            getters=getters_str,
             imports=", ".join(state.get("imports", [])),
             testTemplate=decode_code(state.get("testTemplate", "")),
             test_package=state["test_package"],
@@ -416,42 +424,82 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         return state
 
     def node_check_coverage(state: AgentState) -> AgentState:
-        """Check if the target third-party method is covered by the test."""
-        state.setdefault("trace", []).append("[Coverage] checking target method coverage")
+        """Check if each method in the path is covered by the test."""
+        state.setdefault("trace", []).append("[Coverage] checking path coverage (granular)")
         
-        # Extract method_class from entryPoint (e.g., "tech.tablesaw.io.jsonl.JsonlReader.read")
-        entry_point = state["entryPoint"]
-        method_class = entry_point.rsplit('.', 1)[0]  # Remove method name to get class
-        
+        path = state["path"]
         target_method = state["thirdPartyMethod"]
+        path_coverage_details = []
         
-        # Call the coverage tool
-        coverage_result = get_coverage_result(
+        # Check coverage for each method in the path (excluding the last one which is the target)
+        for i in range(len(path) - 1):
+            method_to_check = path[i]
+            
+            # Determine the method_class for this check
+            if i == 0:
+                # First method in path - use entryPoint's class
+                entry_point = state["entryPoint"]
+                method_class = entry_point.rsplit('.', 1)[0]
+            else:
+                # For subsequent methods, use the previous method in path as the class context
+                method_class = path[i - 1]
+            
+            # Call the coverage tool for this method
+            coverage_result = get_coverage_result(
+                repo_root=Path(state["repo_root"]),
+                method_class=method_class,
+                target_method=method_to_check
+            )
+            
+            path_coverage_details.append({
+                "index": i,
+                "method": method_to_check,
+                "method_class": method_class,
+                "covered": coverage_result.method_covered,
+                "error": coverage_result.error,
+            })
+            
+            state.setdefault("trace", []).append(
+                f"[Coverage] path[{i}] '{method_to_check}' covered={coverage_result.method_covered}"
+            )
+        
+        # Check the target method (last in path)
+        if len(path) >= 2:
+            method_class = path[-2]  # Second-to-last method in the path
+        else:
+            entry_point = state["entryPoint"]
+            method_class = entry_point.rsplit('.', 1)[0]
+        
+        target_coverage_result = get_coverage_result(
             repo_root=Path(state["repo_root"]),
             method_class=method_class,
             target_method=target_method
         )
         
-        # Update state with coverage information
-        state["target_method_covered"] = coverage_result.method_covered
-        state["coverage_total_lines"] = coverage_result.total_covered_lines
-        state["coverage_error"] = coverage_result.error
+        path_coverage_details.append({
+            "index": len(path) - 1,
+            "method": target_method,
+            "method_class": method_class,
+            "covered": target_coverage_result.method_covered,
+            "error": target_coverage_result.error,
+        })
         
-        if coverage_result.error:
-            state.setdefault("trace", []).append(
-                f"[Coverage] error: {coverage_result.error}"
-            )
-        else:
-            state.setdefault("trace", []).append(
-                f"[Coverage] target_covered={coverage_result.method_covered}, "
-                f"total_lines={coverage_result.total_covered_lines}"
-            )
+        # Update state with coverage information
+        state["target_method_covered"] = target_coverage_result.method_covered
+        state["coverage_total_lines"] = target_coverage_result.total_covered_lines
+        state["coverage_error"] = target_coverage_result.error
+        state["path_coverage_details"] = path_coverage_details
+        
+        state.setdefault("trace", []).append(
+            f"[Coverage] target '{target_method}' covered={target_coverage_result.method_covered}"
+        )
         
         # Update iteration log with coverage results
         state["iteration_log"][-1]["coverage"] = {
-            "method_covered": coverage_result.method_covered,
-            "total_covered_lines": coverage_result.total_covered_lines,
-            "error": coverage_result.error,
+            "method_covered": target_coverage_result.method_covered,
+            "total_covered_lines": target_coverage_result.total_covered_lines,
+            "error": target_coverage_result.error,
+            "path_coverage_details": path_coverage_details,
         }
         return state
 
@@ -475,19 +523,73 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
                 f"[Decide] approved=False (tests passed but target method NOT covered, "
                 f"will retry if iteration<{max_it})"
             )
-            # Add coverage feedback to help LLM understand what went wrong
+            # Add granular coverage feedback to help LLM understand what went wrong
             if not state.get("last_run_output"):
                 state["last_run_output"] = ""
-            state["last_run_output"] += (
-                "\n\n" + "=" * 80 + "\n"
-                "COVERAGE CHECK FAILED\n"
-                "=" * 80 + "\n"
-                f"The test compiled and ran successfully, but the target method "
-                f"'{state['thirdPartyMethod']}' was NOT reached/covered by the test.\n"
-                f"Please modify the test to ensure it actually invokes this third-party method "
-                f"through the entry point '{state['entryPoint']}'.\n"
-                "=" * 80 + "\n"
-            )
+            
+            # Build detailed coverage feedback
+            coverage_feedback = "\n\n" + "=" * 80 + "\n"
+            coverage_feedback += "COVERAGE CHECK FAILED\n"
+            coverage_feedback += "=" * 80 + "\n"
+            
+            path_details = state.get("path_coverage_details", [])
+            path = state["path"]
+            
+            if path_details:
+                # Find where coverage stops
+                last_covered_idx = -1
+                for detail in path_details:
+                    if detail["covered"]:
+                        last_covered_idx = detail["index"]
+                    else:
+                        break
+                
+                if last_covered_idx == -1:
+                    # No methods in the path are covered
+                    coverage_feedback += f"None of the methods in the call path were reached by the test.\n"
+                    coverage_feedback += f"The entry point '{state['entryPoint']}' itself may not be properly invoked.\n"
+                elif last_covered_idx < len(path) - 1:
+                    # Some methods covered but not all
+                    covered_method = path_details[last_covered_idx]["method"]
+                    next_idx = last_covered_idx + 1
+                    uncovered_method = path_details[next_idx]["method"]
+                    
+                    coverage_feedback += f"The test successfully reaches up to method #{last_covered_idx + 1} in the path:\n"
+                    coverage_feedback += f"  ✓ '{covered_method}'\n\n"
+                    coverage_feedback += f"However, the next method in the path is NOT covered:\n"
+                    coverage_feedback += f"  ✗ '{uncovered_method}' (method #{next_idx + 1})\n\n"
+                    
+                    if next_idx == len(path) - 1:
+                        coverage_feedback += f"This uncovered method is the TARGET third-party method.\n"
+                    else:
+                        coverage_feedback += f"The call chain breaks here. The target method '{state['thirdPartyMethod']}' "
+                        coverage_feedback += f"comes later in the path and is also unreachable.\n"
+                    
+                    coverage_feedback += f"\nPlease modify the test to ensure '{covered_method}' properly calls '{uncovered_method}'.\n"
+                else:
+                    # All intermediate methods covered but target is not
+                    coverage_feedback += f"All intermediate methods in the path are covered, but the final target method\n"
+                    coverage_feedback += f"'{state['thirdPartyMethod']}' was NOT reached.\n\n"
+                    coverage_feedback += f"Please ensure the test execution path actually invokes this target method.\n"
+                
+                # Show full path for context
+                coverage_feedback += f"\nFull call path ({len(path)} methods):\n"
+                for i, detail in enumerate(path_details):
+                    status = "✓" if detail["covered"] else "✗"
+                    method_name = detail["method"]
+                    if i == len(path_details) - 1:
+                        coverage_feedback += f"  {status} #{i + 1}. {method_name} (TARGET)\n"
+                    else:
+                        coverage_feedback += f"  {status} #{i + 1}. {method_name}\n"
+            else:
+                # Fallback if path details not available
+                coverage_feedback += f"The test compiled and ran successfully, but the target method\n"
+                coverage_feedback += f"'{state['thirdPartyMethod']}' was NOT reached/covered by the test.\n"
+                coverage_feedback += f"Please modify the test to ensure it actually invokes this third-party method\n"
+                coverage_feedback += f"through the entry point '{state['entryPoint']}'.\n"
+            
+            coverage_feedback += "=" * 80 + "\n"
+            state["last_run_output"] += coverage_feedback
         else:
             state["approved"] = False
             state.setdefault("trace", []).append(
@@ -587,6 +689,7 @@ def initial_state(inp: GenerationInput, cfg: AppConfig) -> AgentState:
         target_method_covered=False,
         coverage_total_lines=0,
         coverage_error=None,
+        path_coverage_details=[],
         iteration_log=[],
         last_prompt="",
 
