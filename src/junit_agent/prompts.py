@@ -33,7 +33,7 @@ Hard constraints:
 - Output must be a single Java file (complete source code).
 - The file must include a package declaration consistent with the entryPoint, all required imports, and one executable test method. 
 - Ensure the test compiles in a standard Maven project.
-- No assertions, no verifications, no inspections of state/logs/output.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
 
 Output requirements:
 - package declaration MUST be: {test_package}
