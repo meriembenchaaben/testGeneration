@@ -28,18 +28,13 @@ imports: {imports}
 
 Hard constraints:
 - Use spies only when necessary, and only for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
-- Do not use mocks, do not add fake supporting classes and do not override any existing methods.
+- Do NOT use mocks, do not add fake supporting classes and do not override any existing methods.
 - Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
-- Output must be a single Java file (complete source code).
-- The file must include a package declaration consistent with the entryPoint, all required imports, and one executable test method. 
 - Ensure the test compiles in a standard Maven project.
 - Do NOT add any assertions, verifications, or inspections of state/logs/output.
-
-Output requirements:
 - package declaration MUST be: {test_package}
 - class name MUST be: {test_class_name}
 - at least ONE @Test method
-- compile in a standard Maven project
-- Return ONLY the Java source code.
+- Return ONLY the complete Java source code.
 - Do NOT include explanations, markdown, or extra text.
 """
