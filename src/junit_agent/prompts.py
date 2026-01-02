@@ -4,14 +4,13 @@ SYSTEM_PROMPT = """You are an expert Java developer who writes good unit tests i
 USER_PROMPT_TEMPLATE = """Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to ensure that the third-party method from the given third-party package is actually invoked during execution. 
 
 You are provided with:
-entryPoint - the fully qualified name of the public method that ultimately triggers the third-party library method.
-thirdPartyMethod - the fully qualified name of the third-party method that must be invoked.
-path - an ordered list of method calls from the entry point to the third-party method.
-methodSources - the complete source code of all relevant methods in the call chain.
-constructors - all constructors of the class that contains the entry-point method.
-setters - all setters of the class that contains the entry-point method, if any.
-getters - all getters of the class that contains the entry-point method, if any.
-imports - imports that might be relevant for implementing the test - this includes all non-java imports that are involved in any method along the path, if any.
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint.
+setters / getters: All setters and getters of the entryPoint class.
+imports: All non-core-java imports that may be required by the test.
 
 entryPoint: {entryPoint}
 thirdPartyMethod: {thirdPartyMethod}
@@ -27,14 +26,14 @@ getters:
 imports: {imports}
 
 Hard constraints:
-- Use spies only when necessary, and only for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
-- Do NOT use mocks, do not add fake supporting classes and do not override any existing methods.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT add fake supporting classes and do not override any existing methods.
 - Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
 - Ensure the test compiles in a standard Maven project.
 - Do NOT add any assertions, verifications, or inspections of state/logs/output.
 - package declaration MUST be: {test_package}
 - class name MUST be: {test_class_name}
-- at least ONE @Test method
+- exactly ONE @Test method
 - Return ONLY the complete Java source code.
 - Do NOT include explanations, markdown, or extra text.
 """
