@@ -363,9 +363,14 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         )
         state["last_prompt"] = rendered
 
-        java = llm.invoke(rendered)
-        if not isinstance(java, str):
-            java = str(java)
+        response = llm.invoke(rendered)
+        # Extract content from AIMessage if needed
+        if hasattr(response, 'content'):
+            java = response.content
+        elif not isinstance(response, str):
+            java = str(response)
+        else:
+            java = response
         java = _extract_java_code(java)
         java = java.replace("\r\n", "\n").strip() + "\n"
         #_validate_generated_java(java, state["test_package"], state["test_class_name"])

@@ -3,12 +3,14 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import os
 import re
 import sys
 from datetime import datetime
 from pathlib import Path
 
 from junit_agent.hf_model import build_local_hf_llm
+from junit_agent.deepseek_model import build_deepseek_llm
 from junit_agent.graph_app import AppConfig, GenerationInput, build_graph, initial_state
 
 
@@ -35,7 +37,9 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("repo_root", type=str, help="Path to the target Maven Java project")
     p.add_argument("input_json", type=str, help="Path to JSON input containing entryPoint/path/methodSources")
     p.add_argument("--mvn", type=str, default="mvn", help="Maven command (default: mvn)")
-    p.add_argument("--model", type=str, default="Qwen/Qwen2.5-1.5B-Instruct", help="Hugging Face model id")
+    p.add_argument("--model", type=str, default="Qwen/Qwen2.5-1.5B-Instruct", help="Model id (HuggingFace model or 'deepseek-chat' for DeepSeek)")
+    p.add_argument("--api", type=str, choices=["hf", "deepseek"], default="hf", help="API to use: 'hf' for HuggingFace (local) or 'deepseek' for DeepSeek API")
+    p.add_argument("--api-key", type=str, help="API key for DeepSeek (or set DEEPSEEK_API_KEY env var)")
     p.add_argument("--iters", type=int, default=5, help="Max generate-run iterations")
     p.add_argument("--temp", type=float, default=0.1, help="Sampling temperature")
     p.add_argument("--max-new", type=int, default=2048, help="Max new tokens")
@@ -147,11 +151,22 @@ def main() -> int:
         run_only_generated_test=(not args.run_all),
     )
 
-    llm = build_local_hf_llm(
-        model_id=args.model,
-        temperature=args.temp,
-        max_new_tokens=args.max_new,
-    )
+    # Build LLM based on selected API
+    if args.api == "deepseek":
+        llm = build_deepseek_llm(
+            api_key=args.api_key,
+            temperature=args.temp,
+            max_tokens=args.max_new,
+            model=args.model if args.model != "Qwen/Qwen2.5-1.5B-Instruct" else "deepseek-chat",
+        )
+        print(f"Using DeepSeek API with model: {args.model if args.model != 'Qwen/Qwen2.5-1.5B-Instruct' else 'deepseek-chat'}")
+    else:
+        llm = build_local_hf_llm(
+            model_id=args.model,
+            temperature=args.temp,
+            max_new_tokens=args.max_new,
+        )
+        print(f"Using local HuggingFace model: {args.model}")
 
     app = build_graph(llm=llm, cfg=cfg)
     # Configure logging: console INFO, keep large details for file if requested

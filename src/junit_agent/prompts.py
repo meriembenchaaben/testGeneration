@@ -27,8 +27,8 @@ getters:
 imports: {imports}
 
 Hard constraints:
-- Use spies only when necessary, and only for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
-- Do NOT use mocks, do not add fake supporting classes and do not override any existing methods.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT add fake supporting classes and do not override any existing methods.
 - Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
 - Ensure the test compiles in a standard Maven project.
 - Do NOT add any assertions, verifications, or inspections of state/logs/output.
