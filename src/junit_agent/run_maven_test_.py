@@ -108,15 +108,12 @@ def run_maven_test(
     pom_file = repo_root / "pom.xml"
     if not pom_file.exists():
         raise ValueError(f"No pom.xml found in {repo_root}")
-    cmd = [mvn_cmd, "test"]
+    cmd = [mvn_cmd, "clean", "test"]
     if test_fqcn:
         cmd.append(f"-Dtest={test_fqcn}")
         logger.info(f"Running specific test class: {test_fqcn}")
     else:
         logger.info("Running all tests")
-    if with_jacoco:
-        cmd.append("jacoco:report")
-        logger.info("JaCoCo coverage report will be generated")
     if skip_checkstyle:
         cmd.append("-Dcheckstyle.skip=true")
     cmd.extend(["-f", str(pom_file)])

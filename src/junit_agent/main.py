@@ -23,7 +23,7 @@ def load_input(json_path: Path) -> GenerationInput:
         methodSources=list(data["methodSources"]),
         constructors=list(data.get("constructors", [])),
         setters=list(data.get("setters", [])),
-        getters=list(data.get("getters", [])),
+        fieldDeclarations=list(data.get("fieldDeclarations", [])),
         imports=list(data.get("imports", [])),
         testTemplate=data.get("testTemplate", ""),
         conditionCount=data.get("conditionCount", 0),
@@ -101,7 +101,7 @@ def load_test_cases(json_path: Path) -> list[GenerationInput]:
                     methodSources=list(path_data["methodSources"]),
                     constructors=list(path_data.get("constructors", [])),
                     setters=list(path_data.get("setters", [])),
-                    getters=list(path_data.get("getters", [])),
+                    fieldDeclarations=list(path_data.get("fieldDeclarations", [])),
                     imports=list(path_data.get("imports", [])),
                     testTemplate=test_template,
                     conditionCount=path_data.get("conditionCount", 0),
@@ -118,7 +118,7 @@ def load_test_cases(json_path: Path) -> list[GenerationInput]:
                 methodSources=list(tc["methodSources"]),
                 constructors=list(tc.get("constructors", [])),
                 setters=list(tc.get("setters", [])),
-                getters=list(tc.get("getters", [])),
+                fieldDeclarations=list(tc.get("fieldDeclarations", [])),
                 imports=list(tc.get("imports", [])),
                 testTemplate=test_template,
                 conditionCount=tc.get("conditionCount", 0),
@@ -196,6 +196,22 @@ def main() -> int:
         text_log_fh.write("\n" + "=" * 100 + "\n")
         text_log_fh.write(f"LOG SESSION STARTED: {datetime.now().isoformat()}\n")
         text_log_fh.write("=" * 100 + "\n\n")
+    
+    # Separate file for full prompts (untruncated)
+    prompts_log_fh = None
+    if text_log_path:
+        prompts_log_path = text_log_path.parent / "prompts.log"
+        prompts_log_fh = open(prompts_log_path, "a", encoding="utf-8")
+        
+        def _plog(line: str) -> None:
+            if prompts_log_fh is None:
+                return
+            prompts_log_fh.write(line + "\n")
+            prompts_log_fh.flush()
+        
+        prompts_log_fh.write("\n" + "=" * 100 + "\n")
+        prompts_log_fh.write(f"PROMPTS LOG SESSION STARTED: {datetime.now().isoformat()}\n")
+        prompts_log_fh.write("=" * 100 + "\n\n")
         
 
     # Optional JSONL file for detailed per-test logs
@@ -254,6 +270,16 @@ def main() -> int:
                     _tlog(prompt_txt[:5000])
                     if len(prompt_txt) > 5000:
                         _tlog(f"... (prompt truncated, total {len(prompt_txt)} chars)")
+                    
+                    # Write full prompt to prompts.log
+                    if text_log_path and prompts_log_fh:
+                        _plog("=" * 100)
+                        _plog(f"TEST CASE {idx}/{len(cases_to_process)} — ITERATION {it}")
+                        _plog(f"Entry Point: {inp.entryPoint}")
+                        _plog(f"Third Party Method: {inp.thirdPartyMethod}")
+                        _plog("=" * 100)
+                        _plog(prompt_txt)
+                        _plog("")
 
                     _tlog("-" * 100)
                     _tlog(f"ITERATION {it} — GENERATED JAVA")
@@ -462,6 +488,8 @@ def main() -> int:
         log_fh.close()
     if text_log_fh is not None:
         text_log_fh.close()
+    if prompts_log_fh is not None:
+        prompts_log_fh.close()
 
     # Return 0 if all approved, 1 if any failed
     return 0 if total_approved == len(cases_to_process) else 1

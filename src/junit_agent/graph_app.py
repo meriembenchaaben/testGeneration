@@ -10,7 +10,7 @@ from langchain_core.runnables import Runnable
 from langgraph.graph import StateGraph, END
 
 from junit_agent.prompts import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
-from junit_agent.tools import run_maven_test, write_test, get_coverage_result
+from junit_agent.tools import run_maven_test, write_test, get_coverage_result, cleanup_test
 
 
 def _java_rel_path(test_package: str, class_name: str) -> str:
@@ -27,6 +27,138 @@ def _validate_generated_java(java_source: str, test_package: str, test_class_nam
         raise ValueError("Generated source must contain at least one @Test annotation.")
     if "import" not in java_source:
         raise ValueError("Generated source looks incomplete (missing imports).")
+
+
+def _validate_hard_constraints(java_source: str, test_class_name: str) -> tuple[bool, str]:
+    """
+    Validate hard constraints: no extended classes, overridden methods, or Mockito stubbing.
+    
+    Args:
+        java_source: The generated Java test source code
+        test_class_name: Expected test class name
+    
+    Returns:
+        Tuple of (is_valid, error_message)
+        - is_valid: True if all constraints pass, False otherwise
+        - error_message: Empty string if valid, detailed error message otherwise
+    """
+    violations = []
+    
+    # Check for class extension (class TestName extends SomeClass)
+    # Match patterns like: class TestName extends SomeClass
+    extends_pattern = rf"class\s+{re.escape(test_class_name)}\s+extends\s+\w+"
+    if re.search(extends_pattern, java_source):
+        match = re.search(extends_pattern, java_source)
+        violations.append(
+            f"HARD CONSTRAINT VIOLATION: Test class extends another class.\n"
+            f"  Found: {match.group(0)}\n"
+            f"  Requirement: Test class must not extend any other class.\n"
+            f"  Fix: Remove the 'extends' clause from the test class declaration."
+        )
+    
+    # Check for @Override annotations (indicating method overriding)
+    override_pattern = r"@Override\s*\n\s*(?:public|protected|private)?\s*\w+\s+\w+\s*\("
+    override_matches = list(re.finditer(override_pattern, java_source, re.MULTILINE))
+    if override_matches:
+        violations.append(
+            f"HARD CONSTRAINT VIOLATION: Test contains overridden method(s).\n"
+            f"  Found {len(override_matches)} @Override annotation(s).\n"
+            f"  Requirement: Test methods must not override any methods.\n"
+            f"  Fix: Remove all @Override annotations and ensure methods are not overriding parent methods."
+        )
+        
+        # Show examples of violations (up to 3)
+        for i, match in enumerate(override_matches[:3]):
+            # Get a few lines of context around the match
+            start = max(0, match.start() - 50)
+            end = min(len(java_source), match.end() + 100)
+            context = java_source[start:end].strip()
+            violations.append(f"  Example {i+1}:\n    {context[:150]}...")
+    
+    # Check for anonymous inner classes (e.g., new ClassName() { ... })
+    # This pattern creates a subclass and overrides methods, which violates constraints
+    anonymous_class_pattern = r"new\s+([A-Z]\w+)\s*\([^)]*\)\s*\{"
+    anonymous_matches = list(re.finditer(anonymous_class_pattern, java_source))
+    if anonymous_matches:
+        violations.append(
+            f"HARD CONSTRAINT VIOLATION: Test uses anonymous inner class(es).\n"
+            f"  Found {len(anonymous_matches)} anonymous inner class(es).\n"
+            f"  Requirement: Do not create anonymous classes that override behavior.\n"
+            f"  Fix: Use real object instances or mock objects without overriding methods.\n"
+            f"  Anonymous inner classes implicitly extend/override the class behavior."
+        )
+        
+        # Show examples of violations (up to 3)
+        for i, match in enumerate(anonymous_matches[:3]):
+            class_name = match.group(1)
+            start = max(0, match.start() - 30)
+            end = min(len(java_source), match.end() + 100)
+            context = java_source[start:end].strip().replace('\n', ' ')
+            violations.append(f"  Example {i+1} (class: {class_name}):\n    ...{context[:120]}...")
+    
+    # Check for Mockito stubbing methods
+    mockito_stubbing_patterns = [
+        # (r"when\s*\(", "when().thenReturn() or similar stubbing"),
+        # (r"doReturn\s*\(", "doReturn().when() stubbing"),
+        # (r"doThrow\s*\(", "doThrow().when() stubbing"),
+        # (r"doNothing\s*\(", "doNothing().when() stubbing"),
+        # (r"doAnswer\s*\(", "doAnswer().when() stubbing"),
+        # (r"doCallRealMethod\s*\(", "doCallRealMethod().when() stubbing"),
+        # (r"\.thenReturn\s*\(", ".thenReturn() stubbing"),
+        # (r"\.thenThrow\s*\(", ".thenThrow() stubbing"),
+        # (r"\.thenAnswer\s*\(", ".thenAnswer() stubbing"),
+        # (r"\.thenCallRealMethod\s*\(", ".thenCallRealMethod() stubbing"),
+        # (r"Mockito\.spy\s*\(", "Mockito.spy() - spying not allowed"),
+        # (r"@Spy\b", "@Spy annotation - spying not allowed"),
+        # (r"\.verify\s*\(", "Mockito.verify() - verification not allowed"),
+    ]
+    
+    mockito_violations = []
+    for pattern, description in mockito_stubbing_patterns:
+        matches = list(re.finditer(pattern, java_source, re.IGNORECASE))
+        if matches:
+            mockito_violations.append({
+                "description": description,
+                "count": len(matches),
+                "matches": matches[:3]  # Keep first 3 examples
+            })
+    
+    if mockito_violations:
+        violation_text = f"HARD CONSTRAINT VIOLATION: Test uses Mockito method stubbing/control.\n"
+        violation_text += f"  Found {len(mockito_violations)} type(s) of forbidden Mockito usage.\n"
+        violation_text += f"  Requirement: Methods must execute their real implementations without stubbing.\n"
+        violation_text += f"  Fix: Remove all Mockito stubbing, spying, and verification methods.\n\n"
+        violation_text += "  Forbidden patterns detected:\n"
+        
+        for viol in mockito_violations:
+            violation_text += f"    - {viol['description']}: {viol['count']} occurrence(s)\n"
+            for i, match in enumerate(viol['matches']):
+                start = max(0, match.start() - 30)
+                end = min(len(java_source), match.end() + 50)
+                context = java_source[start:end].strip().replace('\n', ' ')
+                violation_text += f"      Example {i+1}: ...{context[:100]}...\n"
+        
+        violations.append(violation_text)
+    
+    if violations:
+        error_msg = "\n" + "=" * 80 + "\n"
+        error_msg += "HARD CONSTRAINT VALIDATION FAILED\n"
+        error_msg += "=" * 80 + "\n\n"
+        error_msg += "\n\n".join(violations)
+        error_msg += "\n\n" + "=" * 80 + "\n"
+        error_msg += "Please regenerate the test without these violations.\n"
+        error_msg += "Remember:\n"
+        error_msg += "  - The test class must be standalone (no 'extends' clause)\n"
+        error_msg += "  - Do not override any methods (no @Override)\n"
+        error_msg += "  - Do not create anonymous inner classes (new ClassName() {...})\n"
+        error_msg += "  - Do not use Mockito stubbing (when/doReturn/thenReturn/etc.)\n"
+        error_msg += "  - Do not use Mockito spy() or @Spy\n"
+        error_msg += "  - Do not use Mockito verify() or verifications\n"
+        error_msg += "  - All methods must execute their real, unaltered implementations\n"
+        error_msg += "=" * 80 + "\n"
+        return False, error_msg
+    
+    return True, ""
 
 
 def _extract_maven_errors(output: str) -> str:
@@ -258,7 +390,7 @@ class GenerationInput:
     methodSources: List[str]
     constructors: List[str]
     setters: List[str]
-    getters: List[str]
+    fieldDeclarations: List[str]
     imports: List[str]
     testTemplate: str
     conditionCount: int
@@ -280,7 +412,7 @@ class AgentState(TypedDict, total=False):
     methodSources: List[str]
     constructors: List[str]
     setters: List[str]
-    getters: List[str]
+    fieldDeclarations: List[str]
     imports: List[str]
     testTemplate: str
     conditionCount: int
@@ -314,7 +446,7 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
     prompt = PromptTemplate(
         input_variables=[
             "entryPoint", "thirdPartyMethod", "path", "methodSources", 
-            "constructors", "setters", "getters", "imports",
+            "constructors", "setters", "fieldDeclarations", "imports",
             "test_package", "test_class_name", "last_run_output",
             "testTemplate", "conditionCount"
 
@@ -339,13 +471,13 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         method_sources = [decode_code(src) for src in state["methodSources"]]
         constructors = [decode_code(c) for c in state.get("constructors", [])]
         setters = [decode_code(s) for s in state.get("setters", [])]
-        getters = [decode_code(g) for g in state.get("getters", [])]
+        field_declarations = [decode_code(f) for f in state.get("fieldDeclarations", [])]
         
         # Build formatted blocks only if non-empty
         method_sources_str = "```java\n" + "\n\n".join(method_sources) + "\n```" if method_sources else ""
         constructors_str = "```java\n" + "\n\n".join(constructors) + "\n```" if constructors else ""
         setters_str = "```java\n" + "\n\n".join(setters) + "\n```" if setters else ""
-        getters_str = "```java\n" + "\n\n".join(getters) + "\n```" if getters else ""
+        field_declarations_str = "```java\n" + "\n".join(field_declarations) + "\n```" if field_declarations else ""
         
         rendered = prompt.format(
             entryPoint=state["entryPoint"],
@@ -354,7 +486,7 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
             methodSources=method_sources_str,
             constructors=constructors_str,
             setters=setters_str,
-            getters=getters_str,
+            fieldDeclarations=field_declarations_str,
             imports=", ".join(state.get("imports", [])),
             testTemplate=decode_code(state.get("testTemplate", "")),
             test_package=state["test_package"],
@@ -399,6 +531,58 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         abs_path = write_test(Path(state["repo_root"]), rel_path, state["java_source"])
         state.setdefault("trace", []).append(f"[Write] wrote to {abs_path}")
         return state
+    
+    def node_validate_constraints(state: AgentState) -> AgentState:
+        """
+        Validate hard constraints before running Maven tests.
+        This checks for extended classes and overridden methods.
+        """
+        state.setdefault("trace", []).append("[Validate] checking hard constraints")
+        
+        is_valid, error_msg = _validate_hard_constraints(
+            state["java_source"], 
+            state["test_class_name"]
+        )
+        
+        if not is_valid:
+            # Mark as failed and store the constraint violation message
+            state["success"] = False
+            state["last_exit_code"] = -2  # Special code for constraint violation
+            state["last_run_output"] = error_msg
+            state.setdefault("trace", []).append("[Validate] FAILED - hard constraints violated")
+            
+            # Update iteration log
+            if state.get("iteration_log"):
+                state["iteration_log"][-1]["constraint_validation"] = {
+                    "passed": False,
+                    "errors": error_msg
+                }
+        else:
+            # Validation passed - clear any previous constraint violation flag
+            state.setdefault("trace", []).append("[Validate] PASSED - hard constraints satisfied")
+            # Reset exit code if it was set to constraint violation from previous iteration
+            if state.get("last_exit_code") == -2:
+                state["last_exit_code"] = 0
+            
+            # Update iteration log
+            if state.get("iteration_log"):
+                state["iteration_log"][-1]["constraint_validation"] = {
+                    "passed": True,
+                    "errors": None
+                }
+        
+        return state
+    
+    def route_after_validate(state: AgentState) -> str:
+        """
+        Route after constraint validation.
+        If constraints are violated, skip to decide (which will retry or finalize).
+        Otherwise, proceed to run Maven tests.
+        """
+        if state.get("last_exit_code") == -2:
+            # Hard constraint violation - skip Maven run and go to decide
+            return "decide"
+        return "run"
 
     def node_run(state: AgentState) -> AgentState:
         state.setdefault("trace", []).append("[Run] running Maven tests")
@@ -436,18 +620,14 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         target_method = state["thirdPartyMethod"]
         path_coverage_details = []
         
-        # Check coverage for each method in the path (excluding the last one which is the target)
-        for i in range(len(path) - 1):
+        # Skip the entry point (path[0]) and check coverage starting from path[1]
+        # Check coverage for each method in the path (excluding the first entry point and the last target)
+        for i in range(1, len(path) - 1):
             method_to_check = path[i]
             
-            # Determine the method_class for this check
-            if i == 0:
-                # First method in path - use entryPoint's class
-                entry_point = state["entryPoint"]
-                method_class = entry_point.rsplit('.', 1)[0]
-            else:
-                # For subsequent methods, use the previous method in path as the class context
-                method_class = path[i - 1]
+            # Extract method_class from the previous method in path
+            # The previous method's class is where the current method is called
+            method_class = path[i - 1].rsplit('.', 1)[0]
             
             # Call the coverage tool for this method
             coverage_result = get_coverage_result(
@@ -469,8 +649,9 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
             )
         
         # Check the target method (last in path)
+        # Extract method_class from the second-to-last method in path
         if len(path) >= 2:
-            method_class = path[-2]  # Second-to-last method in the path
+            method_class = path[-2].rsplit('.', 1)[0]  # Second-to-last method's class
         else:
             entry_point = state["entryPoint"]
             method_class = entry_point.rsplit('.', 1)[0]
@@ -513,11 +694,20 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         tests_passed = bool(state.get("success", False))
         target_covered = bool(state.get("target_method_covered", False))
         max_it = int(state.get("max_iterations", cfg.max_iterations))
+        
+        # Check if we had a constraint violation
+        constraint_violated = (state.get("last_exit_code") == -2)
 
-        # Test is approved only if both conditions are met:
-        # 1. Maven tests passed (no compilation/runtime errors)
-        # 2. Target third-party method is covered
-        if tests_passed and target_covered:
+        # Test is approved only if:
+        # 1. Hard constraints are satisfied (no extended classes or overridden methods)
+        # 2. Maven tests passed (no compilation/runtime errors)
+        # 3. Target third-party method is covered
+        if constraint_violated:
+            state["approved"] = False
+            state.setdefault("trace", []).append(
+                f"[Decide] approved=False (hard constraint violation, will retry if iteration<{max_it})"
+            )
+        elif tests_passed and target_covered:
             state["approved"] = True
             state.setdefault("trace", []).append(
                 "[Decide] approved=True (tests passed AND target method covered)"
@@ -528,20 +718,31 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
                 f"[Decide] approved=False (tests passed but target method NOT covered, "
                 f"will retry if iteration<{max_it})"
             )
-            # Add granular coverage feedback to help LLM understand what went wrong
-            if not state.get("last_run_output"):
-                state["last_run_output"] = ""
-            
-            # Build detailed coverage feedback
-            coverage_feedback = "\n\n" + "=" * 80 + "\n"
-            coverage_feedback += "COVERAGE CHECK FAILED\n"
+            # When tests pass but coverage is incomplete, only send coverage summary (not full Maven output)
+            # Build concise coverage feedback with just method names
+            coverage_feedback = "=" * 80 + "\n"
+            coverage_feedback += "COVERAGE CHECK FAILED - Test passed but target method NOT covered\n"
             coverage_feedback += "=" * 80 + "\n"
             
             path_details = state.get("path_coverage_details", [])
             path = state["path"]
             
             if path_details:
-                # Find where coverage stops
+                # Show covered methods (excluding entry point)
+                covered_methods = [detail["method"] for detail in path_details if detail["covered"]]
+                if covered_methods:
+                    coverage_feedback += f"\nCovered methods ({len(covered_methods)}):\n"
+                    for method in covered_methods:
+                        coverage_feedback += f"  ✓ {method}\n"
+                
+                # Show not covered methods
+                not_covered_methods = [detail["method"] for detail in path_details if not detail["covered"]]
+                if not_covered_methods:
+                    coverage_feedback += f"\nNOT covered methods ({len(not_covered_methods)}):\n"
+                    for method in not_covered_methods:
+                        coverage_feedback += f"  ✗ {method}\n"
+                
+                # Find where coverage breaks (starting from path[1], not entry point)
                 last_covered_idx = -1
                 for detail in path_details:
                     if detail["covered"]:
@@ -549,52 +750,32 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
                     else:
                         break
                 
-                if last_covered_idx == -1:
-                    # No methods in the path are covered
-                    coverage_feedback += f"None of the methods in the call path were reached by the test.\n"
-                    coverage_feedback += f"The entry point '{state['entryPoint']}' itself may not be properly invoked.\n"
+                if last_covered_idx == -1 or last_covered_idx == 0:
+                    # No methods covered after entry point
+                    first_method = path[1] if len(path) > 1 else target_method
+                    coverage_feedback += f"\nNo methods in the call chain were reached.\n"
+                    coverage_feedback += f"Ensure the test properly invokes the entry point '{state['entryPoint']}' to reach '{first_method}'.\n"
                 elif last_covered_idx < len(path) - 1:
-                    # Some methods covered but not all
-                    covered_method = path_details[last_covered_idx]["method"]
-                    next_idx = last_covered_idx + 1
-                    uncovered_method = path_details[next_idx]["method"]
-                    
-                    coverage_feedback += f"The test successfully reaches up to method #{last_covered_idx + 1} in the path:\n"
-                    coverage_feedback += f"  ✓ '{covered_method}'\n\n"
-                    coverage_feedback += f"However, the next method in the path is NOT covered:\n"
-                    coverage_feedback += f"  ✗ '{uncovered_method}' (method #{next_idx + 1})\n\n"
-                    
-                    if next_idx == len(path) - 1:
-                        coverage_feedback += f"This uncovered method is the TARGET third-party method.\n"
+                    covered_method = path_details[last_covered_idx - 1]["method"] if last_covered_idx > 0 else path[0]
+                    # Find the next uncovered detail
+                    next_detail = next((d for d in path_details if d["index"] == last_covered_idx + 1), None)
+                    if next_detail:
+                        uncovered_method = next_detail["method"]
+                        coverage_feedback += f"\nThe call chain breaks between:\n"
+                        coverage_feedback += f"  '{covered_method}' → '{uncovered_method}'\n"
+                        coverage_feedback += f"\nEnsure '{covered_method}' properly calls '{uncovered_method}'.\n"
                     else:
-                        coverage_feedback += f"The call chain breaks here. The target method '{state['thirdPartyMethod']}' "
-                        coverage_feedback += f"comes later in the path and is also unreachable.\n"
-                    
-                    coverage_feedback += f"\nPlease modify the test to ensure '{covered_method}' properly calls '{uncovered_method}'.\n"
+                        coverage_feedback += f"\nThe call chain stops after '{covered_method}'.\n"
                 else:
-                    # All intermediate methods covered but target is not
-                    coverage_feedback += f"All intermediate methods in the path are covered, but the final target method\n"
-                    coverage_feedback += f"'{state['thirdPartyMethod']}' was NOT reached.\n\n"
-                    coverage_feedback += f"Please ensure the test execution path actually invokes this target method.\n"
-                
-                # Show full path for context
-                coverage_feedback += f"\nFull call path ({len(path)} methods):\n"
-                for i, detail in enumerate(path_details):
-                    status = "✓" if detail["covered"] else "✗"
-                    method_name = detail["method"]
-                    if i == len(path_details) - 1:
-                        coverage_feedback += f"  {status} #{i + 1}. {method_name} (TARGET)\n"
-                    else:
-                        coverage_feedback += f"  {status} #{i + 1}. {method_name}\n"
+                    coverage_feedback += f"\nAll intermediate methods are covered, but the target method is not reached.\n"
             else:
                 # Fallback if path details not available
-                coverage_feedback += f"The test compiled and ran successfully, but the target method\n"
-                coverage_feedback += f"'{state['thirdPartyMethod']}' was NOT reached/covered by the test.\n"
-                coverage_feedback += f"Please modify the test to ensure it actually invokes this third-party method\n"
-                coverage_feedback += f"through the entry point '{state['entryPoint']}'.\n"
+                coverage_feedback += f"\nThe target method '{state['thirdPartyMethod']}' was NOT reached.\n"
+                coverage_feedback += f"Modify the test to ensure it invokes this method through '{state['entryPoint']}'.\n"
             
             coverage_feedback += "=" * 80 + "\n"
-            state["last_run_output"] += coverage_feedback
+            # Replace (not append) the Maven output with just the coverage summary
+            state["last_run_output"] = coverage_feedback
         else:
             state["approved"] = False
             state.setdefault("trace", []).append(
@@ -603,11 +784,14 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         
         # Update iteration log with decision details
         state["iteration_log"][-1]["approved"] = state["approved"]
-        state["iteration_log"][-1]["decision_reason"] = (
-            "passed+covered" if tests_passed and target_covered
-            else "passed_not_covered" if tests_passed
-            else "tests_failed"
-        )
+        if constraint_violated:
+            state["iteration_log"][-1]["decision_reason"] = "constraint_violation"
+        elif tests_passed and target_covered:
+            state["iteration_log"][-1]["decision_reason"] = "passed+covered"
+        elif tests_passed:
+            state["iteration_log"][-1]["decision_reason"] = "passed_not_covered"
+        else:
+            state["iteration_log"][-1]["decision_reason"] = "tests_failed"
 
         return state
 
@@ -636,6 +820,20 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
             state.setdefault("trace", []).append(
                 f"[Finalize] FAILURE: {reason} after {state.get('iteration', 0)} iterations"
             )
+            
+            # Clean up the unsuccessful test file
+            test_rel_path = state.get("test_rel_path")
+            if test_rel_path:
+                try:
+                    test_file_path = Path(state["repo_root"]) / test_rel_path
+                    cleanup_test(test_file_path)
+                    state.setdefault("trace", []).append(
+                        f"[Finalize] Cleaned up unsuccessful test file: {test_file_path}"
+                    )
+                except Exception as e:
+                    state.setdefault("trace", []).append(
+                        f"[Finalize] Failed to cleanup test file: {e}"
+                    )
         
         return state
 
@@ -644,15 +842,21 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
     # Add all nodes
     sg.add_node("generate", node_generate)
     sg.add_node("write", node_write)
+    sg.add_node("validate_constraints", node_validate_constraints)
     sg.add_node("run", node_run)
-    sg.add_node("check_coverage", node_check_coverage)  # New node
+    sg.add_node("check_coverage", node_check_coverage)
     sg.add_node("decide", node_decide)
     sg.add_node("finalize", node_finalize)
 
     # Define the flow
     sg.set_entry_point("generate")
     sg.add_edge("generate", "write")
-    sg.add_edge("write", "run")
+    sg.add_edge("write", "validate_constraints")  # Validate constraints after writing
+    sg.add_conditional_edges(
+        "validate_constraints",
+        route_after_validate,
+        {"run": "run", "decide": "decide"}  # Run tests if valid, skip to decide if invalid
+    )
     sg.add_edge("run", "check_coverage")  # Check coverage after running tests
     sg.add_edge("check_coverage", "decide")  # Then decide based on coverage
     sg.add_conditional_edges(
@@ -679,7 +883,7 @@ def initial_state(inp: GenerationInput, cfg: AppConfig) -> AgentState:
         methodSources=inp.methodSources,
         constructors=inp.constructors,
         setters=inp.setters,
-        getters=inp.getters,
+        fieldDeclarations=inp.fieldDeclarations,
         imports=inp.imports,
         testTemplate=inp.testTemplate,
         conditionCount=inp.conditionCount,

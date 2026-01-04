@@ -169,7 +169,7 @@ def get_coverage_result(
             method_class=method_class,
             target_method=target_method,
             jacoco_report_path=None,
-            error="JaCoCo report directory not found"
+            error="Method is not covered: JaCoCo report not generated"
         )
     html_file = get_html_file_path(jacoco_dir, method_class)
     if not html_file:
@@ -178,7 +178,7 @@ def get_coverage_result(
             method_class=method_class,
             target_method=target_method,
             jacoco_report_path=jacoco_dir,
-            error=f"Coverage HTML file not found for class: {method_class}"
+            error=f"Method is not covered: Jacoco HTML report for class not generated"
         )
     covered_lines = parse_covered_lines(html_file)
     if not covered_lines:
@@ -187,7 +187,7 @@ def get_coverage_result(
             method_class=method_class,
             target_method=target_method,
             jacoco_report_path=jacoco_dir,
-            error="No covered lines found in HTML report",
+            error="Method is not covered: No covered lines found in report",
             total_covered_lines=0
         )
     try:
