@@ -4,6 +4,7 @@ Module for parsing JaCoCo coverage reports, and check if a given third-party met
 """
 
 import logging
+import re
 from pathlib import Path
 from html.parser import HTMLParser
 from typing import Optional, Set
@@ -114,22 +115,97 @@ def parse_covered_lines(html_file: Path) -> Set[str]:
         return set()
 
 
-def check_method_in_lines(covered_lines: Set[str], target_class: str, method_name: str) -> bool:
+def check_extends_relationship(repo_root: Path, method_class: str, target_class_fqn: str) -> bool:
+    """
+    Check if method_class extends target_class by examining the source file.
+    Args:
+        repo_root: Root directory of the Maven project
+        method_class: Fully qualified name of the subclass
+        target_class_fqn: Fully qualified name of the potential superclass
+    Returns:
+        bool: True if method_class extends target_class_fqn
+    """
+    try:
+        # Find the source file for method_class
+        if '.' in method_class:
+            package_name = method_class.rsplit('.', 1)[0]
+            simple_class_name = method_class.rsplit('.', 1)[1]
+        else:
+            package_name = ""
+            simple_class_name = method_class
+        
+        # Try to find the Java source file
+        src_dirs = [
+            repo_root / "src" / "main" / "java",
+            repo_root / "src" / "test" / "java"
+        ]
+        
+        for src_dir in src_dirs:
+            if package_name:
+                java_file = src_dir / package_name.replace('.', '/') / f"{simple_class_name}.java"
+            else:
+                java_file = src_dir / f"{simple_class_name}.java"
+            
+            if java_file.exists():
+                with open(java_file, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                # Extract the simple name of the target class
+                target_simple_name = target_class_fqn.rsplit('.', 1)[1] if '.' in target_class_fqn else target_class_fqn
+                
+                # Look for extends clause
+                # Pattern: class ClassName extends SuperClassName
+                extends_pattern = rf'class\s+{re.escape(simple_class_name)}\s+extends\s+(\w+)'
+                match = re.search(extends_pattern, content)
+                
+                if match:
+                    extended_class = match.group(1)
+                    # Check if the extended class matches the target (by simple name)
+                    if extended_class == target_simple_name:
+                        logger.info(f"Found extends relationship: {method_class} extends {target_class_fqn}")
+                        return True
+                    # Also check if it matches the fully qualified name
+                    if extended_class == target_class_fqn:
+                        logger.info(f"Found extends relationship: {method_class} extends {target_class_fqn}")
+                        return True
+                
+                logger.debug(f"No extends relationship found for {method_class} and {target_class_fqn}")
+                return False
+        
+        logger.warning(f"Source file not found for class: {method_class}")
+        return False
+        
+    except Exception as e:
+        logger.error(f"Error checking extends relationship: {e}")
+        return False
+
+
+def check_method_in_lines(covered_lines: Set[str], target_class: str, method_name: str, check_super_call: bool = False) -> bool:
     """
     Check if a specific method appears in the covered lines.
     Args:
         covered_lines: Set of covered code lines
         target_class: Short class name of the target 
-        method_name: Method name to search for 
+        method_name: Method name to search for
+        check_super_call: If True, look for super(...) calls instead of new ClassName(...)
     Returns:
         bool: True if method is found in covered lines
     """
     if method_name == "<init>":
-        pattern = f"new {target_class}("
-        for line in covered_lines:
-            if pattern in line:
-                logger.debug(f"Found constructor call: {line}")
-                return True
+        if check_super_call:
+            # Look for super(...) constructor calls
+            pattern = "super("
+            for line in covered_lines:
+                if pattern in line:
+                    logger.debug(f"Found super constructor call: {line}")
+                    return True
+        else:
+            # Look for regular constructor calls
+            pattern = f"new {target_class}("
+            for line in covered_lines:
+                if pattern in line:
+                    logger.debug(f"Found constructor call: {line}")
+                    return True
     elif method_name == "<clinit>":
         for line in covered_lines:
             if target_class in line:
@@ -203,10 +279,20 @@ def get_coverage_result(
             error=f"Failed to parse target method: {e}",
             total_covered_lines=len(covered_lines)
         )
+    
+    # Corner case: If target is a constructor (<init>), check if it's a superclass constructor
+    check_super_call = False
+    if target_method_name == "<init>":
+        # Check if method_class extends target_class_fqn
+        if check_extends_relationship(repo_root, method_class, target_class_fqn):
+            logger.info(f"Detected superclass constructor call: {method_class} extends {target_class_fqn}")
+            check_super_call = True
+    
     is_covered = check_method_in_lines(
         covered_lines,
         target_short_class,
-        target_method_name
+        target_method_name,
+        check_super_call=check_super_call
     )
     return CoverageResult(
         method_covered=is_covered,

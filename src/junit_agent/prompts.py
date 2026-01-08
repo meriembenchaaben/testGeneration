@@ -34,7 +34,6 @@ Hard constraints:
 - Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
 - Do NOT mock or spy on the class under test.
 - Do NOT alter, stub, or control the behavior of ANY method in the call path.
-- If you create a mock object for a constructor parameter, do NOT stub any of its methods unless absolutely necessary.
 - Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
 - Do NOT add any assertions, verifications, or inspections of state/logs/output.
 - package declaration MUST be: {test_package}

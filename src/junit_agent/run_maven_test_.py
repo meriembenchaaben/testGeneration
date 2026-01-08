@@ -12,6 +12,7 @@ This module provides functionality to:
 import subprocess
 import logging
 import os
+import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
@@ -37,11 +38,23 @@ class RunResult:
 def run_maven_clean(repo_root: Path) -> RunResult:
     """
     Run Maven clean to remove previous build artifacts.
+    Also explicitly deletes the target directory including coverage reports
+    to ensure a clean state.
     Args:
         repo_root: Root directory of the Maven project
     Returns:
         RunResult with execution details
     """
+    # First, manually delete the target directory to ensure coverage reports are removed
+    target_dir = repo_root / "target"
+    if target_dir.exists():
+        logger.info(f"Manually deleting target directory: {target_dir}")
+        try:
+            shutil.rmtree(target_dir)
+            logger.info("Target directory deleted successfully")
+        except Exception as e:
+            logger.warning(f"Failed to manually delete target directory: {e}")
+    
     clean_cmd = ["mvn", "clean", "-f", str(repo_root / "pom.xml")]
     logger.info("Running Maven clean...")
     original_dir = os.getcwd()

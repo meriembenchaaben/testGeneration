@@ -19,6 +19,7 @@ def load_input(json_path: Path) -> GenerationInput:
     return GenerationInput(
         entryPoint=data["entryPoint"],
         thirdPartyMethod=data["thirdPartyMethod"],
+        directCaller=data.get("directCaller", data["entryPoint"]),
         path=list(data["path"]),
         methodSources=list(data["methodSources"]),
         constructors=list(data.get("constructors", [])),
@@ -27,6 +28,8 @@ def load_input(json_path: Path) -> GenerationInput:
         imports=list(data.get("imports", [])),
         testTemplate=data.get("testTemplate", ""),
         conditionCount=data.get("conditionCount", 0),
+        callCount=data.get("callCount", 1),
+        covered=data.get("covered", False),
         test_package=data.get("testPackage", "generated"),
         test_class_name=data.get("testClassName", "GeneratedReachabilityTest"),
     )
@@ -72,6 +75,52 @@ def extract_package_and_class(test_template: str) -> tuple[str, str]:
     
     return package_name, class_name
 
+def update_json_coverage(json_path: Path, third_party_method: str, direct_caller: str) -> None:
+    """
+    Update the JSON file to mark all records with matching thirdPartyMethod and directCaller as covered.
+    
+    Args:
+        json_path: Path to the JSON input file
+        third_party_method: The third party method that was successfully covered
+        direct_caller: The direct caller method
+    """
+    try:
+        data = json.loads(json_path.read_text(encoding="utf-8"))
+        
+        updated_count = 0
+        
+        # Handle both single object and array
+        if isinstance(data, dict):
+            # Single test case
+            if data.get("thirdPartyMethod") == third_party_method and data.get("directCaller") == direct_caller:
+                data["covered"] = True
+                updated_count += 1
+        elif isinstance(data, list):
+            # Array of test cases
+            for tc in data:
+                # Check nested structure with "fullMethodsPaths"
+                if "fullMethodsPaths" in tc:
+                    for path_data in tc["fullMethodsPaths"]:
+                        if (path_data.get("thirdPartyMethod") == third_party_method and 
+                            path_data.get("directCaller") == direct_caller):
+                            path_data["covered"] = True
+                            updated_count += 1
+                else:
+                    if (tc.get("thirdPartyMethod") == third_party_method and 
+                        tc.get("directCaller") == direct_caller):
+                        tc["covered"] = True
+                        updated_count += 1
+        
+        if updated_count > 0:
+            # Write back to file
+            json_path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+            print(f"✓ Updated {updated_count} record(s) in JSON file as covered")
+            print(f"  Third Party Method: {third_party_method}")
+            print(f"  Direct Caller: {direct_caller}")
+    
+    except Exception as e:
+        print(f"⚠ Warning: Failed to update JSON file: {e}")
+
 def load_test_cases(json_path: Path) -> list[GenerationInput]:
     """Load test cases from JSON file. Supports both single object and array of objects."""
     data = json.loads(json_path.read_text(encoding="utf-8"))
@@ -92,11 +141,15 @@ def load_test_cases(json_path: Path) -> list[GenerationInput]:
         # Handle nested structure with "fullMethodsPaths"
         if "fullMethodsPaths" in tc:
             for path_data in tc["fullMethodsPaths"]:
+                # Skip if already covered
+                if path_data.get("covered", False):
+                    continue
                 test_template = path_data.get("testTemplate", "")
                 pkg, cls = extract_package_and_class(test_template)
                 inputs.append(GenerationInput(
                     entryPoint=path_data["entryPoint"],
                     thirdPartyMethod=path_data["thirdPartyMethod"],
+                    directCaller=path_data.get("directCaller", path_data["entryPoint"]),
                     path=list(path_data["path"]),
                     methodSources=list(path_data["methodSources"]),
                     constructors=list(path_data.get("constructors", [])),
@@ -105,15 +158,22 @@ def load_test_cases(json_path: Path) -> list[GenerationInput]:
                     imports=list(path_data.get("imports", [])),
                     testTemplate=test_template,
                     conditionCount=path_data.get("conditionCount", 0),
+                    callCount=path_data.get("callCount", 1),
+                    covered=path_data.get("covered", False),
                     test_package=pkg,
                     test_class_name=cls,
                 ))
         else:
+            # Skip if already covered
+            if tc.get("covered", False):
+                continue
+                
             test_template = tc.get("testTemplate", "")
             pkg, cls = extract_package_and_class(test_template)
             inputs.append(GenerationInput(
                 entryPoint=tc["entryPoint"],
                 thirdPartyMethod=tc["thirdPartyMethod"],
+                directCaller=tc.get("directCaller", tc["entryPoint"]),
                 path=list(tc["path"]),
                 methodSources=list(tc["methodSources"]),
                 constructors=list(tc.get("constructors", [])),
@@ -122,6 +182,8 @@ def load_test_cases(json_path: Path) -> list[GenerationInput]:
                 imports=list(tc.get("imports", [])),
                 testTemplate=test_template,
                 conditionCount=tc.get("conditionCount", 0),
+                callCount=tc.get("callCount", 1),
+                covered=tc.get("covered", False),
                 test_package=pkg,
                 test_class_name=cls,
             ))
@@ -132,7 +194,18 @@ def main() -> int:
     args = parse_args()
 
     repo_root = Path(args.repo_root).resolve()
-    test_cases = load_test_cases(Path(args.input_json).resolve())
+    all_test_cases = load_test_cases(Path(args.input_json).resolve())
+    
+    # Count and report skipped cases
+    total_in_file = len(all_test_cases)
+    skipped_count = sum(1 for tc in all_test_cases if tc.covered)
+    test_cases = [tc for tc in all_test_cases if not tc.covered]
+    
+    if skipped_count > 0:
+        print(f"\n{'='*80}")
+        print(f"⊙ Skipped {skipped_count} test case(s) already marked as covered")
+        print(f"⊙ Processing {len(test_cases)} uncovered test case(s) from {total_in_file} total")
+        print(f"{'='*80}\n")
     
     # Determine which test cases to process
     if args.all:
@@ -348,12 +421,23 @@ def main() -> int:
             print()
         else:
             total_approved += 1
+            # Update JSON file to mark this and related records as covered
+            try:
+                update_json_coverage(
+                    Path(args.input_json).resolve(),
+                    inp.thirdPartyMethod,
+                    inp.directCaller
+                )
+            except Exception as e:
+                print(f"⚠ Warning: Failed to update JSON coverage: {e}")
         
         # Store result
         result_data = {
             "test_case_index": idx,
             "entry_point": inp.entryPoint,
             "third_party_method": inp.thirdPartyMethod,
+            "direct_caller": inp.directCaller,
+            "call_count": inp.callCount,
             "approved": approved,
             "iteration": iteration,
             "tests_passed": success,

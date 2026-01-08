@@ -98,19 +98,19 @@ def _validate_hard_constraints(java_source: str, test_class_name: str) -> tuple[
     
     # Check for Mockito stubbing methods
     mockito_stubbing_patterns = [
-        # (r"when\s*\(", "when().thenReturn() or similar stubbing"),
-        # (r"doReturn\s*\(", "doReturn().when() stubbing"),
-        # (r"doThrow\s*\(", "doThrow().when() stubbing"),
-        # (r"doNothing\s*\(", "doNothing().when() stubbing"),
-        # (r"doAnswer\s*\(", "doAnswer().when() stubbing"),
-        # (r"doCallRealMethod\s*\(", "doCallRealMethod().when() stubbing"),
-        # (r"\.thenReturn\s*\(", ".thenReturn() stubbing"),
-        # (r"\.thenThrow\s*\(", ".thenThrow() stubbing"),
-        # (r"\.thenAnswer\s*\(", ".thenAnswer() stubbing"),
-        # (r"\.thenCallRealMethod\s*\(", ".thenCallRealMethod() stubbing"),
-        # (r"Mockito\.spy\s*\(", "Mockito.spy() - spying not allowed"),
-        # (r"@Spy\b", "@Spy annotation - spying not allowed"),
-        # (r"\.verify\s*\(", "Mockito.verify() - verification not allowed"),
+        (r"when\s*\(", "when().thenReturn() or similar stubbing"),
+        (r"doReturn\s*\(", "doReturn().when() stubbing"),
+        (r"doThrow\s*\(", "doThrow().when() stubbing"),
+        (r"doNothing\s*\(", "doNothing().when() stubbing"),
+        (r"doAnswer\s*\(", "doAnswer().when() stubbing"),
+        (r"doCallRealMethod\s*\(", "doCallRealMethod().when() stubbing"),
+        (r"\.thenReturn\s*\(", ".thenReturn() stubbing"),
+        (r"\.thenThrow\s*\(", ".thenThrow() stubbing"),
+        (r"\.thenAnswer\s*\(", ".thenAnswer() stubbing"),
+        (r"\.thenCallRealMethod\s*\(", ".thenCallRealMethod() stubbing"),
+        (r"Mockito\.spy\s*\(", "Mockito.spy() - spying not allowed"),
+        (r"@Spy\b", "@Spy annotation - spying not allowed"),
+        (r"\.verify\s*\(", "Mockito.verify() - verification not allowed"),
     ]
     
     mockito_violations = []
@@ -386,6 +386,7 @@ class AppConfig:
 class GenerationInput:
     entryPoint: str
     thirdPartyMethod: str
+    directCaller: str
     path: List[str]
     methodSources: List[str]
     constructors: List[str]
@@ -394,6 +395,8 @@ class GenerationInput:
     imports: List[str]
     testTemplate: str
     conditionCount: int
+    callCount: int
+    covered: bool
     test_package: str = "generated"
     test_class_name: str = "GeneratedReachabilityTest"
 
@@ -408,6 +411,7 @@ class AgentState(TypedDict, total=False):
     # generation input
     entryPoint: str
     thirdPartyMethod: str
+    directCaller: str
     path: List[str]
     methodSources: List[str]
     constructors: List[str]
@@ -416,6 +420,8 @@ class AgentState(TypedDict, total=False):
     imports: List[str]
     testTemplate: str
     conditionCount: int
+    callCount: int
+    covered: bool
     test_package: str
     test_class_name: str
 
@@ -879,6 +885,7 @@ def initial_state(inp: GenerationInput, cfg: AppConfig) -> AgentState:
         run_only_generated_test=cfg.run_only_generated_test,
         entryPoint=inp.entryPoint,
         thirdPartyMethod=inp.thirdPartyMethod,
+        directCaller=inp.directCaller,
         path=inp.path,
         methodSources=inp.methodSources,
         constructors=inp.constructors,
@@ -887,6 +894,8 @@ def initial_state(inp: GenerationInput, cfg: AppConfig) -> AgentState:
         imports=inp.imports,
         testTemplate=inp.testTemplate,
         conditionCount=inp.conditionCount,
+        callCount=inp.callCount,
+        covered=inp.covered,
         test_package=inp.test_package,
         test_class_name=inp.test_class_name,
         iteration=0,
