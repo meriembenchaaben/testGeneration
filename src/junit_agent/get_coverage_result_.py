@@ -34,11 +34,11 @@ class JaCoCoHTMLParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag == 'span':
             attr_dict = dict(attrs)
-            # Check if this span has an id starting with 'L' and class contains 'fc'
-            # 'fc' means "fully covered" in JaCoCo
+            # Check if this span has an id starting with 'L' and class contains 'fc' or 'hc'
+            # 'fc' means "fully covered" and 'hc' means "half covered" in JaCoCo
             span_id = attr_dict.get('id', '')
             span_class = attr_dict.get('class', '')
-            if span_id.startswith('L') and 'fc' in span_class:
+            if span_id.startswith('L') and ('fc' in span_class or 'hc' in span_class or 'pc' in span_class):
                 self.in_covered_span = True
                 self.current_text = []
     def handle_endtag(self, tag):
@@ -72,18 +72,35 @@ def find_jacoco_report(repo_root: Path) -> Optional[Path]:
 def get_html_file_path(jacoco_dir: Path, method_class: str) -> Optional[Path]:
     """
     Get the path to the HTML file for a specific class in the JaCoCo report.
+    Handles nested/inner classes by finding the parent class HTML file.
     Args:
         jacoco_dir: Path to JaCoCo report directory
-        method_class: Fully qualified class name (e.g., "com.example.MyClass")
+        method_class: Fully qualified class name (e.g., "com.example.MyClass" or "com.example.Outer.Inner")
     Returns:
         Path to the HTML file, or None if not found
     """
-    if '.' in method_class:
-        package_name = method_class.rsplit('.', 1)[0]
-        simple_class_name = method_class.rsplit('.', 1)[1]
-    else:
-        package_name = ""
-        simple_class_name = method_class
+    # For nested classes like com.graphhopper.routing.ch.CHPreparationGraph.OrigGraph.Builder
+    # JaCoCo puts all nested classes in the parent class HTML file
+    # So we need to find the outermost class (first capital letter class name)
+    
+    parts = method_class.split('.')
+    
+    # Find the first part that starts with a capital letter (the outermost class)
+    outermost_class_idx = None
+    for i, part in enumerate(parts):
+        if part and part[0].isupper():
+            outermost_class_idx = i
+            break
+    
+    if outermost_class_idx is None:
+        logger.warning(f"Could not find class name in: {method_class}")
+        return None
+    
+    # Everything before the outermost class is the package
+    package_name = '.'.join(parts[:outermost_class_idx]) if outermost_class_idx > 0 else ""
+    # The outermost class name
+    simple_class_name = parts[outermost_class_idx]
+    
     if package_name:
         html_file = jacoco_dir / package_name / f"{simple_class_name}.java.html"
     else:
