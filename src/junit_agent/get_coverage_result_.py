@@ -180,25 +180,43 @@ def check_extends_relationship(repo_root: Path, method_class: str, target_class_
         return False
 
 
-def check_method_in_lines(covered_lines: Set[str], target_class: str, method_name: str, check_super_call: bool = False) -> bool:
+def check_method_in_lines(covered_lines: Set[str], target_class: str, method_name: str, check_super_call: bool = False, child_class: Optional[str] = None) -> bool:
     """
     Check if a specific method appears in the covered lines.
     Args:
         covered_lines: Set of covered code lines
         target_class: Short class name of the target 
         method_name: Method name to search for
-        check_super_call: If True, look for super(...) calls instead of new ClassName(...)
+        check_super_call: If True, also look for super(...) calls or child class constructor calls
+        child_class: Short class name of the child class (for checking implicit super calls)
     Returns:
         bool: True if method is found in covered lines
     """
     if method_name == "<init>":
         if check_super_call:
-            # Look for super(...) constructor calls
+            # Look for explicit super(...) constructor calls
             pattern = "super("
             for line in covered_lines:
                 if pattern in line:
-                    logger.debug(f"Found super constructor call: {line}")
+                    logger.debug(f"Found explicit super constructor call: {line}")
                     return True
+            
+            # Check if the child class constructor definition/implementation is covered
+            # When the child constructor runs, Java automatically calls super() implicitly
+            if child_class:
+                # Look for constructor definition patterns like:
+                # "public ChildClass()" or "ChildClass()" or "protected ChildClass("
+                patterns = [
+                    f"public {child_class}(",
+                    f"protected {child_class}(",
+                    f"private {child_class}(",
+                    f"{child_class}("  # package-private or within the line
+                ]
+                for line in covered_lines:
+                    for pattern in patterns:
+                        if pattern in line:
+                            logger.debug(f"Found child class constructor definition (implicit super): {line}")
+                            return True
         else:
             # Look for regular constructor calls
             pattern = f"new {target_class}("
@@ -213,13 +231,22 @@ def check_method_in_lines(covered_lines: Set[str], target_class: str, method_nam
                 return True
     else:
         # Regular method - look for method name
-        # Be more specific: look for method name followed by '('
+        # First check for direct method calls
         pattern1 = f"{method_name}("
         pattern2 = f".{method_name}("
         for line in covered_lines:
             if pattern1 in line or pattern2 in line:
                 logger.debug(f"Found method call: {line}")
                 return True
+        
+        # If checking for superclass method and we have a child class,
+        # also look for overridden methods that call super.methodName()
+        if check_super_call and child_class:
+            super_pattern = f"super.{method_name}("
+            for line in covered_lines:
+                if super_pattern in line:
+                    logger.debug(f"Found super method call from overridden method: {line}")
+                    return True
     return False
 
 
@@ -280,19 +307,22 @@ def get_coverage_result(
             total_covered_lines=len(covered_lines)
         )
     
-    # Corner case: If target is a constructor (<init>), check if it's a superclass constructor
+    # Check if method_class extends target_class_fqn (for both constructors and methods)
     check_super_call = False
-    if target_method_name == "<init>":
-        # Check if method_class extends target_class_fqn
-        if check_extends_relationship(repo_root, method_class, target_class_fqn):
-            logger.info(f"Detected superclass constructor call: {method_class} extends {target_class_fqn}")
-            check_super_call = True
+    child_short_class = None
+    
+    if check_extends_relationship(repo_root, method_class, target_class_fqn):
+        logger.info(f"Detected inheritance: {method_class} extends {target_class_fqn}")
+        check_super_call = True
+        # Extract the short name of the child class
+        child_short_class = method_class.rsplit('.', 1)[1] if '.' in method_class else method_class
     
     is_covered = check_method_in_lines(
         covered_lines,
         target_short_class,
         target_method_name,
-        check_super_call=check_super_call
+        check_super_call=check_super_call,
+        child_class=child_short_class
     )
     return CoverageResult(
         method_covered=is_covered,
