@@ -320,7 +320,11 @@ def main() -> int:
 
         final_state = None
         logger.info("--- PROCESSING TEST CASE %d/%d ---", idx, len(cases_to_process))
-        for event in app.stream(state):
+        # Set recursion_limit to allow for max_iterations * nodes_per_iteration
+        # Each iteration goes through ~6 nodes (generate, write, validate, run, check_coverage, decide)
+        # Add buffer for finalize and ensure 5th iteration completes fully
+        recursion_limit = (args.iters * 6) + 5
+        for event in app.stream(state, config={"recursion_limit": recursion_limit}):
             for node, st in event.items():
                 trace = st.get("trace", [])
                 if trace:

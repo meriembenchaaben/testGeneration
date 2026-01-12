@@ -597,7 +597,7 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
             repo_root=Path(state["repo_root"]),
             mvn_cmd=state["mvn_cmd"],
             test_fqcn=test_fqcn if state.get("run_only_generated_test", True) else None,
-            timeout_s=300,
+            timeout_s=600,
         )
         state["success"] = rr.success
         state["last_exit_code"] = rr.exit_code
@@ -758,7 +758,7 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
                 
                 if last_covered_idx == -1 or last_covered_idx == 0:
                     # No methods covered after entry point
-                    first_method = path[1] if len(path) > 1 else target_method
+                    first_method = path[1] if len(path) > 1 else state['thirdPartyMethod']
                     coverage_feedback += f"\nNo methods in the call chain were reached.\n"
                     coverage_feedback += f"Ensure the test properly invokes the entry point '{state['entryPoint']}' to reach '{first_method}'.\n"
                 elif last_covered_idx < len(path) - 1:
@@ -804,6 +804,9 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
     def route_after_decide(state: AgentState) -> str:
         if state.get("approved", False):
             return "finalize"
+        # Check if we should retry: only continue if iteration < max_iterations
+        # This ensures the current iteration completes fully (including run & coverage)
+        # before checking if we've reached the limit
         if int(state.get("iteration", 0)) >= int(state.get("max_iterations", cfg.max_iterations)):
             return "finalize"
         return "generate"

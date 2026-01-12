@@ -99,7 +99,7 @@ def run_maven_test(
     repo_root: Path,
     mvn_cmd: str = "mvn",
     test_fqcn: Optional[str] = None,
-    timeout_s: int = 300,
+    timeout_s: int = 600,
     with_jacoco: bool = True,
     skip_checkstyle: bool = True
 ) -> RunResult:
@@ -110,7 +110,7 @@ def run_maven_test(
         mvn_cmd: Maven command to run (default: "mvn")
         test_fqcn: Fully qualified class name of specific test to run
                    If None, runs all tests
-        timeout_s: Timeout in seconds (default: 300)
+        timeout_s: Timeout in seconds (default: 600)
         with_jacoco: Whether to generate JaCoCo coverage report (default: True)
         skip_checkstyle: Whether to skip checkstyle checks (default: True)
     Returns:
@@ -129,6 +129,7 @@ def run_maven_test(
         logger.info("Running all tests")
     if skip_checkstyle:
         cmd.append("-Dcheckstyle.skip=true")
+        cmd.append("-Dspotless.skip=true")
     cmd.extend(["-f", str(pom_file)])
     logger.info(f"Executing: {' '.join(cmd)}")
     logger.info(f"Working directory: {repo_root}")
@@ -184,7 +185,7 @@ def run_maven_test(
 def run_maven_test_with_clean(
     repo_root: Path,
     test_fqcn: Optional[str] = None,
-    timeout_s: int = 300
+    timeout_s: int = 600
 ) -> RunResult:
     """
     Run Maven clean followed by test execution with JaCoCo coverage.

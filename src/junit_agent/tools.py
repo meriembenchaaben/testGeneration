@@ -60,7 +60,7 @@ def run_maven_test(
     repo_root: Path,
     mvn_cmd: str = "mvn",
     test_fqcn: Optional[str] = None,
-    timeout_s: int = 300
+    timeout_s: int = 600
 ) -> RunResult:
     """
     Tool: run Maven tests with JaCoCo coverage generation.
