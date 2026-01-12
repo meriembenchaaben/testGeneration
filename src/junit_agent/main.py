@@ -85,24 +85,39 @@ def update_json_coverage(json_path: Path, third_party_method: str, direct_caller
         direct_caller: The direct caller method
     """
     try:
+        print(f"  JSON path: {json_path}")
+        print(f"  Looking for thirdPartyMethod: {third_party_method}")
+        print(f"  Looking for directCaller: {direct_caller}")
+        
         data = json.loads(json_path.read_text(encoding="utf-8"))
         
         updated_count = 0
         
         # Handle both single object and array
         if isinstance(data, dict):
-            # Single test case
-            if data.get("thirdPartyMethod") == third_party_method and data.get("directCaller") == direct_caller:
+            # Check if it's a single dict with fullMethodsPaths
+            if "fullMethodsPaths" in data:
+                for path_idx, path_data in enumerate(data["fullMethodsPaths"]):
+                    tp_method = path_data.get("thirdPartyMethod")
+                    dc = path_data.get("directCaller")
+                    if (tp_method == third_party_method and dc == direct_caller):
+                        print(f"[DEBUG]   ✓ MATCH FOUND at path {path_idx}")
+                        path_data["covered"] = True
+                        updated_count += 1
+            # Single test case without fullMethodsPaths
+            elif data.get("thirdPartyMethod") == third_party_method and data.get("directCaller") == direct_caller:
                 data["covered"] = True
                 updated_count += 1
         elif isinstance(data, list):
             # Array of test cases
-            for tc in data:
+            for idx, tc in enumerate(data):
                 # Check nested structure with "fullMethodsPaths"
                 if "fullMethodsPaths" in tc:
-                    for path_data in tc["fullMethodsPaths"]:
-                        if (path_data.get("thirdPartyMethod") == third_party_method and 
-                            path_data.get("directCaller") == direct_caller):
+                    for path_idx, path_data in enumerate(tc["fullMethodsPaths"]):
+                        tp_method = path_data.get("thirdPartyMethod")
+                        dc = path_data.get("directCaller")
+                        if (tp_method == third_party_method and dc == direct_caller):
+                            print(f"[DEBUG]   ✓ MATCH FOUND at item {idx}, path {path_idx}")
                             path_data["covered"] = True
                             updated_count += 1
                 else:
@@ -117,9 +132,13 @@ def update_json_coverage(json_path: Path, third_party_method: str, direct_caller
             print(f"✓ Updated {updated_count} record(s) in JSON file as covered")
             print(f"  Third Party Method: {third_party_method}")
             print(f"  Direct Caller: {direct_caller}")
+        else:
+            print(f"[DEBUG] No matching records found to update")
     
     except Exception as e:
         print(f"⚠ Warning: Failed to update JSON file: {e}")
+        import traceback
+        traceback.print_exc()
 
 def load_test_cases(json_path: Path) -> list[GenerationInput]:
     """Load test cases from JSON file. Supports both single object and array of objects."""
@@ -326,6 +345,7 @@ def main() -> int:
         recursion_limit = (args.iters * 6) + 5
         for event in app.stream(state, config={"recursion_limit": recursion_limit}):
             for node, st in event.items():
+                print(f"[DEBUG-STREAM] Processing node: {node}, has iteration_log: {bool(st.get('iteration_log'))}, approved={st.get('approved', 'NOT_SET')}")
                 trace = st.get("trace", [])
                 if trace:
                     print(trace[-1])
@@ -386,8 +406,11 @@ def main() -> int:
                     _tlog(f"approved={cur.get('approved')} reason={cur.get('decision_reason')}")
 
                 final_state = st
-
         
+        # Debug: Show which nodes were visited
+        print(f"\n[DEBUG] Stream completed. final_state is {'set' if final_state else 'None'}")
+        if final_state:
+            print(f"[DEBUG] final_state keys: {list(final_state.keys())}")
              
 
         if not final_state:
@@ -401,6 +424,8 @@ def main() -> int:
 
         # Extract key results
         approved = bool(final_state.get("approved", False))
+        # Debug: print the approved flag
+        print(f"[DEBUG] approved (after bool()) = {approved}")
         test_rel_path = final_state.get("test_rel_path", "")
         java_source = final_state.get("java_source", "")
         last_output = final_state.get("last_run_output", "")
