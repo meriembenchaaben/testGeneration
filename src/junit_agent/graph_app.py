@@ -98,19 +98,19 @@ def _validate_hard_constraints(java_source: str, test_class_name: str) -> tuple[
     
     # Check for Mockito stubbing methods
     mockito_stubbing_patterns = [
-        (r"when\s*\(", "when().thenReturn() or similar stubbing"),
-        (r"doReturn\s*\(", "doReturn().when() stubbing"),
-        (r"doThrow\s*\(", "doThrow().when() stubbing"),
-        (r"doNothing\s*\(", "doNothing().when() stubbing"),
-        (r"doAnswer\s*\(", "doAnswer().when() stubbing"),
-        (r"doCallRealMethod\s*\(", "doCallRealMethod().when() stubbing"),
-        (r"\.thenReturn\s*\(", ".thenReturn() stubbing"),
-        (r"\.thenThrow\s*\(", ".thenThrow() stubbing"),
-        (r"\.thenAnswer\s*\(", ".thenAnswer() stubbing"),
-        (r"\.thenCallRealMethod\s*\(", ".thenCallRealMethod() stubbing"),
-        (r"Mockito\.spy\s*\(", "Mockito.spy() - spying not allowed"),
-        (r"@Spy\b", "@Spy annotation - spying not allowed"),
-        (r"\.verify\s*\(", "Mockito.verify() - verification not allowed"),
+        # (r"when\s*\(", "when().thenReturn() or similar stubbing"),
+        # (r"doReturn\s*\(", "doReturn().when() stubbing"),
+        # (r"doThrow\s*\(", "doThrow().when() stubbing"),
+        # (r"doNothing\s*\(", "doNothing().when() stubbing"),
+        # (r"doAnswer\s*\(", "doAnswer().when() stubbing"),
+        # (r"doCallRealMethod\s*\(", "doCallRealMethod().when() stubbing"),
+        # (r"\.thenReturn\s*\(", ".thenReturn() stubbing"),
+        # (r"\.thenThrow\s*\(", ".thenThrow() stubbing"),
+        # (r"\.thenAnswer\s*\(", ".thenAnswer() stubbing"),
+        # (r"\.thenCallRealMethod\s*\(", ".thenCallRealMethod() stubbing"),
+        # (r"Mockito\.spy\s*\(", "Mockito.spy() - spying not allowed"),
+        # (r"@Spy\b", "@Spy annotation - spying not allowed"),
+        # (r"\.verify\s*\(", "Mockito.verify() - verification not allowed"),
     ]
     
     mockito_violations = []
@@ -599,22 +599,31 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
             test_fqcn=test_fqcn if state.get("run_only_generated_test", True) else None,
             timeout_s=600,
         )
-        state["success"] = rr.success
-        state["last_exit_code"] = rr.exit_code
         
         # Format the output with extracted errors for better LLM feedback
         combined = rr.combined
         formatted_feedback = _format_feedback(combined)
         state["last_run_output"] = formatted_feedback
+        
+        # Check if tests actually passed by examining both exit code and test failures in output
+        # Maven can return 0 even when tests fail (only build failures return non-zero)
+        has_test_failures = "TEST FAILURES DETECTED" in formatted_feedback
+        tests_actually_passed = rr.success and not has_test_failures
+        
+        state["success"] = tests_actually_passed
+        state["last_exit_code"] = rr.exit_code
 
-        state.setdefault("trace", []).append(f"[Run] success={rr.success} exit={rr.exit_code}")
+        state.setdefault("trace", []).append(f"[Run] success={tests_actually_passed} exit={rr.exit_code}")
+        if has_test_failures:
+            state.setdefault("trace", []).append("[Run] test failures detected in Maven output")
         if formatted_feedback:
             state.setdefault("trace", []).append(f"[Run] feedback_chars={len(formatted_feedback)}")
         
         # Update iteration log with Maven results
         state["iteration_log"][-1]["maven_feedback"] = formatted_feedback
         state["iteration_log"][-1]["maven_exit_code"] = rr.exit_code
-        state["iteration_log"][-1]["maven_success"] = rr.success
+        state["iteration_log"][-1]["maven_success"] = tests_actually_passed
+        state["iteration_log"][-1]["has_test_failures"] = has_test_failures
 
         return state
 

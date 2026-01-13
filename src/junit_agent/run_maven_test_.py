@@ -130,6 +130,7 @@ def run_maven_test(
     if skip_checkstyle:
         cmd.append("-Dcheckstyle.skip=true")
         cmd.append("-Dspotless.skip=true")
+        cmd.append("-Dmaven.test.failure.ignore=false")
     cmd.extend(["-f", str(pom_file)])
     logger.info(f"Executing: {' '.join(cmd)}")
     logger.info(f"Working directory: {repo_root}")
