@@ -436,6 +436,15 @@ def main() -> int:
         target_covered = final_state.get("target_method_covered", False)
         coverage_lines = final_state.get("coverage_total_lines", 0)
         coverage_error = final_state.get("coverage_error")
+        
+        # Find the iteration where test became approved (if it did)
+        approval_iteration = None
+        if approved:
+            iteration_log = final_state.get("iteration_log", [])
+            for iter_data in iteration_log:
+                if iter_data.get("approved"):
+                    approval_iteration = iter_data.get("iteration")
+                    break
 
         # Print failure reason if not approved
         if not approved:
@@ -450,6 +459,9 @@ def main() -> int:
             print()
         else:
             total_approved += 1
+            # Print success info with approval iteration
+            if approval_iteration is not None:
+                print(f"✓ Test approved at iteration {approval_iteration}")
             # Update JSON file to mark this and related records as covered
             try:
                 update_json_coverage(
@@ -468,6 +480,7 @@ def main() -> int:
             "direct_caller": inp.directCaller,
             "call_count": inp.callCount,
             "approved": approved,
+            "approval_iteration": approval_iteration,
             "iteration": iteration,
             "tests_passed": success,
             "target_method_covered": target_covered,
@@ -506,6 +519,8 @@ def main() -> int:
                 text_log_fh.write(f"Entry Point: {inp.entryPoint}\n")
                 text_log_fh.write(f"Third Party Method: {inp.thirdPartyMethod}\n")
                 text_log_fh.write(f"Approved: {approved}\n")
+                if approved and approval_iteration is not None:
+                    text_log_fh.write(f"Approved at Iteration: {approval_iteration}\n")
                 text_log_fh.write(f"Total Iterations: {iteration}\n")
                 text_log_fh.write(f"Tests Passed: {success}\n")
                 text_log_fh.write(f"Target Method Covered: {target_covered}\n")
@@ -581,6 +596,15 @@ def main() -> int:
     print(f"Approved: {total_approved}")
     print(f"Failed: {len(cases_to_process) - total_approved}")
     print(f"Success Rate: {total_approved / len(cases_to_process) * 100:.1f}%")
+    print("=" * 80)
+    
+    # Show approval iterations for successful tests
+    if total_approved > 0:
+        print("\nApproval Details:")
+        for result in all_results:
+            if result.get("approved") and result.get("approval_iteration") is not None:
+                print(f"  Test {result['test_case_index']}: Approved at iteration {result['approval_iteration']}")
+    
     print("=" * 80 + "\n")
 
     # Optional: Save all results to JSON
