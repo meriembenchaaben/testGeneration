@@ -143,58 +143,6 @@ def parse_covered_lines(html_file: Path) -> Set[str]:
         logger.error(f"Failed to parse HTML file {html_file}: {e}")
         return set()
 
-
-def get_superclass(repo_root: Path, method_class: str) -> Optional[str]:
-    """
-    Extract the superclass name from a class's source file.
-    Args:
-        repo_root: Root directory of the Maven project
-        method_class: Fully qualified name of the class
-    Returns:
-        Fully qualified name of the superclass, or None if not found or doesn't extend anything
-    """
-    try:
-        # Find the source file for method_class
-        package_name, simple_class_name = extract_package_and_class(method_class)
-        
-        # Try to find the Java source file
-        src_dirs = [
-            repo_root / "src" / "main" / "java",
-            repo_root / "src" / "test" / "java"
-        ]
-        
-        for src_dir in src_dirs:
-            if package_name:
-                java_file = src_dir / package_name / f"{simple_class_name}.java"
-            else:
-                java_file = src_dir / f"{simple_class_name}.java"
-            
-            if java_file.exists():
-                with open(java_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                
-                # Look for extends clause
-                # Pattern: class ClassName extends SuperClassName
-                extends_pattern = rf'class\s+{re.escape(simple_class_name)}\s+extends\s+(\w+(?:\.\w+)*)'
-                match = re.search(extends_pattern, content)
-                if match:
-                    extended_class = match.group(1)
-                    if package_name:
-                        fqn = f"{package_name}.{extended_class}"
-                        logger.info(f"Resolved superclass via same package: {fqn}")
-                        return fqn
-                    else:
-                        logger.info(f"Found superclass (no package): {extended_class}")
-                        return extended_class
-                logger.debug(f"No extends clause found for {method_class}")
-                return None
-        logger.warning(f"Source file not found for class: {method_class}")
-        return None
-    except Exception as e:
-        logger.error(f"Error extracting superclass: {e}")
-        return None
-
-
 def check_extends_relationship(repo_root: Path, method_class: str, target_class_fqn: str) -> bool:
     """
     Check if method_class extends target_class by examining the source file.
@@ -211,13 +159,12 @@ def check_extends_relationship(repo_root: Path, method_class: str, target_class_
         
         # Try to find the Java source file
         src_dirs = [
-            repo_root / "src" / "main" / "java",
-            repo_root / "src" / "test" / "java"
+            repo_root / "src" / "main" / "java"
         ]
         
         for src_dir in src_dirs:
             if package_name:
-                java_file = src_dir / package_name / f"{simple_class_name}.java"
+                java_file = src_dir / package_name.replace('.', '/') / f"{simple_class_name}.java"
             else:
                 java_file = src_dir / f"{simple_class_name}.java"
             
@@ -399,31 +346,6 @@ def get_coverage_result(
         check_super_call=check_super_call,
         child_class=child_short_class
     )
-    
-    # If method not found in current class, check the superclass
-    if not is_covered:
-        logger.info(f"Method not found in {method_class}, checking superclass...")
-        superclass_fqn = get_superclass(repo_root, method_class)
-        
-        if superclass_fqn:
-            logger.info(f"Found superclass: {superclass_fqn}, checking coverage there")
-            # Recursively check coverage in the superclass
-            superclass_result = get_coverage_result(repo_root, superclass_fqn, target_method)
-            
-            if superclass_result.method_covered:
-                logger.info(f"Method found and covered in superclass {superclass_fqn}")
-                return CoverageResult(
-                    method_covered=True,
-                    method_class=method_class,
-                    target_method=target_method,
-                    jacoco_report_path=jacoco_dir,
-                    error=None,
-                    total_covered_lines=len(covered_lines) + superclass_result.total_covered_lines
-                )
-            else:
-                logger.info(f"Method not covered in superclass {superclass_fqn}")
-        else:
-            logger.info(f"No superclass found for {method_class}")
     
     return CoverageResult(
         method_covered=is_covered,
