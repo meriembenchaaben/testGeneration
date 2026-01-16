@@ -53,6 +53,38 @@ class JaCoCoHTMLParser(HTMLParser):
             self.current_text.append(data)
 
 
+def extract_package_and_class(method_class: str) -> tuple[str, str]:
+    """
+    Extract package name and outermost class name from a fully qualified class name.
+    Handles nested/inner classes by finding the first capital letter.
+    
+    Args:
+        method_class: Fully qualified class name (e.g., "com.example.MyClass" or "com.example.Outer.Inner")
+    
+    Returns:
+        Tuple of (package_name, simple_class_name)
+    """
+    parts = method_class.split('.')
+    
+    # Find the first part that starts with a capital letter (the outermost class)
+    outermost_class_idx = None
+    for i, part in enumerate(parts):
+        if part and part[0].isupper():
+            outermost_class_idx = i
+            break
+    
+    if outermost_class_idx is None:
+        logger.warning(f"Could not find class name in: {method_class}")
+        return "", method_class
+    
+    # Everything before the outermost class is the package
+    package_name = '.'.join(parts[:outermost_class_idx]) if outermost_class_idx > 0 else ""
+    # The outermost class name
+    simple_class_name = parts[outermost_class_idx]
+    
+    return package_name, simple_class_name
+
+
 def find_jacoco_report(repo_root: Path) -> Optional[Path]:
     """
     Find the JaCoCo HTML report directory.
@@ -79,27 +111,7 @@ def get_html_file_path(jacoco_dir: Path, method_class: str) -> Optional[Path]:
     Returns:
         Path to the HTML file, or None if not found
     """
-    # For nested classes like com.graphhopper.routing.ch.CHPreparationGraph.OrigGraph.Builder
-    # JaCoCo puts all nested classes in the parent class HTML file
-    # So we need to find the outermost class (first capital letter class name)
-    
-    parts = method_class.split('.')
-    
-    # Find the first part that starts with a capital letter (the outermost class)
-    outermost_class_idx = None
-    for i, part in enumerate(parts):
-        if part and part[0].isupper():
-            outermost_class_idx = i
-            break
-    
-    if outermost_class_idx is None:
-        logger.warning(f"Could not find class name in: {method_class}")
-        return None
-    
-    # Everything before the outermost class is the package
-    package_name = '.'.join(parts[:outermost_class_idx]) if outermost_class_idx > 0 else ""
-    # The outermost class name
-    simple_class_name = parts[outermost_class_idx]
+    package_name, simple_class_name = extract_package_and_class(method_class)
     
     if package_name:
         html_file = jacoco_dir / package_name / f"{simple_class_name}.java.html"
@@ -132,6 +144,57 @@ def parse_covered_lines(html_file: Path) -> Set[str]:
         return set()
 
 
+def get_superclass(repo_root: Path, method_class: str) -> Optional[str]:
+    """
+    Extract the superclass name from a class's source file.
+    Args:
+        repo_root: Root directory of the Maven project
+        method_class: Fully qualified name of the class
+    Returns:
+        Fully qualified name of the superclass, or None if not found or doesn't extend anything
+    """
+    try:
+        # Find the source file for method_class
+        package_name, simple_class_name = extract_package_and_class(method_class)
+        
+        # Try to find the Java source file
+        src_dirs = [
+            repo_root / "src" / "main" / "java",
+            repo_root / "src" / "test" / "java"
+        ]
+        
+        for src_dir in src_dirs:
+            if package_name:
+                java_file = src_dir / package_name / f"{simple_class_name}.java"
+            else:
+                java_file = src_dir / f"{simple_class_name}.java"
+            
+            if java_file.exists():
+                with open(java_file, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                # Look for extends clause
+                # Pattern: class ClassName extends SuperClassName
+                extends_pattern = rf'class\s+{re.escape(simple_class_name)}\s+extends\s+(\w+(?:\.\w+)*)'
+                match = re.search(extends_pattern, content)
+                if match:
+                    extended_class = match.group(1)
+                    if package_name:
+                        fqn = f"{package_name}.{extended_class}"
+                        logger.info(f"Resolved superclass via same package: {fqn}")
+                        return fqn
+                    else:
+                        logger.info(f"Found superclass (no package): {extended_class}")
+                        return extended_class
+                logger.debug(f"No extends clause found for {method_class}")
+                return None
+        logger.warning(f"Source file not found for class: {method_class}")
+        return None
+    except Exception as e:
+        logger.error(f"Error extracting superclass: {e}")
+        return None
+
+
 def check_extends_relationship(repo_root: Path, method_class: str, target_class_fqn: str) -> bool:
     """
     Check if method_class extends target_class by examining the source file.
@@ -144,12 +207,7 @@ def check_extends_relationship(repo_root: Path, method_class: str, target_class_
     """
     try:
         # Find the source file for method_class
-        if '.' in method_class:
-            package_name = method_class.rsplit('.', 1)[0]
-            simple_class_name = method_class.rsplit('.', 1)[1]
-        else:
-            package_name = ""
-            simple_class_name = method_class
+        package_name, simple_class_name = extract_package_and_class(method_class)
         
         # Try to find the Java source file
         src_dirs = [
@@ -159,7 +217,7 @@ def check_extends_relationship(repo_root: Path, method_class: str, target_class_
         
         for src_dir in src_dirs:
             if package_name:
-                java_file = src_dir / package_name.replace('.', '/') / f"{simple_class_name}.java"
+                java_file = src_dir / package_name / f"{simple_class_name}.java"
             else:
                 java_file = src_dir / f"{simple_class_name}.java"
             
@@ -341,6 +399,32 @@ def get_coverage_result(
         check_super_call=check_super_call,
         child_class=child_short_class
     )
+    
+    # If method not found in current class, check the superclass
+    if not is_covered:
+        logger.info(f"Method not found in {method_class}, checking superclass...")
+        superclass_fqn = get_superclass(repo_root, method_class)
+        
+        if superclass_fqn:
+            logger.info(f"Found superclass: {superclass_fqn}, checking coverage there")
+            # Recursively check coverage in the superclass
+            superclass_result = get_coverage_result(repo_root, superclass_fqn, target_method)
+            
+            if superclass_result.method_covered:
+                logger.info(f"Method found and covered in superclass {superclass_fqn}")
+                return CoverageResult(
+                    method_covered=True,
+                    method_class=method_class,
+                    target_method=target_method,
+                    jacoco_report_path=jacoco_dir,
+                    error=None,
+                    total_covered_lines=len(covered_lines) + superclass_result.total_covered_lines
+                )
+            else:
+                logger.info(f"Method not covered in superclass {superclass_fqn}")
+        else:
+            logger.info(f"No superclass found for {method_class}")
+    
     return CoverageResult(
         method_covered=is_covered,
         method_class=method_class,
