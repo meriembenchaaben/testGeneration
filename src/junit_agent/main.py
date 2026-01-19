@@ -50,6 +50,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--output-json", type=str, help="Optional: Save final state to JSON file")
     p.add_argument("--log-file", type=str, help="Optional: append detailed per-test JSON logs to this file")
     p.add_argument("--all", action="store_true", help="Process all test cases in input file (default: first only)")
+    p.add_argument("--resume", type=int, help="Resume from a specific record index (0-based)")
     return p.parse_args()
 
 def extract_package_and_class(test_template: str) -> tuple[str, str]:
@@ -228,9 +229,22 @@ def main() -> int:
     
     # Determine which test cases to process
     if args.all:
-        print(f"Processing all {len(test_cases)} test cases from input file")
-        cases_to_process = test_cases
+        # Apply resume offset if specified
+        if args.resume is not None:
+            if args.resume >= len(test_cases):
+                print(f"Error: --resume {args.resume} is beyond the number of available test cases ({len(test_cases)})")
+                return 1
+            if args.resume < 0:
+                print(f"Error: --resume must be a non-negative integer")
+                return 1
+            print(f"Resuming from record {args.resume} (processing {len(test_cases) - args.resume} test cases)")
+            cases_to_process = test_cases[args.resume:]
+        else:
+            print(f"Processing all {len(test_cases)} test cases from input file")
+            cases_to_process = test_cases
     else:
+        if args.resume is not None:
+            print("Warning: --resume is only applicable with --all flag. Ignoring --resume.")
         if len(test_cases) > 1:
             print(f"Found {len(test_cases)} test cases in input file")
             print("Processing first test case only. Use --all to process all cases.")
@@ -320,8 +334,11 @@ def main() -> int:
     all_results = []
     total_approved = 0
     
+    # Calculate starting index for display purposes
+    start_idx = args.resume if (args.all and args.resume is not None) else 0
+    
     # Process each test case
-    for idx, inp in enumerate(cases_to_process, 1):
+    for idx, inp in enumerate(cases_to_process, start_idx + 1):
         print("\n" + "=" * 80)
         print(f"PROCESSING TEST CASE {idx}/{len(cases_to_process)}")
         print("=" * 80)
