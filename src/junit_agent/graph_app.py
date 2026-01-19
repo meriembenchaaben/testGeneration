@@ -46,7 +46,9 @@ def _validate_hard_constraints(java_source: str, test_class_name: str) -> tuple[
     
     # Check for class extension (class TestName extends SomeClass)
     # Match patterns like: class TestName extends SomeClass
-    extends_pattern = rf"class\s+{re.escape(test_class_name)}\s+extends\s+\w+"
+    # Also catches inner classes with modifiers and generics like: private static class Inner extends Base<Type>
+    # Pattern explanation: (modifiers)? class (any_name) extends (class_name with optional generics)
+    extends_pattern = r"(?:private|protected|public|static|\s)*class\s+\w+\s+extends\s+[\w.<>,$\s]+"
     if re.search(extends_pattern, java_source):
         match = re.search(extends_pattern, java_source)
         violations.append(
@@ -77,7 +79,9 @@ def _validate_hard_constraints(java_source: str, test_class_name: str) -> tuple[
     
     # Check for anonymous inner classes (e.g., new ClassName() { ... })
     # This pattern creates a subclass and overrides methods, which violates constraints
-    anonymous_class_pattern = r"new\s+([A-Z]\w+)\s*\([^)]*\)\s*\{"
+    # Now supports generics: new TypeSerializer<String>() { ... }
+    # Pattern explanation: new (ClassName) (optional <generics>) (constructor args) {
+    anonymous_class_pattern = r"new\s+([A-Z]\w+)(?:<[^>]+>)?\s*\([^)]*\)\s*\{"
     anonymous_matches = list(re.finditer(anonymous_class_pattern, java_source))
     if anonymous_matches:
         violations.append(
