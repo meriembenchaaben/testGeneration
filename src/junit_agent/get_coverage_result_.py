@@ -316,9 +316,20 @@ def get_coverage_result(
             total_covered_lines=0
         )
     try:
-        target_class_fqn = target_method.rsplit('.', 1)[0]
+        # Parse method signature correctly by finding the opening parenthesis first
+        # to avoid splitting on dots inside parameter types
+        paren_idx = target_method.find('(')
+        if paren_idx > 0:
+            # Split everything before the parenthesis
+            method_without_params = target_method[:paren_idx]
+            target_class_fqn = method_without_params.rsplit('.', 1)[0]
+            target_method_name = method_without_params.rsplit('.', 1)[1]
+        else:
+            # Fallback for methods without parameters
+            target_class_fqn = target_method.rsplit('.', 1)[0]
+            target_method_name = target_method.rsplit('.', 1)[1]
+        
         target_short_class = target_class_fqn.rsplit('.', 1)[1] if '.' in target_class_fqn else target_class_fqn
-        target_method_name = target_method.rsplit('.', 1)[1]
     except Exception as e:
         return CoverageResult(
             method_covered=False,
@@ -326,6 +337,19 @@ def get_coverage_result(
             target_method=target_method,
             jacoco_report_path=jacoco_dir,
             error=f"Failed to parse target method: {e}",
+            total_covered_lines=len(covered_lines)
+        )
+    
+    # Special case: If target method is <clinit> and target class equals method class,
+    # any covered line in the class means <clinit> is covered
+    if target_method_name == "<clinit>" and target_class_fqn == method_class:
+        logger.info(f"Special case: <clinit> for same class {method_class} - any covered line means covered")
+        return CoverageResult(
+            method_covered=True,
+            method_class=method_class,
+            target_method=target_method,
+            jacoco_report_path=jacoco_dir,
+            error=None,
             total_covered_lines=len(covered_lines)
         )
     
