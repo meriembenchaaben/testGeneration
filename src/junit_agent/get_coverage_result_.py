@@ -176,8 +176,9 @@ def check_extends_relationship(repo_root: Path, method_class: str, target_class_
                 target_simple_name = target_class_fqn.rsplit('.', 1)[1] if '.' in target_class_fqn else target_class_fqn
                 
                 # Look for extends clause
-                # Pattern: class ClassName extends SuperClassName
-                extends_pattern = rf'class\s+{re.escape(simple_class_name)}\s+extends\s+(\w+)'
+                # Pattern: class ClassName<generics> extends SuperClassName
+                # Account for optional generic type parameters (e.g., <T>, <BT>, <K, V>)
+                extends_pattern = rf'class\s+{re.escape(simple_class_name)}(?:<[^>]+>)?\s+extends\s+(\w+)'
                 match = re.search(extends_pattern, content)
                 
                 if match:
@@ -227,12 +228,17 @@ def check_method_in_lines(covered_lines: Set[str], target_class: str, method_nam
             # When the child constructor runs, Java automatically calls super() implicitly
             if child_class:
                 # Look for constructor definition patterns like:
-                # "public ChildClass()" or "ChildClass()" or "protected ChildClass("
+                # "public ChildClass()" or "ChildClass<T>(" or "protected ChildClass("
+                # Handle both with and without generic parameters
                 patterns = [
                     f"public {child_class}(",
+                    f"public {child_class}<",
                     f"protected {child_class}(",
+                    f"protected {child_class}<",
                     f"private {child_class}(",
-                    f"{child_class}("  # package-private or within the line
+                    f"private {child_class}<",
+                    f"{child_class}(",  # package-private or within the line
+                    f"{child_class}<"   # package-private with generics
                 ]
                 for line in covered_lines:
                     for pattern in patterns:
@@ -240,10 +246,12 @@ def check_method_in_lines(covered_lines: Set[str], target_class: str, method_nam
                             logger.debug(f"Found child class constructor definition (implicit super): {line}")
                             return True
         else:
-            # Look for regular constructor calls
-            pattern = f"new {target_class}("
+            # Look for regular constructor calls (with or without generics)
+            # Match both: new ClassName( and new ClassName<Type>(
+            pattern_simple = f"new {target_class}("
+            pattern_generic = f"new {target_class}<"
             for line in covered_lines:
-                if pattern in line:
+                if pattern_simple in line or pattern_generic in line:
                     logger.debug(f"Found constructor call: {line}")
                     return True
     elif method_name == "<clinit>":
