@@ -544,51 +544,51 @@ def main() -> int:
                 text_log_fh.write(f"\n{'-'*100}\n")
                 
                 # Write iteration details
-                iteration_log = final_state.get("iteration_log", [])
-                if iteration_log:
-                    text_log_fh.write(f"ITERATION DETAILS ({len(iteration_log)} iterations):\n")
-                    text_log_fh.write(f"{'-'*100}\n\n")
+                # iteration_log = final_state.get("iteration_log", [])
+                # if iteration_log:
+                #     text_log_fh.write(f"ITERATION DETAILS ({len(iteration_log)} iterations):\n")
+                #     text_log_fh.write(f"{'-'*100}\n\n")
                     
-                    for iter_data in iteration_log:
-                        iter_num = iter_data.get("iteration", "?")
-                        text_log_fh.write(f"\n>>> ITERATION {iter_num}\n")
-                        text_log_fh.write(f"{'-'*100}\n")
+                #     for iter_data in iteration_log:
+                #         iter_num = iter_data.get("iteration", "?")
+                #         text_log_fh.write(f"\n>>> ITERATION {iter_num}\n")
+                #         text_log_fh.write(f"{'-'*100}\n")
                         
-                        # Write prompt
-                        prompt = iter_data.get("prompt", "")
-                        if prompt:
-                            text_log_fh.write(f"\n[PROMPT SENT TO LLM]\n")
-                            text_log_fh.write(f"{'-'*50}\n")
-                            text_log_fh.write(prompt[:3000])  # Limit to first 3000 chars
-                            if len(prompt) > 3000:
-                                text_log_fh.write(f"\n... (prompt truncated, total: {len(prompt)} chars)\n")
-                            text_log_fh.write(f"\n{'-'*50}\n\n")
+                #         # Write prompt
+                #         prompt = iter_data.get("prompt", "")
+                #         if prompt:
+                #             text_log_fh.write(f"\n[PROMPT SENT TO LLM]\n")
+                #             text_log_fh.write(f"{'-'*50}\n")
+                #             text_log_fh.write(prompt[:3000])  # Limit to first 3000 chars
+                #             if len(prompt) > 3000:
+                #                 text_log_fh.write(f"\n... (prompt truncated, total: {len(prompt)} chars)\n")
+                #             text_log_fh.write(f"\n{'-'*50}\n\n")
                         
-                        # Write generated Java code
-                        java_code = iter_data.get("generated_java", "")
-                        if java_code:
-                            text_log_fh.write(f"[GENERATED JAVA CODE]\n")
-                            text_log_fh.write(f"{'-'*50}\n")
-                            text_log_fh.write(java_code)
-                            text_log_fh.write(f"\n{'-'*50}\n\n")
+                #         # Write generated Java code
+                #         java_code = iter_data.get("generated_java", "")
+                #         if java_code:
+                #             text_log_fh.write(f"[GENERATED JAVA CODE]\n")
+                #             text_log_fh.write(f"{'-'*50}\n")
+                #             text_log_fh.write(java_code)
+                #             text_log_fh.write(f"\n{'-'*50}\n\n")
                         
-                        # Write Maven feedback
-                        maven_feedback = iter_data.get("maven_feedback")
-                        if maven_feedback:
-                            text_log_fh.write(f"[MAVEN FEEDBACK/DECISION]\n")
-                            text_log_fh.write(f"{'-'*50}\n")
-                            text_log_fh.write(maven_feedback[:2000])  # Limit to first 2000 chars
-                            if len(str(maven_feedback)) > 2000:
-                                text_log_fh.write(f"\n... (feedback truncated)\n")
-                            text_log_fh.write(f"\n{'-'*50}\n\n")
+                #         # Write Maven feedback
+                #         maven_feedback = iter_data.get("maven_feedback")
+                #         if maven_feedback:
+                #             text_log_fh.write(f"[MAVEN FEEDBACK/DECISION]\n")
+                #             text_log_fh.write(f"{'-'*50}\n")
+                #             text_log_fh.write(maven_feedback[:2000])  # Limit to first 2000 chars
+                #             if len(str(maven_feedback)) > 2000:
+                #                 text_log_fh.write(f"\n... (feedback truncated)\n")
+                #             text_log_fh.write(f"\n{'-'*50}\n\n")
                         
-                        # Write coverage info
-                        coverage = iter_data.get("coverage")
-                        if coverage:
-                            text_log_fh.write(f"[COVERAGE RESULT]\n")
-                            text_log_fh.write(f"{'-'*50}\n")
-                            text_log_fh.write(f"{json.dumps(coverage, indent=2)}\n")
-                            text_log_fh.write(f"{'-'*50}\n\n")
+                #         # Write coverage info
+                #         coverage = iter_data.get("coverage")
+                #         if coverage:
+                #             text_log_fh.write(f"[COVERAGE RESULT]\n")
+                #             text_log_fh.write(f"{'-'*50}\n")
+                #             text_log_fh.write(f"{json.dumps(coverage, indent=2)}\n")
+                #             text_log_fh.write(f"{'-'*50}\n\n")
                 
                 # Final summary for this test case
                 text_log_fh.write(f"\n{'='*100}\n")
