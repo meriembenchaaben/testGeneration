@@ -245,6 +245,15 @@ def check_method_in_lines(covered_lines: Set[str], target_class: str, method_nam
                         if pattern in line:
                             logger.debug(f"Found child class constructor definition (implicit super): {line}")
                             return True
+                
+                # Check for static class declarations with extends clause
+                # When a static inner class that extends the target class is instantiated,
+                # the parent constructor is automatically called
+                # Pattern: "class ChildClass<...> extends TargetClass"
+                for line in covered_lines:
+                    if f"class {child_class}" in line and f"extends {target_class}" in line:
+                        logger.debug(f"Found static class declaration with extends (implicit super): {line}")
+                        return True
         else:
             # Look for regular constructor calls (with or without generics)
             # Match both: new ClassName( and new ClassName<Type>(
