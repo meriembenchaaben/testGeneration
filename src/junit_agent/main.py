@@ -141,9 +141,39 @@ def update_json_coverage(json_path: Path, third_party_method: str, direct_caller
         import traceback
         traceback.print_exc()
 
+def make_unique_test_class_names(test_cases_data: list[tuple[dict, str, str]]) -> list[tuple[dict, str, str]]:
+    """
+    Ensure test class names are unique by adding sequential numbers to duplicates.
+    
+    Args:
+        test_cases_data: List of tuples (test_case_dict, package_name, class_name)
+    
+    Returns:
+        List of tuples with potentially modified unique class names
+    """
+    testname_counts = defaultdict(int)
+    result = []
+    
+    for tc_dict, pkg, cls in test_cases_data:
+        # Increment count for this class name
+        testname_counts[cls] += 1
+        
+        # If it's the first occurrence, use original name
+        # Otherwise, append the count number
+        if testname_counts[cls] == 1:
+            unique_name = cls
+        else:
+            unique_name = f"{cls}{testname_counts[cls]}"
+        
+        result.append((tc_dict, pkg, unique_name))
+    
+    return result
+
+
 def load_test_cases(json_path: Path) -> tuple[list[GenerationInput], int, int]:
     """
     Load test cases from JSON file. Supports both single object and array of objects.
+    Automatically deduplicates test class names by appending numbers to duplicates.
     
     Returns:
         tuple: (uncovered_test_cases, total_count, skipped_count)
@@ -163,8 +193,8 @@ def load_test_cases(json_path: Path) -> tuple[list[GenerationInput], int, int]:
     else:
         raise ValueError("JSON must be either a single object or an array of objects")
     
-    # Convert to GenerationInput objects
-    inputs = []
+    # First pass: collect all test cases with their extracted package/class names
+    raw_test_cases = []
     total_count = 0
     skipped_count = 0
     
@@ -179,23 +209,7 @@ def load_test_cases(json_path: Path) -> tuple[list[GenerationInput], int, int]:
                     continue
                 test_template = path_data.get("testTemplate", "")
                 pkg, cls = extract_package_and_class(test_template)
-                inputs.append(GenerationInput(
-                    entryPoint=path_data["entryPoint"],
-                    thirdPartyMethod=path_data["thirdPartyMethod"],
-                    directCaller=path_data.get("directCaller", path_data["entryPoint"]),
-                    path=list(path_data["path"]),
-                    methodSources=list(path_data["methodSources"]),
-                    constructors=list(path_data.get("constructors", [])),
-                    setters=list(path_data.get("setters", [])),
-                    fieldDeclarations=list(path_data.get("fieldDeclarations", [])),
-                    imports=list(path_data.get("imports", [])),
-                    testTemplate=test_template,
-                    conditionCount=path_data.get("conditionCount", 0),
-                    callCount=path_data.get("callCount", 1),
-                    covered=path_data.get("covered", False),
-                    test_package=pkg,
-                    test_class_name=cls,
-                ))
+                raw_test_cases.append((path_data, pkg, cls))
         else:
             total_count += 1
             # Skip if already covered
@@ -205,23 +219,31 @@ def load_test_cases(json_path: Path) -> tuple[list[GenerationInput], int, int]:
                 
             test_template = tc.get("testTemplate", "")
             pkg, cls = extract_package_and_class(test_template)
-            inputs.append(GenerationInput(
-                entryPoint=tc["entryPoint"],
-                thirdPartyMethod=tc["thirdPartyMethod"],
-                directCaller=tc.get("directCaller", tc["entryPoint"]),
-                path=list(tc["path"]),
-                methodSources=list(tc["methodSources"]),
-                constructors=list(tc.get("constructors", [])),
-                setters=list(tc.get("setters", [])),
-                fieldDeclarations=list(tc.get("fieldDeclarations", [])),
-                imports=list(tc.get("imports", [])),
-                testTemplate=test_template,
-                conditionCount=tc.get("conditionCount", 0),
-                callCount=tc.get("callCount", 1),
-                covered=tc.get("covered", False),
-                test_package=pkg,
-                test_class_name=cls,
-            ))
+            raw_test_cases.append((tc, pkg, cls))
+    
+    # Second pass: make test class names unique
+    unique_test_cases = make_unique_test_class_names(raw_test_cases)
+    
+    # Third pass: create GenerationInput objects with unique names
+    inputs = []
+    for tc_data, pkg, unique_cls in unique_test_cases:
+        inputs.append(GenerationInput(
+            entryPoint=tc_data["entryPoint"],
+            thirdPartyMethod=tc_data["thirdPartyMethod"],
+            directCaller=tc_data.get("directCaller", tc_data["entryPoint"]),
+            path=list(tc_data["path"]),
+            methodSources=list(tc_data["methodSources"]),
+            constructors=list(tc_data.get("constructors", [])),
+            setters=list(tc_data.get("setters", [])),
+            fieldDeclarations=list(tc_data.get("fieldDeclarations", [])),
+            imports=list(tc_data.get("imports", [])),
+            testTemplate=tc_data.get("testTemplate", ""),
+            conditionCount=tc_data.get("conditionCount", 0),
+            callCount=tc_data.get("callCount", 1),
+            covered=tc_data.get("covered", False),
+            test_package=pkg,
+            test_class_name=unique_cls,
+        ))
     
     return inputs, total_count, skipped_count
 
@@ -231,13 +253,17 @@ def is_record_covered_now(json_path: Path, third_party_method: str, direct_calle
     Check in real-time if a specific record is marked as covered in the JSON file.
     This ensures we get the latest state even if the file was updated during execution.
     
+    When there are multiple records with the same thirdPartyMethod and directCaller,
+    returns True if ANY matching record is covered. Returns False only if NO
+    matching records are covered or no matches are found.
+    
     Args:
         json_path: Path to the JSON input file
         third_party_method: The third party method to check
         direct_caller: The direct caller method
     
     Returns:
-        bool: True if the record is marked as covered, False otherwise
+        bool: True if ANY matching record is covered, False if none are covered or no matches found
     """
     try:
         data = json.loads(json_path.read_text(encoding="utf-8"))
@@ -250,7 +276,8 @@ def is_record_covered_now(json_path: Path, third_party_method: str, direct_calle
                     tp_method = path_data.get("thirdPartyMethod")
                     dc = path_data.get("directCaller")
                     if (tp_method == third_party_method and dc == direct_caller):
-                        return path_data.get("covered", False)
+                        if path_data.get("covered", False):
+                            return True
             # Single test case without fullMethodsPaths
             elif data.get("thirdPartyMethod") == third_party_method and data.get("directCaller") == direct_caller:
                 return data.get("covered", False)
@@ -263,12 +290,15 @@ def is_record_covered_now(json_path: Path, third_party_method: str, direct_calle
                         tp_method = path_data.get("thirdPartyMethod")
                         dc = path_data.get("directCaller")
                         if (tp_method == third_party_method and dc == direct_caller):
-                            return path_data.get("covered", False)
+                            if path_data.get("covered", False):
+                                return True
                 else:
                     if (tc.get("thirdPartyMethod") == third_party_method and 
                         tc.get("directCaller") == direct_caller):
-                        return tc.get("covered", False)
+                        if tc.get("covered", False):
+                            return True
         
+        # Return False if no covered matches found
         return False
     
     except Exception as e:
