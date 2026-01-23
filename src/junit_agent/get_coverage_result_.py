@@ -176,20 +176,24 @@ def check_extends_relationship(repo_root: Path, method_class: str, target_class_
                 target_simple_name = target_class_fqn.rsplit('.', 1)[1] if '.' in target_class_fqn else target_class_fqn
                 
                 # Look for extends clause
-                # Pattern: class ClassName<generics> extends SuperClassName
+                # Pattern: class ClassName<generics> extends SuperClassName<generics>
                 # Account for optional generic type parameters (e.g., <T>, <BT>, <K, V>)
-                extends_pattern = rf'class\s+{re.escape(simple_class_name)}(?:<[^>]+>)?\s+extends\s+(\w+)'
+                # The extended class may also have generics: extends SuperClass<Type1, Type2>
+                extends_pattern = rf'class\s+{re.escape(simple_class_name)}(?:<[^>]+>)?\s+extends\s+([\w.]+)(?:<[^>]+>)?'
                 match = re.search(extends_pattern, content)
                 
                 if match:
                     extended_class = match.group(1)
                     # Check if the extended class matches the target (by simple name)
-                    if extended_class == target_simple_name:
-                        logger.info(f"Found extends relationship: {method_class} extends {target_class_fqn}")
+                    # The extended_class might be fully qualified or just the simple name
+                    extended_simple_name = extended_class.rsplit('.', 1)[-1] if '.' in extended_class else extended_class
+                    
+                    if extended_simple_name == target_simple_name:
+                        logger.info(f"Found extends relationship: {method_class} extends {target_class_fqn} (matched by simple name)")
                         return True
                     # Also check if it matches the fully qualified name
                     if extended_class == target_class_fqn:
-                        logger.info(f"Found extends relationship: {method_class} extends {target_class_fqn}")
+                        logger.info(f"Found extends relationship: {method_class} extends {target_class_fqn} (matched by FQN)")
                         return True
                 
                 logger.debug(f"No extends relationship found for {method_class} and {target_class_fqn}")
