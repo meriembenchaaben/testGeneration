@@ -1,0 +1,1967 @@
+Processing all 46 test cases from input file
+Using DeepSeek API with model: deepseek-chat
+
+================================================================================
+PROCESSING TEST CASE 1/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.isTraceEnabled()
+Third Party Method: org.apache.logging.log4j.Logger.isTraceEnabled()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 507 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2LoggerImplisTraceEnabled_LoggerisTraceEnabledFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.Logger.isTraceEnabled()' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.Logger.isTraceEnabled()
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.isTraceEnabled()
+[DEBUG]   ✓ MATCH FOUND at path 0
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.Logger.isTraceEnabled()
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.isTraceEnabled()
+
+================================================================================
+PROCESSING TEST CASE 2/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.trace(java.lang.String)
+Third Party Method: org.apache.logging.log4j.Logger.trace(org.apache.logging.log4j.Marker, java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 550 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2LoggerImpltrace_LoggertraceFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.Logger.trace(org.apache.logging.log4j.Marker, java.lang.String)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.Logger.trace(org.apache.logging.log4j.Marker, java.lang.String)
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.trace(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 1
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.Logger.trace(org.apache.logging.log4j.Marker, java.lang.String)
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.trace(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 3/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.trace(java.lang.String)
+Third Party Method: org.apache.logging.log4j.message.SimpleMessage.<init>(java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 794 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2AbstractLoggerImpltrace_SimpleMessagemethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.message.SimpleMessage.<init>(java.lang.String)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.message.SimpleMessage.<init>(java.lang.String)
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.trace(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 2
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.message.SimpleMessage.<init>(java.lang.String)
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.trace(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 4/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(java.lang.String)
+Third Party Method: org.apache.commons.logging.Log.debug(java.lang.Object)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 382 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/commons/JakartaCommonsLoggingImpldebug_LogdebugFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.logging.Log.debug(java.lang.Object)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.logging.Log.debug(java.lang.Object)
+  Looking for directCaller: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 3
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.logging.Log.debug(java.lang.Object)
+  Direct Caller: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 5/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.debug(java.lang.String)
+Third Party Method: org.apache.logging.log4j.Logger.debug(org.apache.logging.log4j.Marker, java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 423 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2LoggerImpldebug_LoggerdebugFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.Logger.debug(org.apache.logging.log4j.Marker, java.lang.String)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.Logger.debug(org.apache.logging.log4j.Marker, java.lang.String)
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.debug(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 4
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.Logger.debug(org.apache.logging.log4j.Marker, java.lang.String)
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.debug(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 6/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.<init>(java.lang.String)
+Third Party Method: org.apache.commons.logging.LogFactory.getLog(java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 462 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/commons/JakartaCommonsLoggingImplmethod_LogFactorygetLogFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.logging.LogFactory.getLog(java.lang.String)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.logging.LogFactory.getLog(java.lang.String)
+  Looking for directCaller: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.<init>(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 5
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.logging.LogFactory.getLog(java.lang.String)
+  Direct Caller: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.<init>(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 7/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.trace(java.lang.String)
+Third Party Method: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.logIfEnabled(java.lang.String, org.apache.logging.log4j.Level, org.apache.logging.log4j.Marker, org.apache.logging.log4j.message.Message, java.lang.Throwable)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 805 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2AbstractLoggerImpltrace_ExtendedLoggerWrapperlogIfEnabledFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.spi.ExtendedLoggerWrapper.logIfEnabled(java.lang.String, org.apache.logging.log4j.Level, org.apache.logging.log4j.Marker, org.apache.logging.log4j.message.Message, java.lang.Throwable)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.logIfEnabled(java.lang.String, org.apache.logging.log4j.Level, org.apache.logging.log4j.Marker, org.apache.logging.log4j.message.Message, java.lang.Throwable)
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.trace(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 6
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.logIfEnabled(java.lang.String, org.apache.logging.log4j.Level, org.apache.logging.log4j.Marker, org.apache.logging.log4j.message.Message, java.lang.Throwable)
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.trace(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 8/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.isDebugEnabled()
+Third Party Method: org.apache.logging.log4j.Logger.isDebugEnabled()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 417 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2LoggerImplisDebugEnabled_LoggerisDebugEnabledFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.Logger.isDebugEnabled()' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.Logger.isDebugEnabled()
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.isDebugEnabled()
+[DEBUG]   ✓ MATCH FOUND at path 7
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.Logger.isDebugEnabled()
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.isDebugEnabled()
+
+================================================================================
+PROCESSING TEST CASE 9/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String, java.lang.Throwable)
+Third Party Method: org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String, java.lang.Throwable)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 693 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2LoggerImplerror_LoggererrorFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String, java.lang.Throwable)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String, java.lang.Throwable)
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String, java.lang.Throwable)
+[DEBUG]   ✓ MATCH FOUND at path 8
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String, java.lang.Throwable)
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String, java.lang.Throwable)
+
+================================================================================
+PROCESSING TEST CASE 10/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.isTraceEnabled()
+Third Party Method: org.apache.commons.logging.Log.isTraceEnabled()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 395 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/commons/JakartaCommonsLoggingImplisTraceEnabled_LogisTraceEnabledFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.logging.Log.isTraceEnabled()' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.logging.Log.isTraceEnabled()
+  Looking for directCaller: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.isTraceEnabled()
+[DEBUG]   ✓ MATCH FOUND at path 9
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.logging.Log.isTraceEnabled()
+  Direct Caller: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.isTraceEnabled()
+
+================================================================================
+PROCESSING TEST CASE 11/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String)
+Third Party Method: org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 560 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2LoggerImplerror_LoggererrorFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String)
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 10
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String)
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 12/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.isTraceEnabled()
+Third Party Method: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.isTraceEnabled()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 551 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2AbstractLoggerImplisTraceEnabled_ExtendedLoggerWrapperisTraceEnabledFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.spi.ExtendedLoggerWrapper.isTraceEnabled()' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.isTraceEnabled()
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.isTraceEnabled()
+[DEBUG]   ✓ MATCH FOUND at path 11
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.isTraceEnabled()
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.isTraceEnabled()
+
+================================================================================
+PROCESSING TEST CASE 13/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<init>(org.apache.logging.log4j.spi.AbstractLogger)
+Third Party Method: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.<init>(org.apache.logging.log4j.spi.ExtendedLogger, java.lang.String, org.apache.logging.log4j.message.MessageFactory)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 525 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2AbstractLoggerImplmethod_ExtendedLoggerWrappermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.spi.ExtendedLoggerWrapper.<init>(org.apache.logging.log4j.spi.ExtendedLogger, java.lang.String, org.apache.logging.log4j.message.MessageFactory)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.<init>(org.apache.logging.log4j.spi.ExtendedLogger, java.lang.String, org.apache.logging.log4j.message.MessageFactory)
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<init>(org.apache.logging.log4j.spi.AbstractLogger)
+[DEBUG]   ✓ MATCH FOUND at path 12
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.<init>(org.apache.logging.log4j.spi.ExtendedLogger, java.lang.String, org.apache.logging.log4j.message.MessageFactory)
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<init>(org.apache.logging.log4j.spi.AbstractLogger)
+
+================================================================================
+PROCESSING TEST CASE 14/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j.Log4jImpl.isTraceEnabled()
+Third Party Method: org.apache.log4j.Logger.isTraceEnabled()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 297 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j/Log4jImplisTraceEnabled_LoggerisTraceEnabledFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.log4j.Logger.isTraceEnabled()' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.log4j.Logger.isTraceEnabled()
+  Looking for directCaller: org.apache.ibatis.logging.log4j.Log4jImpl.isTraceEnabled()
+[DEBUG]   ✓ MATCH FOUND at path 13
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.log4j.Logger.isTraceEnabled()
+  Direct Caller: org.apache.ibatis.logging.log4j.Log4jImpl.isTraceEnabled()
+
+================================================================================
+PROCESSING TEST CASE 15/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.trace(java.lang.String)
+Third Party Method: org.apache.commons.logging.Log.trace(java.lang.Object)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 387 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/commons/JakartaCommonsLoggingImpltrace_LogtraceFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.logging.Log.trace(java.lang.Object)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.logging.Log.trace(java.lang.Object)
+  Looking for directCaller: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.trace(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 14
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.logging.Log.trace(java.lang.Object)
+  Direct Caller: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.trace(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 16/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.warn(java.lang.String)
+Third Party Method: org.apache.commons.logging.Log.warn(java.lang.Object)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 383 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/commons/JakartaCommonsLoggingImplwarn_LogwarnFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.logging.Log.warn(java.lang.Object)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.logging.Log.warn(java.lang.Object)
+  Looking for directCaller: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.warn(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 15
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.logging.Log.warn(java.lang.Object)
+  Direct Caller: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.warn(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 17/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.warn(java.lang.String)
+Third Party Method: org.apache.logging.log4j.Logger.warn(org.apache.logging.log4j.Marker, java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 477 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2LoggerImplwarn_LoggerwarnFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.Logger.warn(org.apache.logging.log4j.Marker, java.lang.String)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.Logger.warn(org.apache.logging.log4j.Marker, java.lang.String)
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.warn(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 16
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.Logger.warn(org.apache.logging.log4j.Marker, java.lang.String)
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.warn(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 18/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j.Log4jImpl.trace(java.lang.String)
+Third Party Method: org.apache.log4j.Logger.log(java.lang.String, org.apache.log4j.Priority, java.lang.Object, java.lang.Throwable)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 342 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j/Log4jImpltrace_LoggerlogFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.log4j.Logger.log(java.lang.String, org.apache.log4j.Priority, java.lang.Object, java.lang.Throwable)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.log4j.Logger.log(java.lang.String, org.apache.log4j.Priority, java.lang.Object, java.lang.Throwable)
+  Looking for directCaller: org.apache.ibatis.logging.log4j.Log4jImpl.trace(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 17
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.log4j.Logger.log(java.lang.String, org.apache.log4j.Priority, java.lang.Object, java.lang.Throwable)
+  Direct Caller: org.apache.ibatis.logging.log4j.Log4jImpl.trace(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 19/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j.Log4jImpl.<init>(java.lang.String)
+Third Party Method: org.apache.log4j.Logger.getLogger(java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 315 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j/Log4jImplmethod_LoggergetLoggerFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.log4j.Logger.getLogger(java.lang.String)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.log4j.Logger.getLogger(java.lang.String)
+  Looking for directCaller: org.apache.ibatis.logging.log4j.Log4jImpl.<init>(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 18
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.log4j.Logger.getLogger(java.lang.String)
+  Direct Caller: org.apache.ibatis.logging.log4j.Log4jImpl.<init>(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 20/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.intercept(java.lang.Object, java.lang.reflect.Method, java.lang.Object[], net.sf.cglib.proxy.MethodProxy)
+Third Party Method: net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2286 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImplintercept_MethodProxyinvokeSuperFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])
+  Looking for directCaller: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.intercept(java.lang.Object, java.lang.reflect.Method, java.lang.Object[], net.sf.cglib.proxy.MethodProxy)
+[DEBUG]   ✓ MATCH FOUND at path 19
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])
+  Direct Caller: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.intercept(java.lang.Object, java.lang.reflect.Method, java.lang.Object[], net.sf.cglib.proxy.MethodProxy)
+
+================================================================================
+PROCESSING TEST CASE 21/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2Impl.<init>(java.lang.String)
+Third Party Method: org.apache.logging.log4j.LogManager.getLogger(java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 492 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2Implmethod_LogManagergetLoggerFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.LogManager.getLogger(java.lang.String)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.LogManager.getLogger(java.lang.String)
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2Impl.<init>(java.lang.String)
+[DEBUG]   ✓ MATCH FOUND at path 20
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.LogManager.getLogger(java.lang.String)
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2Impl.<init>(java.lang.String)
+
+================================================================================
+PROCESSING TEST CASE 22/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.intercept(java.lang.Object, java.lang.reflect.Method, java.lang.Object[], net.sf.cglib.proxy.MethodProxy)
+Third Party Method: net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1719 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImplintercept_MethodProxyinvokeSuperFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1050
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2805 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImplintercept_MethodProxyinvokeSuperFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2803 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImplintercept_MethodProxyinvokeSuperFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=2893
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2243 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImplintercept_MethodProxyinvokeSuperFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1050
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 3013 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImplintercept_MethodProxyinvokeSuperFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=2258
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImplintercept_MethodProxyinvokeSuperFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 23/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.trace(java.lang.String)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1156 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2AbstractLoggerImplmethod_MarkerManagergetMarkerFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<clinit>()
+[DEBUG]   ✓ MATCH FOUND at path 22
+[DEBUG]   ✓ MATCH FOUND at path 23
+[DEBUG]   ✓ MATCH FOUND at path 24
+[DEBUG]   ✓ MATCH FOUND at path 25
+[DEBUG]   ✓ MATCH FOUND at path 26
+[DEBUG]   ✓ MATCH FOUND at path 32
+✓ Updated 6 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<clinit>()
+
+================================================================================
+PROCESSING TEST CASE 24/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.error(java.lang.String, java.lang.Throwable)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+================================================================================
+
+⊙ Skipping test case 24: Already marked as covered in JSON file
+  (Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String))
+  (Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<clinit>())
+
+================================================================================
+PROCESSING TEST CASE 25/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.debug(java.lang.String)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+================================================================================
+
+⊙ Skipping test case 25: Already marked as covered in JSON file
+  (Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String))
+  (Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<clinit>())
+
+================================================================================
+PROCESSING TEST CASE 26/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.warn(java.lang.String)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+================================================================================
+
+⊙ Skipping test case 26: Already marked as covered in JSON file
+  (Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String))
+  (Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<clinit>())
+
+================================================================================
+PROCESSING TEST CASE 27/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.error(java.lang.String)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+================================================================================
+
+⊙ Skipping test case 27: Already marked as covered in JSON file
+  (Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String))
+  (Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<clinit>())
+
+================================================================================
+PROCESSING TEST CASE 28/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.debug(java.lang.String)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 584 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/logging/log4j2/Log4j2LoggerImplmethod_MarkerManagergetMarkerFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+  Looking for directCaller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.<clinit>()
+[DEBUG]   ✓ MATCH FOUND at path 27
+[DEBUG]   ✓ MATCH FOUND at path 28
+[DEBUG]   ✓ MATCH FOUND at path 29
+[DEBUG]   ✓ MATCH FOUND at path 30
+[DEBUG]   ✓ MATCH FOUND at path 31
+[DEBUG]   ✓ MATCH FOUND at path 33
+✓ Updated 6 record(s) in JSON file as covered
+  Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+  Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.<clinit>()
+
+================================================================================
+PROCESSING TEST CASE 29/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+================================================================================
+
+⊙ Skipping test case 29: Already marked as covered in JSON file
+  (Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String))
+  (Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.<clinit>())
+
+================================================================================
+PROCESSING TEST CASE 30/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.warn(java.lang.String)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+================================================================================
+
+⊙ Skipping test case 30: Already marked as covered in JSON file
+  (Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String))
+  (Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.<clinit>())
+
+================================================================================
+PROCESSING TEST CASE 31/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.trace(java.lang.String)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+================================================================================
+
+⊙ Skipping test case 31: Already marked as covered in JSON file
+  (Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String))
+  (Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.<clinit>())
+
+================================================================================
+PROCESSING TEST CASE 32/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String, java.lang.Throwable)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+================================================================================
+
+⊙ Skipping test case 32: Already marked as covered in JSON file
+  (Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String))
+  (Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.<clinit>())
+
+================================================================================
+PROCESSING TEST CASE 33/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2Impl.<init>(java.lang.String)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+================================================================================
+
+⊙ Skipping test case 33: Already marked as covered in JSON file
+  (Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String))
+  (Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<clinit>())
+
+================================================================================
+PROCESSING TEST CASE 34/46
+================================================================================
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2Impl.<init>(java.lang.String)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+================================================================================
+
+⊙ Skipping test case 34: Already marked as covered in JSON file
+  (Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String))
+  (Direct Caller: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.<clinit>())
+
+================================================================================
+PROCESSING TEST CASE 35/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.setCallback(net.sf.cglib.proxy.Callback)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1583 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=658
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setCallback(net.sf.cglib.proxy.Callback)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1208 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=790
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setCallback(net.sf.cglib.proxy.Callback)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1085 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=658
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setCallback(net.sf.cglib.proxy.Callback)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1264 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=790
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setCallback(net.sf.cglib.proxy.Callback)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1081 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=658
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setCallback(net.sf.cglib.proxy.Callback)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 36/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.createProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.setCallback(net.sf.cglib.proxy.Callback)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1735 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1857 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1636
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setCallback(net.sf.cglib.proxy.Callback)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1734 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2084 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2155 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1054
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setCallback(net.sf.cglib.proxy.Callback)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 37/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1565 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=653
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1508 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=785
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2038 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1525
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1924 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1032
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1487 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1188
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 38/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.createProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1883 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2070 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1044
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2142 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1919 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1616
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2274 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1862
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 39/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.create()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1439 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1034
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1659 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1191
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1290 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=702
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1509 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1034
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1681 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=786
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 40/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.createProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.create()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1897 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1518 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1046
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1928 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1981 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1046
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1490 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=609
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.create()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 41/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.<init>()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1424 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=653
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.<init>()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1134 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=785
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.<init>()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1071 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=653
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.<init>()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1026 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=785
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.<init>()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1071 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=653
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.<init>()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 42/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.createProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.<init>()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1982 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2085 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1044
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.<init>()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2163 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1390 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1190 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1044
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.<init>()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 43/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.setInterfaces(java.lang.Class[])
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1104 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=660
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setInterfaces(java.lang.Class[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1685 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1433
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setInterfaces(java.lang.Class[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1609 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=792
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setInterfaces(java.lang.Class[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1104 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=660
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setInterfaces(java.lang.Class[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1342 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1046
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setInterfaces(java.lang.Class[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 44/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.createProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.setInterfaces(java.lang.Class[])
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1843 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1561 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1058
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setInterfaces(java.lang.Class[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 5571 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1786 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1623 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1058
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setInterfaces(java.lang.Class[])' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 45/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.setSuperclass(java.lang.Class)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1699 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1287 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=660
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setSuperclass(java.lang.Class)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1801 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1433
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setSuperclass(java.lang.Class)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1236 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1209
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setSuperclass(java.lang.Class)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1956 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1433
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setSuperclass(java.lang.Class)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 46/46
+================================================================================
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.createProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.setSuperclass(java.lang.Class)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2238 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 3913 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2222 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1904 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1644
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'net.sf.cglib.proxy.Enhancer.setSuperclass(java.lang.Class)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2624 chars
+/part/01/Tmp/gamageyo/fika/experiments/mybatis-3
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/mybatis-3/src/test/java/org/apache/ibatis/executor/loader/cglib/EnhancedDeserializationProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+=== OVERALL SUMMARY ===
+================================================================================
+Total Test Cases: 46
+Processed: 36
+Approved: 23
+Failed: 13
+Success Rate: 63.9%
+================================================================================
+
+Approval Details:
+  Test 1: Approved at iteration 1
+  Test 2: Approved at iteration 1
+  Test 3: Approved at iteration 1
+  Test 4: Approved at iteration 1
+  Test 5: Approved at iteration 1
+  Test 6: Approved at iteration 1
+  Test 7: Approved at iteration 1
+  Test 8: Approved at iteration 1
+  Test 9: Approved at iteration 1
+  Test 10: Approved at iteration 1
+  Test 11: Approved at iteration 1
+  Test 12: Approved at iteration 1
+  Test 13: Approved at iteration 1
+  Test 14: Approved at iteration 1
+  Test 15: Approved at iteration 1
+  Test 16: Approved at iteration 1
+  Test 17: Approved at iteration 1
+  Test 18: Approved at iteration 1
+  Test 19: Approved at iteration 1
+  Test 20: Approved at iteration 1
+  Test 21: Approved at iteration 1
+  Test 23: Approved at iteration 1
+  Test 28: Approved at iteration 1
+================================================================================
+
