@@ -1,0 +1,1604 @@
+Processing all 24 test cases from input file
+Using DeepSeek API with model: deepseek-chat
+
+================================================================================
+PROCESSING TEST CASE 1/24
+================================================================================
+Entry Point: org.apache.tika.config.TikaActivator.start(org.osgi.framework.BundleContext)
+Third Party Method: org.osgi.util.tracker.ServiceTracker.open()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 997 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstart_ServiceTrackeropenFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1067
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.open()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2890 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstart_ServiceTrackeropenFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 490 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstart_ServiceTrackeropenFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=465
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.open()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 568 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstart_ServiceTrackeropenFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=465
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.open()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 568 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstart_ServiceTrackeropenFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=465
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.open()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstart_ServiceTrackeropenFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 2/24
+================================================================================
+Entry Point: org.apache.tika.io.BoundedInputStream.transferTo(java.io.OutputStream)
+Third Party Method: org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 724 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/BoundedInputStreamtransferTo_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=464
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 684 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/BoundedInputStreamtransferTo_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=464
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 684 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/BoundedInputStreamtransferTo_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=464
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 700 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/BoundedInputStreamtransferTo_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=464
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 700 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/BoundedInputStreamtransferTo_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=464
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/BoundedInputStreamtransferTo_IOUtilscopyFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 3/24
+================================================================================
+Entry Point: org.apache.tika.config.TikaActivator.start(org.osgi.framework.BundleContext)
+Third Party Method: org.osgi.util.tracker.ServiceTracker.<init>(org.osgi.framework.BundleContext, java.lang.String, org.osgi.util.tracker.ServiceTrackerCustomizer)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 556 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstart_ServiceTrackermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=467
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.<init>(org.osgi.framework.BundleContext, java.lang.String, org.osgi.util.tracker.ServiceTrackerCustomizer)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 613 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstart_ServiceTrackermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=467
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.<init>(org.osgi.framework.BundleContext, java.lang.String, org.osgi.util.tracker.ServiceTrackerCustomizer)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 599 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstart_ServiceTrackermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=467
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.<init>(org.osgi.framework.BundleContext, java.lang.String, org.osgi.util.tracker.ServiceTrackerCustomizer)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 613 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstart_ServiceTrackermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=467
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.<init>(org.osgi.framework.BundleContext, java.lang.String, org.osgi.util.tracker.ServiceTrackerCustomizer)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 613 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstart_ServiceTrackermethodFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=467
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.<init>(org.osgi.framework.BundleContext, java.lang.String, org.osgi.util.tracker.ServiceTrackerCustomizer)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstart_ServiceTrackermethodFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 4/24
+================================================================================
+Entry Point: org.apache.tika.parser.NetworkParser.ParsingTask.run()
+Third Party Method: org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 703 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/parser/ParsingTaskrun_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=783
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 744 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/parser/ParsingTaskrun_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=737
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 758 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/parser/ParsingTaskrun_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=737
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 742 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/parser/ParsingTaskrun_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=737
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 754 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/parser/ParsingTaskrun_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=737
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/parser/ParsingTaskrun_IOUtilscopyFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 5/24
+================================================================================
+Entry Point: org.apache.tika.io.FileSource.skip(long)
+Third Party Method: org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 790 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FileSourceskip_IOUtilsskipFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)
+  Looking for directCaller: org.apache.tika.io.FileSource.skip(long)
+[DEBUG]   ✓ MATCH FOUND at path 4
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)
+  Direct Caller: org.apache.tika.io.FileSource.skip(long)
+
+================================================================================
+PROCESSING TEST CASE 6/24
+================================================================================
+Entry Point: org.apache.tika.config.TikaActivator.removedService(org.osgi.framework.ServiceReference, java.lang.Object)
+Third Party Method: org.osgi.framework.BundleContext.ungetService(org.osgi.framework.ServiceReference)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 995 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorremovedService_BundleContextungetServiceFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=702
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.BundleContext.ungetService(org.osgi.framework.ServiceReference)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1058 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorremovedService_BundleContextungetServiceFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=481
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.BundleContext.ungetService(org.osgi.framework.ServiceReference)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 793 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorremovedService_BundleContextungetServiceFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=481
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.BundleContext.ungetService(org.osgi.framework.ServiceReference)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1044 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorremovedService_BundleContextungetServiceFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=481
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.BundleContext.ungetService(org.osgi.framework.ServiceReference)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1044 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorremovedService_BundleContextungetServiceFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=481
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.BundleContext.ungetService(org.osgi.framework.ServiceReference)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorremovedService_BundleContextungetServiceFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 7/24
+================================================================================
+Entry Point: org.apache.tika.config.TikaActivator.stop(org.osgi.framework.BundleContext)
+Third Party Method: org.osgi.util.tracker.ServiceTracker.close()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1183 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstop_ServiceTrackercloseFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=465
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.close()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 892 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstop_ServiceTrackercloseFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=465
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.close()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 533 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstop_ServiceTrackercloseFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=465
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.close()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 826 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstop_ServiceTrackercloseFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=465
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.close()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 916 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstop_ServiceTrackercloseFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=670
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.util.tracker.ServiceTracker.close()' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatorstop_ServiceTrackercloseFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 8/24
+================================================================================
+Entry Point: org.apache.tika.io.TikaInputStream.skip(long)
+Third Party Method: org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 538 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/TikaInputStreamskip_IOUtilsskipFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)
+  Looking for directCaller: org.apache.tika.io.TikaInputStream.skip(long)
+[DEBUG]   ✓ MATCH FOUND at path 7
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)
+  Direct Caller: org.apache.tika.io.TikaInputStream.skip(long)
+
+================================================================================
+PROCESSING TEST CASE 9/24
+================================================================================
+Entry Point: org.apache.tika.parser.NetworkParser.parse(org.apache.tika.io.TikaInputStream, org.xml.sax.ContentHandler, org.apache.tika.metadata.Metadata, org.apache.tika.parser.ParseContext)
+Third Party Method: org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1055 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/parser/NetworkParserparse_CloseShieldInputStreamwrapFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1648
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1508 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/parser/NetworkParserparse_CloseShieldInputStreamwrapFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=819
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1088 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/parser/NetworkParserparse_CloseShieldInputStreamwrapFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1532
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 3288 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/parser/NetworkParserparse_CloseShieldInputStreamwrapFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1026 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/parser/NetworkParserparse_CloseShieldInputStreamwrapFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1526
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/parser/NetworkParserparse_CloseShieldInputStreamwrapFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 10/24
+================================================================================
+Entry Point: org.apache.tika.config.TikaActivator.addingService(org.osgi.framework.ServiceReference)
+Third Party Method: org.osgi.framework.BundleContext.getService(org.osgi.framework.ServiceReference)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1744 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatoraddingService_BundleContextgetServiceFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=478
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.BundleContext.getService(org.osgi.framework.ServiceReference)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1056 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatoraddingService_BundleContextgetServiceFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=478
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.BundleContext.getService(org.osgi.framework.ServiceReference)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 932 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatoraddingService_BundleContextgetServiceFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=478
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.BundleContext.getService(org.osgi.framework.ServiceReference)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 932 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatoraddingService_BundleContextgetServiceFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=478
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.BundleContext.getService(org.osgi.framework.ServiceReference)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1047 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatoraddingService_BundleContextgetServiceFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=478
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.BundleContext.getService(org.osgi.framework.ServiceReference)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatoraddingService_BundleContextgetServiceFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 11/24
+================================================================================
+Entry Point: org.apache.tika.config.TikaActivator.addingService(org.osgi.framework.ServiceReference)
+Third Party Method: org.osgi.framework.ServiceReference.getProperty(java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1261 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatoraddingService_ServiceReferencegetPropertyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1135
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.ServiceReference.getProperty(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 4361 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatoraddingService_ServiceReferencegetPropertyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2591 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatoraddingService_ServiceReferencegetPropertyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1135
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.ServiceReference.getProperty(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1278 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatoraddingService_ServiceReferencegetPropertyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1135
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.ServiceReference.getProperty(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 807 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatoraddingService_ServiceReferencegetPropertyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=483
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.osgi.framework.ServiceReference.getProperty(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/config/TikaActivatoraddingService_ServiceReferencegetPropertyFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 12/24
+================================================================================
+Entry Point: org.apache.tika.io.CachingSource.skip(long)
+Third Party Method: org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 888 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/CachingSourceskip_IOUtilsskipFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=542
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2042 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/CachingSourceskip_IOUtilsskipFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 2
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)
+  Looking for directCaller: org.apache.tika.io.CachingSource.skip(long)
+[DEBUG]   ✓ MATCH FOUND at path 11
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.io.IOUtils.skip(java.io.InputStream, long)
+  Direct Caller: org.apache.tika.io.CachingSource.skip(long)
+
+================================================================================
+PROCESSING TEST CASE 13/24
+================================================================================
+Entry Point: org.apache.tika.io.FileSource.seekTo(long)
+Third Party Method: org.apache.commons.io.IOUtils.skipFully(java.io.InputStream, long)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 637 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FileSourceseekTo_IOUtilsskipFullyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.skipFully(java.io.InputStream, long)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.io.IOUtils.skipFully(java.io.InputStream, long)
+  Looking for directCaller: org.apache.tika.io.FileSource.seekTo(long)
+[DEBUG]   ✓ MATCH FOUND at path 12
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.io.IOUtils.skipFully(java.io.InputStream, long)
+  Direct Caller: org.apache.tika.io.FileSource.seekTo(long)
+
+================================================================================
+PROCESSING TEST CASE 14/24
+================================================================================
+Entry Point: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+Third Party Method: org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.Builder.get()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1356 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_BuildergetFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.Builder.get()' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.Builder.get()
+  Looking for directCaller: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+[DEBUG]   ✓ MATCH FOUND at path 13
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.Builder.get()
+  Direct Caller: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+
+================================================================================
+PROCESSING TEST CASE 15/24
+================================================================================
+Entry Point: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+Third Party Method: org.apache.commons.io.IOUtils.closeQuietly(java.io.InputStream)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1969 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_IOUtilscloseQuietlyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=567
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.closeQuietly(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1653 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_IOUtilscloseQuietlyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.closeQuietly(java.io.InputStream)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 2
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.io.IOUtils.closeQuietly(java.io.InputStream)
+  Looking for directCaller: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+[DEBUG]   ✓ MATCH FOUND at path 14
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.io.IOUtils.closeQuietly(java.io.InputStream)
+  Direct Caller: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+
+================================================================================
+PROCESSING TEST CASE 16/24
+================================================================================
+Entry Point: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+Third Party Method: org.apache.commons.io.IOUtils.closeQuietly(java.io.OutputStream)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1496 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_IOUtilscloseQuietlyFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=568
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.closeQuietly(java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1498 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_IOUtilscloseQuietlyFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=568
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.closeQuietly(java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1696 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_IOUtilscloseQuietlyFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.closeQuietly(java.io.OutputStream)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 3
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.io.IOUtils.closeQuietly(java.io.OutputStream)
+  Looking for directCaller: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+[DEBUG]   ✓ MATCH FOUND at path 15
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.io.IOUtils.closeQuietly(java.io.OutputStream)
+  Direct Caller: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+
+================================================================================
+PROCESSING TEST CASE 17/24
+================================================================================
+Entry Point: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+Third Party Method: org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1717 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1471
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1770 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=865
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1727 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1467
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2066 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1471
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1566 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=865
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_IOUtilscopyFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests failed to compile or run successfully
+
+
+================================================================================
+PROCESSING TEST CASE 18/24
+================================================================================
+Entry Point: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+Third Party Method: org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.builder()
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2205 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_UnsynchronizedByteArrayOutputStreambuilderFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.builder()' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.builder()
+  Looking for directCaller: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+[DEBUG]   ✓ MATCH FOUND at path 17
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.builder()
+  Direct Caller: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+
+================================================================================
+PROCESSING TEST CASE 19/24
+================================================================================
+Entry Point: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+Third Party Method: org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.toString(java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 2273 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_UnsynchronizedByteArrayOutputStreamtoStringFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=1421
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.toString(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1524 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_UnsynchronizedByteArrayOutputStreamtoStringFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.toString(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1730 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbedderembed_UnsynchronizedByteArrayOutputStreamtoStringFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.toString(java.lang.String)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 3
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.toString(java.lang.String)
+  Looking for directCaller: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+[DEBUG]   ✓ MATCH FOUND at path 18
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.io.output.UnsynchronizedByteArrayOutputStream.toString(java.lang.String)
+  Direct Caller: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+
+================================================================================
+PROCESSING TEST CASE 20/24
+================================================================================
+Entry Point: org.apache.tika.detect.XmlRootExtractor.extractRootElement(java.io.InputStream)
+Third Party Method: org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 636 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/detect/XmlRootExtractorextractRootElement_CloseShieldInputStreamwrapFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 755 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/detect/XmlRootExtractorextractRootElement_CloseShieldInputStreamwrapFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] FAILED - hard constraints violated
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (hard constraint violation, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 719 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/detect/XmlRootExtractorextractRootElement_CloseShieldInputStreamwrapFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1056 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/detect/XmlRootExtractorextractRootElement_CloseShieldInputStreamwrapFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=879
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 739 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/detect/XmlRootExtractorextractRootElement_CloseShieldInputStreamwrapFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/detect/XmlRootExtractorextractRootElement_CloseShieldInputStreamwrapFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests passed but target third-party method was NOT covered
+   Target: org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)
+
+
+================================================================================
+PROCESSING TEST CASE 21/24
+================================================================================
+Entry Point: org.apache.tika.detect.XmlRootExtractor.extractRootElement(byte[])
+Third Party Method: org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 877 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/detect/XmlRootExtractorextractRootElement_CloseShieldInputStreamwrapFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=881
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 631 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/detect/XmlRootExtractorextractRootElement_CloseShieldInputStreamwrapFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 725 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/detect/XmlRootExtractorextractRootElement_CloseShieldInputStreamwrapFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 721 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/detect/XmlRootExtractorextractRootElement_CloseShieldInputStreamwrapFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 753 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/detect/XmlRootExtractorextractRootElement_CloseShieldInputStreamwrapFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/detect/XmlRootExtractorextractRootElement_CloseShieldInputStreamwrapFikaTest2.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests passed but target third-party method was NOT covered
+   Target: org.apache.commons.io.input.CloseShieldInputStream.wrap(java.io.InputStream)
+
+
+================================================================================
+PROCESSING TEST CASE 22/24
+================================================================================
+Entry Point: org.apache.tika.io.FilenameUtils.getSanitizedEmbeddedFileName(org.apache.tika.metadata.Metadata, java.lang.String, int)
+Third Party Method: org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 428 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FilenameUtilsgetPrefixLength_FilenameUtilsgetPrefixLengthFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 494 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FilenameUtilsgetPrefixLength_FilenameUtilsgetPrefixLengthFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=700
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 578 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FilenameUtilsgetPrefixLength_FilenameUtilsgetPrefixLengthFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 508 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FilenameUtilsgetPrefixLength_FilenameUtilsgetPrefixLengthFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=700
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 428 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FilenameUtilsgetPrefixLength_FilenameUtilsgetPrefixLengthFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FilenameUtilsgetPrefixLength_FilenameUtilsgetPrefixLengthFikaTest.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests passed but target third-party method was NOT covered
+   Target: org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)
+
+
+================================================================================
+PROCESSING TEST CASE 23/24
+================================================================================
+Entry Point: org.apache.tika.io.FilenameUtils.getSanitizedEmbeddedFilePath(org.apache.tika.metadata.Metadata, java.lang.String, int)
+Third Party Method: org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 570 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FilenameUtilsgetPrefixLength_FilenameUtilsgetPrefixLengthFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=702
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests failed, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 574 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FilenameUtilsgetPrefixLength_FilenameUtilsgetPrefixLengthFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 526 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FilenameUtilsgetPrefixLength_FilenameUtilsgetPrefixLengthFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 526 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FilenameUtilsgetPrefixLength_FilenameUtilsgetPrefixLengthFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 540 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FilenameUtilsgetPrefixLength_FilenameUtilsgetPrefixLengthFikaTest2.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)' covered=False
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=False
+[Decide] approved=False (tests passed but target method NOT covered, will retry if iteration<5)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=False
+[Finalize] Cleaned up unsuccessful test file: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/io/FilenameUtilsgetPrefixLength_FilenameUtilsgetPrefixLengthFikaTest2.java
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = False
+
+=== FAILURE REASON ===
+Tests passed but target third-party method was NOT covered
+   Target: org.apache.commons.io.FilenameUtils.getPrefixLength(java.lang.String)
+
+
+================================================================================
+PROCESSING TEST CASE 24/24
+================================================================================
+Entry Point: org.apache.tika.embedder.ExternalEmbedder.embed(org.apache.tika.metadata.Metadata, java.io.InputStream, java.io.OutputStream, org.apache.tika.parser.ParseContext)
+Third Party Method: org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)
+================================================================================
+
+[DEBUG-STREAM] Processing node: generate, has iteration_log: True, approved=False
+[Generate] produced 1676 chars
+/part/01/Tmp/gamageyo/fika/experiments/tika/tika-core
+[DEBUG-STREAM] Processing node: write, has iteration_log: True, approved=False
+[Write] wrote to /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/src/test/java/org/apache/tika/embedder/ExternalEmbeddersendStdOutToOutputStream_IOUtilscopyFikaTest.java
+[DEBUG-STREAM] Processing node: validate_constraints, has iteration_log: True, approved=False
+[Validate] PASSED - hard constraints satisfied
+[DEBUG-STREAM] Processing node: run, has iteration_log: True, approved=False
+[Run] feedback_chars=12195
+[DEBUG-STREAM] Processing node: check_coverage, has iteration_log: True, approved=False
+[Coverage] target 'org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)' covered=True
+[DEBUG-STREAM] Processing node: decide, has iteration_log: True, approved=True
+[Decide] approved=True (tests passed AND target method covered)
+[DEBUG-STREAM] Processing node: finalize, has iteration_log: True, approved=True
+[Finalize] SUCCESS: Test passed and target method covered
+
+[DEBUG] Stream completed. final_state is set
+[DEBUG] final_state keys: ['repo_root', 'mvn_cmd', 'max_iterations', 'run_only_generated_test', 'entryPoint', 'thirdPartyMethod', 'directCaller', 'path', 'methodSources', 'constructors', 'setters', 'fieldDeclarations', 'imports', 'testTemplate', 'conditionCount', 'callCount', 'covered', 'test_package', 'test_class_name', 'iteration', 'java_source', 'last_run_output', 'last_exit_code', 'success', 'approved', 'test_rel_path', 'trace', 'target_method_covered', 'coverage_total_lines', 'coverage_error', 'path_coverage_details', 'iteration_log', 'last_prompt']
+[DEBUG] approved (after bool()) = True
+✓ Test approved at iteration 1
+  JSON path: /part/01/Tmp/gamageyo/fika/experiments/tika/tika-core/third_party_apis_full_methods.json
+  Looking for thirdPartyMethod: org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)
+  Looking for directCaller: org.apache.tika.embedder.ExternalEmbedder.sendStdOutToOutputStream(java.lang.Process, java.io.OutputStream)
+[DEBUG]   ✓ MATCH FOUND at path 23
+✓ Updated 1 record(s) in JSON file as covered
+  Third Party Method: org.apache.commons.io.IOUtils.copy(java.io.InputStream, java.io.OutputStream)
+  Direct Caller: org.apache.tika.embedder.ExternalEmbedder.sendStdOutToOutputStream(java.lang.Process, java.io.OutputStream)
+
+================================================================================
+=== OVERALL SUMMARY ===
+================================================================================
+Total Test Cases: 24
+Processed: 24
+Approved: 10
+Failed: 14
+Success Rate: 41.7%
+================================================================================
+
+Approval Details:
+  Test 5: Approved at iteration 1
+  Test 8: Approved at iteration 1
+  Test 12: Approved at iteration 2
+  Test 13: Approved at iteration 1
+  Test 14: Approved at iteration 1
+  Test 15: Approved at iteration 2
+  Test 16: Approved at iteration 3
+  Test 18: Approved at iteration 1
+  Test 19: Approved at iteration 3
+  Test 24: Approved at iteration 1
+================================================================================
+
