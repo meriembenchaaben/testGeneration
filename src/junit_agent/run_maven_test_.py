@@ -12,6 +12,7 @@ This module provides functionality to:
 import subprocess
 import logging
 import os
+import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
@@ -37,11 +38,23 @@ class RunResult:
 def run_maven_clean(repo_root: Path) -> RunResult:
     """
     Run Maven clean to remove previous build artifacts.
+    Also explicitly deletes the target directory including coverage reports
+    to ensure a clean state.
     Args:
         repo_root: Root directory of the Maven project
     Returns:
         RunResult with execution details
     """
+    # First, manually delete the target directory to ensure coverage reports are removed
+    target_dir = repo_root / "target"
+    if target_dir.exists():
+        logger.info(f"Manually deleting target directory: {target_dir}")
+        try:
+            shutil.rmtree(target_dir)
+            logger.info("Target directory deleted successfully")
+        except Exception as e:
+            logger.warning(f"Failed to manually delete target directory: {e}")
+    
     clean_cmd = ["mvn", "clean", "-f", str(repo_root / "pom.xml")]
     logger.info("Running Maven clean...")
     original_dir = os.getcwd()
@@ -86,7 +99,7 @@ def run_maven_test(
     repo_root: Path,
     mvn_cmd: str = "mvn",
     test_fqcn: Optional[str] = None,
-    timeout_s: int = 300,
+    timeout_s: int = 600,
     with_jacoco: bool = True,
     skip_checkstyle: bool = True
 ) -> RunResult:
@@ -97,7 +110,7 @@ def run_maven_test(
         mvn_cmd: Maven command to run (default: "mvn")
         test_fqcn: Fully qualified class name of specific test to run
                    If None, runs all tests
-        timeout_s: Timeout in seconds (default: 300)
+        timeout_s: Timeout in seconds (default: 600)
         with_jacoco: Whether to generate JaCoCo coverage report (default: True)
         skip_checkstyle: Whether to skip checkstyle checks (default: True)
     Returns:
@@ -108,17 +121,16 @@ def run_maven_test(
     pom_file = repo_root / "pom.xml"
     if not pom_file.exists():
         raise ValueError(f"No pom.xml found in {repo_root}")
-    cmd = [mvn_cmd, "test"]
+    cmd = [mvn_cmd, "clean", "test"]
     if test_fqcn:
         cmd.append(f"-Dtest={test_fqcn}")
         logger.info(f"Running specific test class: {test_fqcn}")
     else:
         logger.info("Running all tests")
-    if with_jacoco:
-        cmd.append("jacoco:report")
-        logger.info("JaCoCo coverage report will be generated")
     if skip_checkstyle:
         cmd.append("-Dcheckstyle.skip=true")
+        cmd.append("-Dspotless.skip=true")
+        cmd.append("-Dmaven.test.failure.ignore=false")
     cmd.extend(["-f", str(pom_file)])
     logger.info(f"Executing: {' '.join(cmd)}")
     logger.info(f"Working directory: {repo_root}")
@@ -174,7 +186,7 @@ def run_maven_test(
 def run_maven_test_with_clean(
     repo_root: Path,
     test_fqcn: Optional[str] = None,
-    timeout_s: int = 300
+    timeout_s: int = 600
 ) -> RunResult:
     """
     Run Maven clean followed by test execution with JaCoCo coverage.

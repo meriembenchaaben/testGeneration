@@ -52,7 +52,11 @@ def get_test_destination_path(repo_root: Path, test_class_fqn: str) -> Path:
     Returns:
         Path to the destination directory where the test file should be placed
     """
-    test_base = repo_root / "src" / "test" / "java"
+    print(repo_root)
+    if 'immutables' in str(repo_root):
+        test_base = repo_root / "test"
+    else:
+        test_base = repo_root / "src" / "test" / "java"
     if not test_base.exists():
         raise ValueError(f"Maven test directory not found: {test_base}")
     # The idea here is to put the file in the correct package if a package name exists, otherwise directly under test_base
