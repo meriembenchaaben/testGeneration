@@ -76,7 +76,7 @@ def run_maven_test(
     try:
         impl_result = _run_maven_impl(
             repo_root=repo_root,
-            mvn_cmd="mvn",
+            mvn_cmd=mvn_cmd,
             test_fqcn=test_fqcn,
             timeout_s=timeout_s,
             with_jacoco=True,
