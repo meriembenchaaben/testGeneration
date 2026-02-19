@@ -382,7 +382,7 @@ def _extract_java_code(generated_text: str) -> str:
 class AppConfig:
     repo_root: Path
     mvn_cmd: str = "mvn"
-    max_iterations: int = 5
+    max_iterations: int = 1
     run_only_generated_test: bool = True
 
 
@@ -456,10 +456,7 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
     prompt = PromptTemplate(
         input_variables=[
             "entryPoint", "thirdPartyMethod", "path", "methodSources", 
-            "constructors", "setters", "fieldDeclarations", "imports",
-            "test_package", "test_class_name", "last_run_output",
-            "testTemplate", "conditionCount"
-
+            "test_package", "test_class_name", "last_run_output"
         ],
         template=(
             SYSTEM_PROMPT
@@ -478,27 +475,16 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         it = int(state.get("iteration", 0)) + 1
         state["iteration"] = it
         state.setdefault("trace", []).append(f"[Generate] iteration={it}")
-        method_sources = [decode_code(src) for src in state["methodSources"]]
-        constructors = [decode_code(c) for c in state.get("constructors", [])]
-        setters = [decode_code(s) for s in state.get("setters", [])]
-        field_declarations = [decode_code(f) for f in state.get("fieldDeclarations", [])]
         
-        # Build formatted blocks only if non-empty
-        method_sources_str = "```java\n" + "\n\n".join(method_sources) + "\n```" if method_sources else ""
-        constructors_str = "```java\n" + "\n\n".join(constructors) + "\n```" if constructors else ""
-        setters_str = "```java\n" + "\n\n".join(setters) + "\n```" if setters else ""
-        field_declarations_str = "```java\n" + "\n".join(field_declarations) + "\n```" if field_declarations else ""
+        # Only use the last method source for baseline
+        method_sources = [decode_code(src) for src in state["methodSources"]]
+        last_method_source = method_sources[-1] if method_sources else ""
         
         rendered = prompt.format(
             entryPoint=state["entryPoint"],
             thirdPartyMethod=state["thirdPartyMethod"],
             path=" -> ".join(state["path"]),
-            methodSources=method_sources_str,
-            constructors=constructors_str,
-            setters=setters_str,
-            fieldDeclarations=field_declarations_str,
-            imports=", ".join(state.get("imports", [])),
-            testTemplate=decode_code(state.get("testTemplate", "")),
+            methodSources=last_method_source,
             test_package=state["test_package"],
             test_class_name=state["test_class_name"],
             last_run_output=state.get("last_run_output", "") or "",

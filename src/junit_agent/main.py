@@ -44,7 +44,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--model", type=str, default="Qwen/Qwen2.5-1.5B-Instruct", help="Model id (HuggingFace model or 'deepseek-chat' for DeepSeek)")
     p.add_argument("--api", type=str, choices=["hf", "deepseek"], default="hf", help="API to use: 'hf' for HuggingFace (local) or 'deepseek' for DeepSeek API")
     p.add_argument("--api-key", type=str, help="API key for DeepSeek (or set DEEPSEEK_API_KEY env var)")
-    p.add_argument("--iters", type=int, default=5, help="Max generate-run iterations")
+    p.add_argument("--iters", type=int, default=1, help="Max generate-run iterations")
     p.add_argument("--temp", type=float, default=0.1, help="Sampling temperature")
     p.add_argument("--max-new", type=int, default=2048, help="Max new tokens")
     p.add_argument("--run-all", action="store_true", help="Run full mvn test suite (default runs only generated test)")
