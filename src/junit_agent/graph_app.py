@@ -476,15 +476,15 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         state["iteration"] = it
         state.setdefault("trace", []).append(f"[Generate] iteration={it}")
         
-        # Only use the last method source for baseline
+        # Use all method sources for baseline
         method_sources = [decode_code(src) for src in state["methodSources"]]
-        last_method_source = method_sources[-1] if method_sources else ""
+        all_method_sources = "\n\n".join(method_sources) if method_sources else ""
         
         rendered = prompt.format(
             entryPoint=state["entryPoint"],
             thirdPartyMethod=state["thirdPartyMethod"],
             path=" -> ".join(state["path"]),
-            methodSources=last_method_source,
+            methodSources=all_method_sources,
             test_package=state["test_package"],
             test_class_name=state["test_class_name"],
             last_run_output=state.get("last_run_output", "") or "",
