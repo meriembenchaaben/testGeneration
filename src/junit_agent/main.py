@@ -6,6 +6,7 @@ import logging
 import os
 import re
 import sys
+from time import perf_counter
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
@@ -53,6 +54,14 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--all", action="store_true", help="Process all test cases in input file (default: first only)")
     p.add_argument("--resume", type=int, help="Resume from a specific record index (0-based)")
     return p.parse_args()
+
+
+def format_elapsed_time(seconds: float) -> str:
+    total_seconds = max(0.0, seconds)
+    hours, remainder = divmod(int(total_seconds), 3600)
+    minutes, whole_seconds = divmod(remainder, 60)
+    milliseconds = int((total_seconds - int(total_seconds)) * 1000)
+    return f"{hours:02d}:{minutes:02d}:{whole_seconds:02d}.{milliseconds:03d}"
 
 def extract_package_and_class(test_template: str) -> tuple[str, str]:
     """
@@ -310,129 +319,139 @@ def is_record_covered_now(json_path: Path, third_party_method: str, direct_calle
 
 def main() -> int:
     args = parse_args()
+    start_time = perf_counter()
 
-    repo_root = Path(args.repo_root).resolve()
-    test_cases, total_in_file, skipped_count = load_test_cases(Path(args.input_json).resolve())
-    
-    # Report skipped cases
-    if skipped_count > 0:
-        print(f"\n{'='*80}")
-        print(f"⊙ Skipped {skipped_count} test case(s) already marked as covered")
-        print(f"⊙ Processing {len(test_cases)} uncovered test case(s) from {total_in_file} total")
-        print(f"{'='*80}\n")
-    
-    # Determine which test cases to process
-    if args.all:
-        # Apply resume offset if specified
-        if args.resume is not None:
-            if args.resume >= len(test_cases):
-                print(f"Error: --resume {args.resume} is beyond the number of available test cases ({len(test_cases)})")
-                return 1
-            if args.resume < 0:
-                print(f"Error: --resume must be a non-negative integer")
-                return 1
-            print(f"Resuming from record {args.resume} (processing {len(test_cases) - args.resume} test cases)")
-            cases_to_process = test_cases[args.resume:]
-        else:
-            print(f"Processing all {len(test_cases)} test cases from input file")
-            cases_to_process = test_cases
-    else:
-        if args.resume is not None:
-            print("Warning: --resume is only applicable with --all flag. Ignoring --resume.")
-        if len(test_cases) > 1:
-            print(f"Found {len(test_cases)} test cases in input file")
-            print("Processing first test case only. Use --all to process all cases.")
-        cases_to_process = [test_cases[0]]
-    
-    cfg = AppConfig(
-        repo_root=repo_root,
-        mvn_cmd=args.mvn,
-        max_iterations=args.iters,
-        run_only_generated_test=(not args.run_all),
-    )
-
-    # Build LLM based on selected API
-    if args.api == "deepseek":
-        llm = build_deepseek_llm(
-            api_key=args.api_key,
-            temperature=args.temp,
-            max_tokens=args.max_new,
-            model=args.model if args.model != "Qwen/Qwen2.5-1.5B-Instruct" else "deepseek-chat",
-        )
-        print(f"Using DeepSeek API with model: {args.model if args.model != 'Qwen/Qwen2.5-1.5B-Instruct' else 'deepseek-chat'}")
-    else:
-        llm = build_local_hf_llm(
-            model_id=args.model,
-            temperature=args.temp,
-            max_new_tokens=args.max_new,
-        )
-        print(f"Using local HuggingFace model: {args.model}")
-
-    app = build_graph(llm=llm, cfg=cfg)
-    # Configure logging: console INFO, keep large details for file if requested
-    logger = logging.getLogger("junit_agent")
-    logger.setLevel(logging.DEBUG)
-    # Console handler (INFO)
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.INFO)
-    ch.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
-    logger.addHandler(ch)
-
-    # Optional text file for detailed iteration logs (prompts, decisions, generated text)
-    text_log_fh = None
-    text_log_path = Path(args.log_file) if args.log_file else None
-    if text_log_path:
-        # Open in append mode so multiple runs append
-        text_log_fh = open(text_log_path, "a", encoding="utf-8")
-
-
-        def _tlog(line: str) -> None:
-            if text_log_fh is None:
-                return
-            text_log_fh.write(line + "\n")
-            text_log_fh.flush()
-
-
-        text_log_fh.write("\n" + "=" * 100 + "\n")
-        text_log_fh.write(f"LOG SESSION STARTED: {datetime.now().isoformat()}\n")
-        text_log_fh.write("=" * 100 + "\n\n")
-    
-    # Separate file for full prompts (untruncated)
-    prompts_log_fh = None
-    if text_log_path:
-        prompts_log_path = text_log_path.parent / "prompts.log"
-        prompts_log_fh = open(prompts_log_path, "a", encoding="utf-8")
-        
-        def _plog(line: str) -> None:
-            if prompts_log_fh is None:
-                return
-            prompts_log_fh.write(line + "\n")
-            prompts_log_fh.flush()
-        
-        prompts_log_fh.write("\n" + "=" * 100 + "\n")
-        prompts_log_fh.write(f"PROMPTS LOG SESSION STARTED: {datetime.now().isoformat()}\n")
-        prompts_log_fh.write("=" * 100 + "\n\n")
-        
-
-    # Optional JSONL file for detailed per-test logs
     log_fh = None
     json_log_path = None
-    if args.log_file:
-        # Use .jsonl extension for JSON logs alongside text logs
-        base_path = Path(args.log_file)
-        json_log_path = base_path.parent / f"{base_path.stem}.jsonl"
-        # open append so multiple runs append
-        log_fh = open(json_log_path, "a", encoding="utf-8")
-
-    # Store results for all test cases
-    all_results = []
+    text_log_fh = None
+    prompts_log_fh = None
+    exit_code = 1
+    cases_to_process: list[GenerationInput] = []
+    all_results: list[dict] = []
     total_approved = 0
-    
-    # Calculate starting index for display purposes
-    start_idx = args.resume if (args.all and args.resume is not None) else 0
-    
-    # Process each test case
+
     try:
+        repo_root = Path(args.repo_root).resolve()
+        test_cases, total_in_file, skipped_count = load_test_cases(Path(args.input_json).resolve())
+        
+        # Report skipped cases
+        if skipped_count > 0:
+            print(f"\n{'='*80}")
+            print(f"⊙ Skipped {skipped_count} test case(s) already marked as covered")
+            print(f"⊙ Processing {len(test_cases)} uncovered test case(s) from {total_in_file} total")
+            print(f"{'='*80}\n")
+        
+        # Determine which test cases to process
+        if args.all:
+            # Apply resume offset if specified
+            if args.resume is not None:
+                if args.resume >= len(test_cases):
+                    print(f"Error: --resume {args.resume} is beyond the number of available test cases ({len(test_cases)})")
+                    exit_code = 1
+                    return exit_code
+                if args.resume < 0:
+                    print(f"Error: --resume must be a non-negative integer")
+                    exit_code = 1
+                    return exit_code
+                print(f"Resuming from record {args.resume} (processing {len(test_cases) - args.resume} test cases)")
+                cases_to_process = test_cases[args.resume:]
+            else:
+                print(f"Processing all {len(test_cases)} test cases from input file")
+                cases_to_process = test_cases
+        else:
+            if args.resume is not None:
+                print("Warning: --resume is only applicable with --all flag. Ignoring --resume.")
+            if len(test_cases) > 1:
+                print(f"Found {len(test_cases)} test cases in input file")
+                print("Processing first test case only. Use --all to process all cases.")
+            cases_to_process = [test_cases[0]]
+        
+        cfg = AppConfig(
+            repo_root=repo_root,
+            mvn_cmd=args.mvn,
+            max_iterations=args.iters,
+            run_only_generated_test=(not args.run_all),
+        )
+
+        # Build LLM based on selected API
+        if args.api == "deepseek":
+            llm = build_deepseek_llm(
+                api_key=args.api_key,
+                temperature=args.temp,
+                max_tokens=args.max_new,
+                model=args.model if args.model != "Qwen/Qwen2.5-1.5B-Instruct" else "deepseek-chat",
+            )
+            print(f"Using DeepSeek API with model: {args.model if args.model != 'Qwen/Qwen2.5-1.5B-Instruct' else 'deepseek-chat'}")
+        else:
+            llm = build_local_hf_llm(
+                model_id=args.model,
+                temperature=args.temp,
+                max_new_tokens=args.max_new,
+            )
+            print(f"Using local HuggingFace model: {args.model}")
+
+        app = build_graph(llm=llm, cfg=cfg)
+        # Configure logging: console INFO, keep large details for file if requested
+        logger = logging.getLogger("junit_agent")
+        logger.setLevel(logging.DEBUG)
+        # Console handler (INFO)
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.INFO)
+        ch.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
+        logger.addHandler(ch)
+
+        # Optional text file for detailed iteration logs (prompts, decisions, generated text)
+        text_log_path = Path(args.log_file) if args.log_file else None
+        if text_log_path:
+            # Open in append mode so multiple runs append
+            text_log_fh = open(text_log_path, "a", encoding="utf-8")
+
+
+            def _tlog(line: str) -> None:
+                if text_log_fh is None:
+                    return
+                text_log_fh.write(line + "\n")
+                text_log_fh.flush()
+
+
+            text_log_fh.write("\n" + "=" * 100 + "\n")
+            text_log_fh.write(f"LOG SESSION STARTED: {datetime.now().isoformat()}\n")
+            text_log_fh.write("=" * 100 + "\n\n")
+        else:
+            def _tlog(line: str) -> None:
+                return
+        
+        # Separate file for full prompts (untruncated)
+        if text_log_path:
+            prompts_log_path = text_log_path.parent / "prompts.log"
+            prompts_log_fh = open(prompts_log_path, "a", encoding="utf-8")
+            
+            def _plog(line: str) -> None:
+                if prompts_log_fh is None:
+                    return
+                prompts_log_fh.write(line + "\n")
+                prompts_log_fh.flush()
+            
+            prompts_log_fh.write("\n" + "=" * 100 + "\n")
+            prompts_log_fh.write(f"PROMPTS LOG SESSION STARTED: {datetime.now().isoformat()}\n")
+            prompts_log_fh.write("=" * 100 + "\n\n")
+        else:
+            def _plog(line: str) -> None:
+                return
+            
+
+        # Optional JSONL file for detailed per-test logs
+        if args.log_file:
+            # Use .jsonl extension for JSON logs alongside text logs
+            base_path = Path(args.log_file)
+            json_log_path = base_path.parent / f"{base_path.stem}.jsonl"
+            # open append so multiple runs append
+            log_fh = open(json_log_path, "a", encoding="utf-8")
+
+        # Calculate starting index for display purposes
+        start_idx = args.resume if (args.all and args.resume is not None) else 0
+        
+        # Process each test case
         for idx, inp in enumerate(cases_to_process, start_idx + 1):
             print("\n" + "=" * 80)
             print(f"PROCESSING TEST CASE {idx}/{len(cases_to_process)}")
@@ -713,50 +732,56 @@ def main() -> int:
         print("!" * 80)
         print(f"Processed {len(all_results)} of {len(cases_to_process)} test cases before interruption")
         print("!" * 80 + "\n")
-    
-    # Print overall summary (runs even after interrupt)
-    print("\n" + "=" * 80)
-    print("=== OVERALL SUMMARY ===")
-    print("=" * 80)
-    print(f"Total Test Cases: {len(cases_to_process)}")
-    print(f"Processed: {len(all_results)}")
-    print(f"Approved: {total_approved}")
-    print(f"Failed: {len(all_results) - total_approved}")
-    if len(all_results) > 0:
-        print(f"Success Rate: {total_approved / len(all_results) * 100:.1f}%")
-    print("=" * 80)
-    
-    # Show approval iterations for successful tests
-    if total_approved > 0:
-        print("\nApproval Details:")
-        for result in all_results:
-            if result.get("approved") and result.get("approval_iteration") is not None:
-                print(f"  Test {result['test_case_index']}: Approved at iteration {result['approval_iteration']}")
-    
-    print("=" * 80 + "\n")
+    finally:
+        # Print overall summary (runs even after interrupt)
+        if 'cases_to_process' in locals():
+            print("\n" + "=" * 80)
+            print("=== OVERALL SUMMARY ===")
+            print("=" * 80)
+            print(f"Total Test Cases: {len(cases_to_process)}")
+            print(f"Processed: {len(all_results)}")
+            print(f"Approved: {total_approved}")
+            print(f"Failed: {len(all_results) - total_approved}")
+            if len(all_results) > 0:
+                print(f"Success Rate: {total_approved / len(all_results) * 100:.1f}%")
+            print("=" * 80)
+            
+            # Show approval iterations for successful tests
+            if total_approved > 0:
+                print("\nApproval Details:")
+                for result in all_results:
+                    if result.get("approved") and result.get("approval_iteration") is not None:
+                        print(f"  Test {result['test_case_index']}: Approved at iteration {result['approval_iteration']}")
+            
+            print("=" * 80 + "\n")
 
-    # Optional: Save all results to JSON
-    if args.output_json:
-        output_path = Path(args.output_json)
-        output_data = {
-            "total_cases": len(cases_to_process),
-            "approved": total_approved,
-            "failed": len(cases_to_process) - total_approved,
-            "success_rate": total_approved / len(cases_to_process),
-            "results": all_results
-        }
-        output_path.write_text(json.dumps(output_data, indent=2), encoding="utf-8")
-        print(f"✓ Saved all results to: {output_path}")
+            # Optional: Save all results to JSON
+            if args.output_json:
+                output_path = Path(args.output_json)
+                output_data = {
+                    "total_cases": len(cases_to_process),
+                    "approved": total_approved,
+                    "failed": len(cases_to_process) - total_approved,
+                    "success_rate": total_approved / len(cases_to_process),
+                    "results": all_results
+                }
+                output_path.write_text(json.dumps(output_data, indent=2), encoding="utf-8")
+                print(f"✓ Saved all results to: {output_path}")
 
-    # Close file handles
-    if log_fh is not None:
-        log_fh.close()
-    if text_log_fh is not None:
-        text_log_fh.close()
-    if prompts_log_fh is not None:
-        prompts_log_fh.close()
+        # Close file handles
+        if log_fh is not None:
+            log_fh.close()
+        if text_log_fh is not None:
+            text_log_fh.close()
+        if prompts_log_fh is not None:
+            prompts_log_fh.close()
+
+        elapsed = perf_counter() - start_time
+        print(f"Total elapsed time: {format_elapsed_time(elapsed)}")
 
     # Return 0 if all approved, 1 if any failed
+    if 'cases_to_process' not in locals():
+        return exit_code
     return 0 if total_approved == len(cases_to_process) else 1
 
 
