@@ -44,6 +44,17 @@ python -m junit_agent.main /path/to/maven-project input.json \
 
 You can also set `DEEPSEEK_API_KEY` instead of passing `--api-key`.
 
+### 4) Run the agent (DeepSeek V3.2 via Chutes)
+```bash
+python -m junit_agent.main /path/to/maven-project input.json \
+  --api chutes \
+  --api-key "your-chutes-api-key-here" \
+  --log-file agent.log
+```
+
+You can also set `CHUTES_API_KEY` instead of passing `--api-key`.
+The default model is `deepseek-ai/DeepSeek-V3.2-TEE`; override with `--model` if needed.
+
 ## CLI options
 
 All backends share the same CLI; `--api` selects the model source.
@@ -56,9 +67,9 @@ python -m junit_agent.main --help
 Key options:
 
 ```bash
---api {hf,deepseek}   Model backend (default: hf)
---model MODEL_ID      HF model id (default: Qwen/Qwen2.5-1.5B-Instruct) or DeepSeek model name
---api-key KEY         DeepSeek API key (or set DEEPSEEK_API_KEY)
+--api {hf,deepseek,chutes}  Model backend (default: hf)
+--model MODEL_ID      HF model id, DeepSeek model name, or Chutes model id
+--api-key KEY         API key for DeepSeek or Chutes (or set DEEPSEEK_API_KEY / CHUTES_API_KEY)
 --temp FLOAT          Sampling temperature (default: 0.1)
 --max-new N           Max new tokens (default: 2048)
 --iters N             Max generate→run iterations (default: 5)
