@@ -30,19 +30,19 @@ def build_deepseek_llm(
     return llm
 
 
-def build_chutes_deepseek_llm(
+def build_openrouter_llm(
     api_key: str | None = None,
-    temperature: float = 1.0,
+    temperature: float = 0.1,
     max_tokens: int = 2048,
-    model: str = "deepseek-ai/DeepSeek-V3.2-TEE",
+    model: str = "deepseek/deepseek-v3.2",
 ) -> ChatOpenAI:
     if api_key is None:
-        api_key = os.environ.get("CHUTES_API_KEY")
+        api_key = os.environ.get("OPENROUTER_API_KEY")
 
     if not api_key:
         raise ValueError(
-            "Chutes API key not provided. Either pass it as api_key parameter "
-            "or set CHUTES_API_KEY environment variable."
+            "OpenRouter API key not provided. Either pass it as api_key parameter "
+            "or set OPENROUTER_API_KEY environment variable."
         )
 
     llm = ChatOpenAI(
@@ -50,7 +50,7 @@ def build_chutes_deepseek_llm(
         temperature=temperature,
         max_tokens=max_tokens,
         api_key=api_key,
-        base_url="https://llm.chutes.ai/v1",
+        base_url="https://openrouter.ai/api/v1",
     )
 
     return llm
