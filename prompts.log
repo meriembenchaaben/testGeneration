@@ -1,0 +1,3114 @@
+
+====================================================================================================
+PROMPTS LOG SESSION STARTED: 2026-08-08T21:44:33.991279
+====================================================================================================
+
+====================================================================================================
+TEST CASE 1/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.trace(java.lang.String)
+Third Party Method: org.apache.logging.log4j.Logger.trace(org.apache.logging.log4j.Marker, java.lang.String)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.trace(java.lang.String)
+thirdPartyMethod: org.apache.logging.log4j.Logger.trace(org.apache.logging.log4j.Marker, java.lang.String)
+path: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.trace(java.lang.String) -> org.apache.logging.log4j.Logger.trace(org.apache.logging.log4j.Marker, java.lang.String)
+methodSources:
+```java
+@Override
+public void trace(String s) // PATH: Test should invoke the next Logger.trace(...) [step in execution path]
+{
+    log.trace(MARKER, s);
+}
+```
+constructors:
+```java
+public Log4j2LoggerImpl(Logger logger) {
+    log = logger;
+}
+```
+fieldDeclarations:
+```java
+private static final Marker MARKER = MarkerManager.getMarker(LogFactory.MARKER);
+private final Logger log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.debug(MARKER, s);
+}
+
+@Override
+public void error(String s) {
+    log.error(MARKER, s);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.error(MARKER, s, e);
+}
+
+@Override
+public void trace(String s) {
+    log.trace(MARKER, s);
+}
+
+@Override
+public void warn(String s) {
+    log.warn(MARKER, s);
+}
+```
+imports: org.apache.logging.log4j.Logger, org.apache.logging.log4j.Marker
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.log4j2
+- class name MUST be: Log4j2LoggerImpltrace_LoggertraceFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 2/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String)
+Third Party Method: org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String)
+thirdPartyMethod: org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String)
+path: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String) -> org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String)
+methodSources:
+```java
+@Override
+public void error(String s) // PATH: Test should invoke the next Logger.error(...) [step in execution path]
+{
+    log.error(MARKER, s);
+}
+```
+constructors:
+```java
+public Log4j2LoggerImpl(Logger logger) {
+    log = logger;
+}
+```
+fieldDeclarations:
+```java
+private static final Marker MARKER = MarkerManager.getMarker(LogFactory.MARKER);
+private final Logger log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.debug(MARKER, s);
+}
+
+@Override
+public void error(String s) {
+    log.error(MARKER, s);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.error(MARKER, s, e);
+}
+
+@Override
+public void trace(String s) {
+    log.trace(MARKER, s);
+}
+
+@Override
+public void warn(String s) {
+    log.warn(MARKER, s);
+}
+```
+imports: org.apache.logging.log4j.Logger, org.apache.logging.log4j.Marker
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.log4j2
+- class name MUST be: Log4j2LoggerImplerror_LoggererrorFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 3/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(java.lang.String)
+Third Party Method: org.apache.commons.logging.Log.debug(java.lang.Object)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(java.lang.String)
+thirdPartyMethod: org.apache.commons.logging.Log.debug(java.lang.Object)
+path: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(java.lang.String) -> org.apache.commons.logging.Log.debug(java.lang.Object)
+methodSources:
+```java
+@Override
+public void debug(String s) // PATH: Test should invoke the next Log.debug(...) [step in execution path]
+{
+    log.debug(s);
+}
+```
+constructors:
+```java
+public JakartaCommonsLoggingImpl(String clazz) {
+    log = LogFactory.getLog(clazz);
+}
+```
+fieldDeclarations:
+```java
+private final Log log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.debug(s);
+}
+
+@Override
+public void error(String s) {
+    log.error(s);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.error(s, e);
+}
+
+@Override
+public void trace(String s) {
+    log.trace(s);
+}
+
+@Override
+public void warn(String s) {
+    log.warn(s);
+}
+```
+imports: org.apache.commons.logging.Log, org.apache.commons.logging.LogFactory
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.commons
+- class name MUST be: JakartaCommonsLoggingImpldebug_LogdebugFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 4/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.warn(java.lang.String)
+Third Party Method: org.apache.commons.logging.Log.warn(java.lang.Object)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.warn(java.lang.String)
+thirdPartyMethod: org.apache.commons.logging.Log.warn(java.lang.Object)
+path: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.warn(java.lang.String) -> org.apache.commons.logging.Log.warn(java.lang.Object)
+methodSources:
+```java
+@Override
+public void warn(String s) // PATH: Test should invoke the next Log.warn(...) [step in execution path]
+{
+    log.warn(s);
+}
+```
+constructors:
+```java
+public JakartaCommonsLoggingImpl(String clazz) {
+    log = LogFactory.getLog(clazz);
+}
+```
+fieldDeclarations:
+```java
+private final Log log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.debug(s);
+}
+
+@Override
+public void error(String s) {
+    log.error(s);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.error(s, e);
+}
+
+@Override
+public void trace(String s) {
+    log.trace(s);
+}
+
+@Override
+public void warn(String s) {
+    log.warn(s);
+}
+```
+imports: org.apache.commons.logging.Log, org.apache.commons.logging.LogFactory
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.commons
+- class name MUST be: JakartaCommonsLoggingImplwarn_LogwarnFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 5/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<init>(org.apache.logging.log4j.spi.AbstractLogger)
+Third Party Method: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.<init>(org.apache.logging.log4j.spi.ExtendedLogger, java.lang.String, org.apache.logging.log4j.message.MessageFactory)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<init>(org.apache.logging.log4j.spi.AbstractLogger)
+thirdPartyMethod: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.<init>(org.apache.logging.log4j.spi.ExtendedLogger, java.lang.String, org.apache.logging.log4j.message.MessageFactory)
+path: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<init>(org.apache.logging.log4j.spi.AbstractLogger) -> org.apache.logging.log4j.spi.ExtendedLoggerWrapper.<init>(org.apache.logging.log4j.spi.ExtendedLogger, java.lang.String, org.apache.logging.log4j.message.MessageFactory)
+methodSources:
+```java
+public Log4j2AbstractLoggerImpl(AbstractLogger abstractLogger) {
+    log = new ExtendedLoggerWrapper(abstractLogger, abstractLogger.getName(), abstractLogger.getMessageFactory());
+}
+```
+constructors:
+```java
+public Log4j2AbstractLoggerImpl(AbstractLogger abstractLogger) {
+    log = new ExtendedLoggerWrapper(abstractLogger, abstractLogger.getName(), abstractLogger.getMessageFactory());
+}
+```
+fieldDeclarations:
+```java
+private static final Marker MARKER = MarkerManager.getMarker(LogFactory.MARKER);
+private static final String FQCN = Log4j2Impl.class.getName();
+private final ExtendedLoggerWrapper log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.logIfEnabled(FQCN, Level.DEBUG, MARKER, ((Message) (new SimpleMessage(s))), null);
+}
+
+@Override
+public void error(String s) {
+    log.logIfEnabled(FQCN, Level.ERROR, MARKER, ((Message) (new SimpleMessage(s))), null);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.logIfEnabled(FQCN, Level.ERROR, MARKER, ((Message) (new SimpleMessage(s))), e);
+}
+
+@Override
+public void trace(String s) {
+    log.logIfEnabled(FQCN, Level.TRACE, MARKER, ((Message) (new SimpleMessage(s))), null);
+}
+
+@Override
+public void warn(String s) {
+    log.logIfEnabled(FQCN, Level.WARN, MARKER, ((Message) (new SimpleMessage(s))), null);
+}
+```
+imports: org.apache.logging.log4j.Level, org.apache.logging.log4j.Marker, org.apache.logging.log4j.message.Message, org.apache.logging.log4j.message.MessageFactory, org.apache.logging.log4j.message.SimpleMessage, org.apache.logging.log4j.spi.AbstractLogger, org.apache.logging.log4j.spi.ExtendedLogger, org.apache.logging.log4j.spi.ExtendedLoggerWrapper
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.log4j2
+- class name MUST be: Log4j2AbstractLoggerImplmethod_ExtendedLoggerWrappermethodFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 6/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.isTraceEnabled()
+Third Party Method: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.isTraceEnabled()
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.isTraceEnabled()
+thirdPartyMethod: org.apache.logging.log4j.spi.ExtendedLoggerWrapper.isTraceEnabled()
+path: org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.isTraceEnabled() -> org.apache.logging.log4j.spi.ExtendedLoggerWrapper.isTraceEnabled()
+methodSources:
+```java
+@Override
+public boolean isTraceEnabled() {
+    return log.isTraceEnabled();
+}
+```
+constructors:
+```java
+public Log4j2AbstractLoggerImpl(AbstractLogger abstractLogger) {
+    log = new ExtendedLoggerWrapper(abstractLogger, abstractLogger.getName(), abstractLogger.getMessageFactory());
+}
+```
+fieldDeclarations:
+```java
+private static final Marker MARKER = MarkerManager.getMarker(LogFactory.MARKER);
+private static final String FQCN = Log4j2Impl.class.getName();
+private final ExtendedLoggerWrapper log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.logIfEnabled(FQCN, Level.DEBUG, MARKER, ((Message) (new SimpleMessage(s))), null);
+}
+
+@Override
+public void error(String s) {
+    log.logIfEnabled(FQCN, Level.ERROR, MARKER, ((Message) (new SimpleMessage(s))), null);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.logIfEnabled(FQCN, Level.ERROR, MARKER, ((Message) (new SimpleMessage(s))), e);
+}
+
+@Override
+public void trace(String s) {
+    log.logIfEnabled(FQCN, Level.TRACE, MARKER, ((Message) (new SimpleMessage(s))), null);
+}
+
+@Override
+public void warn(String s) {
+    log.logIfEnabled(FQCN, Level.WARN, MARKER, ((Message) (new SimpleMessage(s))), null);
+}
+```
+imports: org.apache.logging.log4j.Level, org.apache.logging.log4j.Marker, org.apache.logging.log4j.message.Message, org.apache.logging.log4j.message.MessageFactory, org.apache.logging.log4j.message.SimpleMessage, org.apache.logging.log4j.spi.AbstractLogger, org.apache.logging.log4j.spi.ExtendedLogger, org.apache.logging.log4j.spi.ExtendedLoggerWrapper
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.log4j2
+- class name MUST be: Log4j2AbstractLoggerImplisTraceEnabled_ExtendedLoggerWrapperisTraceEnabledFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 7/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.log4j.Log4jImpl.<init>(java.lang.String)
+Third Party Method: org.apache.log4j.Logger.getLogger(java.lang.String)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.log4j.Log4jImpl.<init>(java.lang.String)
+thirdPartyMethod: org.apache.log4j.Logger.getLogger(java.lang.String)
+path: org.apache.ibatis.logging.log4j.Log4jImpl.<init>(java.lang.String) -> org.apache.log4j.Logger.getLogger(java.lang.String)
+methodSources:
+```java
+public (String clazz) {
+    // PATH: Test should invoke the next Logger.getLogger(...) [step in execution path]
+    log = Logger.getLogger(clazz);
+}
+```
+constructors:
+```java
+public Log4jImpl(String clazz) {
+    log = Logger.getLogger(clazz);
+}
+```
+fieldDeclarations:
+```java
+private static final String FQCN = Log4jImpl.class.getName();
+private final Logger log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.log(FQCN, Level.DEBUG, s, null);
+}
+
+@Override
+public void error(String s) {
+    log.log(FQCN, Level.ERROR, s, null);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.log(FQCN, Level.ERROR, s, e);
+}
+
+@Override
+public void trace(String s) {
+    log.log(FQCN, Level.TRACE, s, null);
+}
+
+@Override
+public void warn(String s) {
+    log.log(FQCN, Level.WARN, s, null);
+}
+```
+imports: org.apache.log4j.Category, org.apache.log4j.Level, org.apache.log4j.Logger, org.apache.log4j.Priority
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.log4j
+- class name MUST be: Log4jImplmethod_LoggergetLoggerFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 8/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.<init>(java.lang.String)
+Third Party Method: org.apache.commons.logging.LogFactory.getLog(java.lang.String)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.<init>(java.lang.String)
+thirdPartyMethod: org.apache.commons.logging.LogFactory.getLog(java.lang.String)
+path: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.<init>(java.lang.String) -> org.apache.commons.logging.LogFactory.getLog(java.lang.String)
+methodSources:
+```java
+public (String clazz) {
+    // PATH: Test should invoke the next LogFactory.getLog(...) [step in execution path]
+    log = LogFactory.getLog(clazz);
+}
+```
+constructors:
+```java
+public JakartaCommonsLoggingImpl(String clazz) {
+    log = LogFactory.getLog(clazz);
+}
+```
+fieldDeclarations:
+```java
+private final Log log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.debug(s);
+}
+
+@Override
+public void error(String s) {
+    log.error(s);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.error(s, e);
+}
+
+@Override
+public void trace(String s) {
+    log.trace(s);
+}
+
+@Override
+public void warn(String s) {
+    log.warn(s);
+}
+```
+imports: org.apache.commons.logging.Log, org.apache.commons.logging.LogFactory
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.commons
+- class name MUST be: JakartaCommonsLoggingImplmethod_LogFactorygetLogFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 9/27 — ITERATION 1
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.intercept(java.lang.Object, java.lang.reflect.Method, java.lang.Object[], net.sf.cglib.proxy.MethodProxy)
+Third Party Method: net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.intercept(java.lang.Object, java.lang.reflect.Method, java.lang.Object[], net.sf.cglib.proxy.MethodProxy)
+thirdPartyMethod: net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])
+path: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.intercept(java.lang.Object, java.lang.reflect.Method, java.lang.Object[], net.sf.cglib.proxy.MethodProxy) -> net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])
+methodSources:
+```java
+@Override
+public Object intercept(Object enhanced, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
+    final Object o = super.invoke(enhanced, method, args);
+    // PATH: Test should invoke the next MethodProxy.invokeSuper(...) [step in execution path]
+    return o instanceof AbstractSerialStateHolder ? o : methodProxy.invokeSuper(o, args);
+}
+```
+constructors:
+```java
+private EnhancedDeserializationProxyImpl(Class<?> type, Map<String, ResultLoaderMap.LoadPair> unloadedProperties, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    super(type, unloadedProperties, objectFactory, constructorArgTypes, constructorArgs);
+}
+```
+fieldDeclarations:
+
+setters:
+
+imports: net.sf.cglib.proxy.MethodProxy, org.apache.ibatis.executor.loader.AbstractEnhancedDeserializationProxy, org.apache.ibatis.executor.loader.AbstractSerialStateHolder, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.executor.loader.ResultLoaderMap.LoadPair, org.apache.ibatis.reflection.factory.ObjectFactory
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.executor.loader.cglib
+- class name MUST be: EnhancedDeserializationProxyImplintercept_MethodProxyinvokeSuperFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 10/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2Impl.<init>(java.lang.String)
+Third Party Method: org.apache.logging.log4j.LogManager.getLogger(java.lang.String)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.log4j2.Log4j2Impl.<init>(java.lang.String)
+thirdPartyMethod: org.apache.logging.log4j.LogManager.getLogger(java.lang.String)
+path: org.apache.ibatis.logging.log4j2.Log4j2Impl.<init>(java.lang.String) -> org.apache.logging.log4j.LogManager.getLogger(java.lang.String)
+methodSources:
+```java
+public (String clazz) {
+    // PATH: Test should invoke the next LogManager.getLogger(...) [step in execution path]
+    Logger logger = LogManager.getLogger(clazz);
+    if (logger instanceof AbstractLogger) {
+        log = new Log4j2AbstractLoggerImpl(((AbstractLogger) (logger)));
+    } else {
+        log = new Log4j2LoggerImpl(logger);
+    }
+}
+```
+constructors:
+```java
+public Log4j2Impl(String clazz) {
+    Logger logger = LogManager.getLogger(clazz);
+    if (logger instanceof AbstractLogger) {
+        log = new Log4j2AbstractLoggerImpl(((AbstractLogger) (logger)));
+    } else {
+        log = new Log4j2LoggerImpl(logger);
+    }
+}
+```
+fieldDeclarations:
+```java
+private final Log log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.debug(s);
+}
+
+@Override
+public void error(String s) {
+    log.error(s);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.error(s, e);
+}
+
+@Override
+public void trace(String s) {
+    log.trace(s);
+}
+
+@Override
+public void warn(String s) {
+    log.warn(s);
+}
+```
+imports: org.apache.ibatis.logging.Log, org.apache.logging.log4j.LogManager, org.apache.logging.log4j.Logger, org.apache.logging.log4j.spi.AbstractLogger
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.log4j2
+- class name MUST be: Log4j2Implmethod_LogManagergetLoggerFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 11/27 — ITERATION 1
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.intercept(java.lang.Object, java.lang.reflect.Method, java.lang.Object[], net.sf.cglib.proxy.MethodProxy)
+Third Party Method: net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.intercept(java.lang.Object, java.lang.reflect.Method, java.lang.Object[], net.sf.cglib.proxy.MethodProxy)
+thirdPartyMethod: net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])
+path: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.intercept(java.lang.Object, java.lang.reflect.Method, java.lang.Object[], net.sf.cglib.proxy.MethodProxy) -> net.sf.cglib.proxy.MethodProxy.invokeSuper(java.lang.Object, java.lang.Object[])
+methodSources:
+```java
+@Override
+public Object intercept(Object enhanced, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
+    final String methodName = method.getName();
+    lock.lock();
+    try {
+        if (WRITE_REPLACE_METHOD.equals(methodName)) {
+            Object original;
+            if (constructorArgTypes.isEmpty()) {
+                original = objectFactory.create(type);
+            } else {
+                original = objectFactory.create(type, constructorArgTypes, constructorArgs);
+            }
+            PropertyCopier.copyBeanProperties(type, enhanced, original);
+            if (lazyLoader.size() > 0) {
+                return new CglibSerialStateHolder(original, lazyLoader.getProperties(), objectFactory, constructorArgTypes, constructorArgs);
+            } else {
+                return original;
+            }
+        }
+        if ((lazyLoader.size() > 0) && (!FINALIZE_METHOD.equals(methodName))) {
+            if (aggressive || lazyLoadTriggerMethods.contains(methodName)) {
+                lazyLoader.loadAll();
+            } else if (PropertyNamer.isSetter(methodName)) {
+                final String property = PropertyNamer.methodToProperty(methodName);
+                lazyLoader.remove(property);
+            } else if (PropertyNamer.isGetter(methodName)) {
+                final String property = PropertyNamer.methodToProperty(methodName);
+                if (lazyLoader.hasLoader(property)) {
+                    lazyLoader.load(property);
+                }
+            }
+        }
+        // PATH: Test should invoke the next MethodProxy.invokeSuper(...) [step in execution path]
+        return methodProxy.invokeSuper(enhanced, args);
+    } catch (Throwable t) {
+        throw ExceptionUtil.unwrapThrowable(t);
+    } finally {
+        lock.unlock();
+    }
+}
+```
+constructors:
+```java
+private EnhancedResultObjectProxyImpl(Class<?> type, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    this.type = type;
+    this.lazyLoader = lazyLoader;
+    this.aggressive = configuration.isAggressiveLazyLoading();
+    this.lazyLoadTriggerMethods = configuration.getLazyLoadTriggerMethods();
+    this.objectFactory = objectFactory;
+    this.constructorArgTypes = constructorArgTypes;
+    this.constructorArgs = constructorArgs;
+}
+```
+fieldDeclarations:
+```java
+private final Class<?> type;
+private final ResultLoaderMap lazyLoader;
+private final boolean aggressive;
+private final Set<String> lazyLoadTriggerMethods;
+private final ObjectFactory objectFactory;
+private final List<Class<?>> constructorArgTypes;
+private final List<Object> constructorArgs;
+private final ReentrantLock lock = new ReentrantLock();
+```
+setters:
+
+imports: net.sf.cglib.proxy.MethodProxy, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.executor.loader.ResultLoaderMap.LoadPair, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl, org.apache.ibatis.reflection.ExceptionUtil, org.apache.ibatis.reflection.factory.ObjectFactory, org.apache.ibatis.reflection.property.PropertyCopier, org.apache.ibatis.reflection.property.PropertyNamer, org.apache.ibatis.session.Configuration
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.executor.loader.cglib
+- class name MUST be: EnhancedResultObjectProxyImplintercept_MethodProxyinvokeSuperFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 12/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2Impl.isTraceEnabled()
+Third Party Method: org.apache.logging.log4j.Logger.isTraceEnabled()
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.log4j2.Log4j2Impl.isTraceEnabled()
+thirdPartyMethod: org.apache.logging.log4j.Logger.isTraceEnabled()
+path: org.apache.ibatis.logging.log4j2.Log4j2Impl.isTraceEnabled() -> org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.isTraceEnabled() -> org.apache.logging.log4j.Logger.isTraceEnabled()
+methodSources:
+```java
+@Override
+public boolean isTraceEnabled() {
+    // PATH: Test should invoke the next Log4j2LoggerImpl.isTraceEnabled(...) [step in execution path]
+    return log.isTraceEnabled();
+}
+
+@Override
+public boolean isTraceEnabled() {
+    // PATH: Test should invoke the next Logger.isTraceEnabled(...) [step in execution path]
+    return log.isTraceEnabled();
+}
+```
+constructors:
+```java
+public Log4j2Impl(String clazz) {
+    Logger logger = LogManager.getLogger(clazz);
+    if (logger instanceof AbstractLogger) {
+        log = new Log4j2AbstractLoggerImpl(((AbstractLogger) (logger)));
+    } else {
+        log = new Log4j2LoggerImpl(logger);
+    }
+}
+```
+fieldDeclarations:
+```java
+private final Log log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.debug(s);
+}
+
+@Override
+public void error(String s) {
+    log.error(s);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.error(s, e);
+}
+
+@Override
+public void trace(String s) {
+    log.trace(s);
+}
+
+@Override
+public void warn(String s) {
+    log.warn(s);
+}
+```
+imports: org.apache.ibatis.logging.Log, org.apache.logging.log4j.LogManager, org.apache.logging.log4j.Logger, org.apache.logging.log4j.spi.AbstractLogger
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.log4j2
+- class name MUST be: Log4j2Impl_Log4j2LoggerImplisTraceEnabled_LoggerisTraceEnabledFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 13/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2Impl.error(java.lang.String, java.lang.Throwable)
+Third Party Method: org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String, java.lang.Throwable)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.log4j2.Log4j2Impl.error(java.lang.String, java.lang.Throwable)
+thirdPartyMethod: org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String, java.lang.Throwable)
+path: org.apache.ibatis.logging.log4j2.Log4j2Impl.error(java.lang.String, java.lang.Throwable) -> org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String, java.lang.Throwable) -> org.apache.logging.log4j.Logger.error(org.apache.logging.log4j.Marker, java.lang.String, java.lang.Throwable)
+methodSources:
+```java
+@Override
+public void error(String s, Throwable e) // PATH: Test should invoke the next Log4j2LoggerImpl.error(...) [step in execution path]
+{
+    log.error(s, e);
+}
+
+@Override
+public void error(String s, Throwable e) // PATH: Test should invoke the next Logger.error(...) [step in execution path]
+{
+    log.error(MARKER, s, e);
+}
+```
+constructors:
+```java
+public Log4j2Impl(String clazz) {
+    Logger logger = LogManager.getLogger(clazz);
+    if (logger instanceof AbstractLogger) {
+        log = new Log4j2AbstractLoggerImpl(((AbstractLogger) (logger)));
+    } else {
+        log = new Log4j2LoggerImpl(logger);
+    }
+}
+```
+fieldDeclarations:
+```java
+private final Log log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.debug(s);
+}
+
+@Override
+public void error(String s) {
+    log.error(s);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.error(s, e);
+}
+
+@Override
+public void trace(String s) {
+    log.trace(s);
+}
+
+@Override
+public void warn(String s) {
+    log.warn(s);
+}
+```
+imports: org.apache.ibatis.logging.Log, org.apache.logging.log4j.LogManager, org.apache.logging.log4j.Logger, org.apache.logging.log4j.Marker, org.apache.logging.log4j.spi.AbstractLogger
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.log4j2
+- class name MUST be: Log4j2Impl_Log4j2LoggerImplerror_LoggererrorFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 14/27 — ITERATION 1
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.setSuperclass(java.lang.Class)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+thirdPartyMethod: net.sf.cglib.proxy.Enhancer.setSuperclass(java.lang.Class)
+path: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List) -> org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createStaticProxy(java.lang.Class, net.sf.cglib.proxy.Callback, java.util.List, java.util.List) -> net.sf.cglib.proxy.Enhancer.setSuperclass(java.lang.Class)
+methodSources:
+```java
+public static Object createProxy(Object target, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    final Class<?> type = target.getClass();
+    EnhancedResultObjectProxyImpl callback = new EnhancedResultObjectProxyImpl(type, lazyLoader, configuration, objectFactory, constructorArgTypes, constructorArgs);
+    // PATH: Test should invoke the next CglibProxyFactory.createStaticProxy(...) [step in execution path]
+    Object enhanced = createStaticProxy(type, callback, constructorArgTypes, constructorArgs);
+    PropertyCopier.copyBeanProperties(type, target, enhanced);
+    return enhanced;
+}
+
+static Object createStaticProxy(Class<?> type, Callback callback, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) // PATH: Test should invoke the next Enhancer.setSuperclass(...) [step in execution path]
+{
+    LogHolder.log.warn("CglibProxyFactory is deprecated. Use another proxy factory implementation.");
+    Enhancer enhancer = new Enhancer();
+    enhancer.setCallback(callback);
+    enhancer.setSuperclass(type);
+    try {
+        type.getDeclaredMethod(WRITE_REPLACE_METHOD);
+        // ObjectOutputStream will call writeReplace of objects returned by writeReplace
+        if (LogHolder.log.isDebugEnabled()) {
+            LogHolder.log.debug(((WRITE_REPLACE_METHOD + " method was found on bean ") + type) + ", make sure it returns this");
+        }
+    } catch (NoSuchMethodException e) {
+        enhancer.setInterfaces(new Class[]{ WriteReplaceInterface.class });
+    } catch (SecurityException e) {
+        // nothing to do here
+    }
+    Object enhanced;
+    if (constructorArgTypes.isEmpty()) {
+        enhanced = enhancer.create();
+    } else {
+        Class<?>[] typesArray = constructorArgTypes.toArray(new Class[constructorArgTypes.size()]);
+        Object[] valuesArray = constructorArgs.toArray(new Object[constructorArgs.size()]);
+        enhanced = enhancer.create(typesArray, valuesArray);
+    }
+    return enhanced;
+}
+```
+constructors:
+```java
+private EnhancedResultObjectProxyImpl(Class<?> type, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    this.type = type;
+    this.lazyLoader = lazyLoader;
+    this.aggressive = configuration.isAggressiveLazyLoading();
+    this.lazyLoadTriggerMethods = configuration.getLazyLoadTriggerMethods();
+    this.objectFactory = objectFactory;
+    this.constructorArgTypes = constructorArgTypes;
+    this.constructorArgs = constructorArgs;
+}
+```
+fieldDeclarations:
+```java
+private final Class<?> type;
+private final ResultLoaderMap lazyLoader;
+private final boolean aggressive;
+private final Set<String> lazyLoadTriggerMethods;
+private final ObjectFactory objectFactory;
+private final List<Class<?>> constructorArgTypes;
+private final List<Object> constructorArgs;
+private final ReentrantLock lock = new ReentrantLock();
+```
+setters:
+
+imports: net.sf.cglib.proxy.Callback, net.sf.cglib.proxy.Enhancer, net.sf.cglib.proxy.MethodProxy, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.executor.loader.ResultLoaderMap.LoadPair, org.apache.ibatis.executor.loader.WriteReplaceInterface, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.LogHolder, org.apache.ibatis.logging.Log, org.apache.ibatis.reflection.ExceptionUtil, org.apache.ibatis.reflection.factory.ObjectFactory, org.apache.ibatis.reflection.property.PropertyCopier, org.apache.ibatis.reflection.property.PropertyNamer, org.apache.ibatis.session.Configuration
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.executor.loader.cglib
+- class name MUST be: EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancersetSuperclassFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 15/27 — ITERATION 1
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.<init>()
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+thirdPartyMethod: net.sf.cglib.proxy.Enhancer.<init>()
+path: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List) -> org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createStaticProxy(java.lang.Class, net.sf.cglib.proxy.Callback, java.util.List, java.util.List) -> net.sf.cglib.proxy.Enhancer.<init>()
+methodSources:
+```java
+public static Object createProxy(Object target, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    final Class<?> type = target.getClass();
+    EnhancedResultObjectProxyImpl callback = new EnhancedResultObjectProxyImpl(type, lazyLoader, configuration, objectFactory, constructorArgTypes, constructorArgs);
+    // PATH: Test should invoke the next CglibProxyFactory.createStaticProxy(...) [step in execution path]
+    Object enhanced = createStaticProxy(type, callback, constructorArgTypes, constructorArgs);
+    PropertyCopier.copyBeanProperties(type, target, enhanced);
+    return enhanced;
+}
+
+static Object createStaticProxy(Class<?> type, Callback callback, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) // PATH: Test should invoke the next new Enhancer(...) [step in execution path]
+{
+    LogHolder.log.warn("CglibProxyFactory is deprecated. Use another proxy factory implementation.");
+    Enhancer enhancer = new Enhancer();
+    enhancer.setCallback(callback);
+    enhancer.setSuperclass(type);
+    try {
+        type.getDeclaredMethod(WRITE_REPLACE_METHOD);
+        // ObjectOutputStream will call writeReplace of objects returned by writeReplace
+        if (LogHolder.log.isDebugEnabled()) {
+            LogHolder.log.debug(((WRITE_REPLACE_METHOD + " method was found on bean ") + type) + ", make sure it returns this");
+        }
+    } catch (NoSuchMethodException e) {
+        enhancer.setInterfaces(new Class[]{ WriteReplaceInterface.class });
+    } catch (SecurityException e) {
+        // nothing to do here
+    }
+    Object enhanced;
+    if (constructorArgTypes.isEmpty()) {
+        enhanced = enhancer.create();
+    } else {
+        Class<?>[] typesArray = constructorArgTypes.toArray(new Class[constructorArgTypes.size()]);
+        Object[] valuesArray = constructorArgs.toArray(new Object[constructorArgs.size()]);
+        enhanced = enhancer.create(typesArray, valuesArray);
+    }
+    return enhanced;
+}
+```
+constructors:
+```java
+private EnhancedResultObjectProxyImpl(Class<?> type, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    this.type = type;
+    this.lazyLoader = lazyLoader;
+    this.aggressive = configuration.isAggressiveLazyLoading();
+    this.lazyLoadTriggerMethods = configuration.getLazyLoadTriggerMethods();
+    this.objectFactory = objectFactory;
+    this.constructorArgTypes = constructorArgTypes;
+    this.constructorArgs = constructorArgs;
+}
+```
+fieldDeclarations:
+```java
+private final Class<?> type;
+private final ResultLoaderMap lazyLoader;
+private final boolean aggressive;
+private final Set<String> lazyLoadTriggerMethods;
+private final ObjectFactory objectFactory;
+private final List<Class<?>> constructorArgTypes;
+private final List<Object> constructorArgs;
+private final ReentrantLock lock = new ReentrantLock();
+```
+setters:
+
+imports: net.sf.cglib.proxy.Callback, net.sf.cglib.proxy.Enhancer, net.sf.cglib.proxy.MethodProxy, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.executor.loader.ResultLoaderMap.LoadPair, org.apache.ibatis.executor.loader.WriteReplaceInterface, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.LogHolder, org.apache.ibatis.logging.Log, org.apache.ibatis.reflection.ExceptionUtil, org.apache.ibatis.reflection.factory.ObjectFactory, org.apache.ibatis.reflection.property.PropertyCopier, org.apache.ibatis.reflection.property.PropertyNamer, org.apache.ibatis.session.Configuration
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.executor.loader.cglib
+- class name MUST be: EnhancedResultObjectProxyImpl_CglibProxyFactorycreateStaticProxy_EnhancermethodFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 16/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.log4j2.Log4j2Impl.trace(java.lang.String)
+Third Party Method: org.apache.commons.logging.Log.trace(java.lang.Object)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.log4j2.Log4j2Impl.trace(java.lang.String)
+thirdPartyMethod: org.apache.commons.logging.Log.trace(java.lang.Object)
+path: org.apache.ibatis.logging.log4j2.Log4j2Impl.trace(java.lang.String) -> org.apache.ibatis.logging.slf4j.Slf4jImpl.trace(java.lang.String) -> org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.trace(java.lang.String) -> org.apache.commons.logging.Log.trace(java.lang.Object)
+methodSources:
+```java
+@Override
+public void trace(String s) // PATH: Test should invoke the next Slf4jImpl.trace(...) [step in execution path]
+{
+    log.trace(s);
+}
+
+@Override
+public void trace(String s) // PATH: Test should invoke the next JakartaCommonsLoggingImpl.trace(...) [step in execution path]
+{
+    log.trace(s);
+}
+
+@Override
+public void trace(String s) // PATH: Test should invoke the next Log.trace(...) [step in execution path]
+{
+    log.trace(s);
+}
+```
+constructors:
+```java
+public Log4j2Impl(String clazz) {
+    Logger logger = LogManager.getLogger(clazz);
+    if (logger instanceof AbstractLogger) {
+        log = new Log4j2AbstractLoggerImpl(((AbstractLogger) (logger)));
+    } else {
+        log = new Log4j2LoggerImpl(logger);
+    }
+}
+```
+fieldDeclarations:
+```java
+private final Log log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.debug(s);
+}
+
+@Override
+public void error(String s) {
+    log.error(s);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.error(s, e);
+}
+
+@Override
+public void trace(String s) {
+    log.trace(s);
+}
+
+@Override
+public void warn(String s) {
+    log.warn(s);
+}
+```
+imports: org.apache.commons.logging.Log, org.apache.ibatis.logging.Log, org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl, org.apache.ibatis.logging.slf4j.Slf4jImpl, org.apache.logging.log4j.LogManager, org.apache.logging.log4j.Logger, org.apache.logging.log4j.spi.AbstractLogger
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.log4j2
+- class name MUST be: Log4j2Impl_JakartaCommonsLoggingImpltrace_LogtraceFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 17/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.slf4j.Slf4jImpl.error(java.lang.String)
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.slf4j.Slf4jImpl.error(java.lang.String)
+thirdPartyMethod: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+path: org.apache.ibatis.logging.slf4j.Slf4jImpl.error(java.lang.String) -> org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.error(java.lang.String) -> org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.<clinit>() -> org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+methodSources:
+```java
+@Override
+public void error(String s) // PATH: Test should invoke the next Log4j2LoggerImpl.error(...) [step in execution path]
+{
+    log.error(s);
+}
+
+@Override
+public void error(String s) {
+    log.error(MARKER, s);
+}
+
+org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl
+
+// Static field initializations
+private static final Marker MARKER = MarkerManager.getMarker(LogFactory.MARKER);
+
+```
+constructors:
+```java
+public Slf4jImpl(String clazz) {
+    Logger logger = LoggerFactory.getLogger(clazz);
+    if (logger instanceof LocationAwareLogger) {
+        try {
+            // check for slf4j >= 1.6 method signature
+            logger.getClass().getMethod("log", Marker.class, String.class, int.class, String.class, Object[].class, Throwable.class);
+            log = new Slf4jLocationAwareLoggerImpl(((LocationAwareLogger) (logger)));
+            return;
+        } catch (SecurityException | NoSuchMethodException e) {
+            // fail-back to Slf4jLoggerImpl
+        }
+    }
+    // Logger is not LocationAwareLogger or slf4j version < 1.6
+    log = new Slf4jLoggerImpl(logger);
+}
+```
+fieldDeclarations:
+```java
+private Log log;
+```
+setters:
+```java
+@Override
+public void debug(String s) {
+    log.debug(s);
+}
+
+@Override
+public void error(String s) {
+    log.error(s);
+}
+
+@Override
+public void error(String s, Throwable e) {
+    log.error(s, e);
+}
+
+@Override
+public void trace(String s) {
+    log.trace(s);
+}
+
+@Override
+public void warn(String s) {
+    log.warn(s);
+}
+```
+imports: org.apache.ibatis.logging.Log, org.apache.ibatis.logging.LogFactory, org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl, org.apache.logging.log4j.Logger, org.apache.logging.log4j.Marker, org.apache.logging.log4j.MarkerManager, org.slf4j.Logger, org.slf4j.LoggerFactory, org.slf4j.Marker, org.slf4j.spi.LocationAwareLogger
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.slf4j
+- class name MUST be: Slf4jImpl_Log4j2LoggerImplmethod_MarkerManagergetMarkerFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 18/27 — ITERATION 1
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+thirdPartyMethod: net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])
+path: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List) -> org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl.createProxy(java.lang.Object, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.session.Configuration, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List) -> org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createStaticProxy(java.lang.Class, net.sf.cglib.proxy.Callback, java.util.List, java.util.List) -> net.sf.cglib.proxy.Enhancer.create(java.lang.Class[], java.lang.Object[])
+methodSources:
+```java
+@Override
+public Object createProxy(Object target, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    // PATH: Test should invoke the next CglibProxyFactory$EnhancedResultObjectProxyImpl.createProxy(...) [step in execution path]
+    return EnhancedResultObjectProxyImpl.createProxy(target, lazyLoader, configuration, objectFactory, constructorArgTypes, constructorArgs);
+}
+
+public static Object createProxy(Object target, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    final Class<?> type = target.getClass();
+    EnhancedResultObjectProxyImpl callback = new EnhancedResultObjectProxyImpl(type, lazyLoader, configuration, objectFactory, constructorArgTypes, constructorArgs);
+    // PATH: Test should invoke the next CglibProxyFactory.createStaticProxy(...) [step in execution path]
+    Object enhanced = createStaticProxy(type, callback, constructorArgTypes, constructorArgs);
+    PropertyCopier.copyBeanProperties(type, target, enhanced);
+    return enhanced;
+}
+
+static Object createStaticProxy(Class<?> type, Callback callback, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    LogHolder.log.warn("CglibProxyFactory is deprecated. Use another proxy factory implementation.");
+    Enhancer enhancer = new Enhancer();
+    enhancer.setCallback(callback);
+    enhancer.setSuperclass(type);
+    try {
+        type.getDeclaredMethod(WRITE_REPLACE_METHOD);
+        // ObjectOutputStream will call writeReplace of objects returned by writeReplace
+        if (LogHolder.log.isDebugEnabled()) {
+            LogHolder.log.debug(((WRITE_REPLACE_METHOD + " method was found on bean ") + type) + ", make sure it returns this");
+        }
+    } catch (NoSuchMethodException e) {
+        enhancer.setInterfaces(new Class[]{ WriteReplaceInterface.class });
+    } catch (SecurityException e) {
+        // nothing to do here
+    }
+    Object enhanced;
+    if (constructorArgTypes.isEmpty()) {
+        // PATH: Test should invoke the next Enhancer.create(...) [step in execution path]
+        enhanced = enhancer.create();
+    } else {
+        Class<?>[] typesArray = constructorArgTypes.toArray(new Class[constructorArgTypes.size()]);
+        Object[] valuesArray = constructorArgs.toArray(new Object[constructorArgs.size()]);
+        enhanced = enhancer.create(typesArray, valuesArray);
+    }
+    return enhanced;
+}
+```
+constructors:
+```java
+public CglibProxyFactory() {
+    try {
+        Resources.classForName("net.sf.cglib.proxy.Enhancer");
+    } catch (Throwable e) {
+        throw new IllegalStateException("Cannot enable lazy loading because CGLIB is not available. Add CGLIB to your classpath.", e);
+    }
+}
+
+private EnhancedResultObjectProxyImpl(Class<?> type, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    this.type = type;
+    this.lazyLoader = lazyLoader;
+    this.aggressive = configuration.isAggressiveLazyLoading();
+    this.lazyLoadTriggerMethods = configuration.getLazyLoadTriggerMethods();
+    this.objectFactory = objectFactory;
+    this.constructorArgTypes = constructorArgTypes;
+    this.constructorArgs = constructorArgs;
+}
+
+private EnhancedDeserializationProxyImpl(Class<?> type, Map<String, ResultLoaderMap.LoadPair> unloadedProperties, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    super(type, unloadedProperties, objectFactory, constructorArgTypes, constructorArgs);
+}
+
+LogHolder() {
+}
+```
+fieldDeclarations:
+```java
+private static final String FINALIZE_METHOD = "finalize";
+private static final String WRITE_REPLACE_METHOD = "writeReplace";
+```
+setters:
+
+imports: net.sf.cglib.proxy.Callback, net.sf.cglib.proxy.Enhancer, org.apache.ibatis.executor.loader.AbstractEnhancedDeserializationProxy, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.executor.loader.ResultLoaderMap.LoadPair, org.apache.ibatis.executor.loader.WriteReplaceInterface, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.LogHolder, org.apache.ibatis.io.Resources, org.apache.ibatis.logging.Log, org.apache.ibatis.reflection.factory.ObjectFactory, org.apache.ibatis.reflection.property.PropertyCopier, org.apache.ibatis.session.Configuration
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.executor.loader.cglib
+- class name MUST be: CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 19/27 — ITERATION 1
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createDeserializationProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.create()
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createDeserializationProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+thirdPartyMethod: net.sf.cglib.proxy.Enhancer.create()
+path: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createDeserializationProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List) -> org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.createProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List) -> org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createStaticProxy(java.lang.Class, net.sf.cglib.proxy.Callback, java.util.List, java.util.List) -> net.sf.cglib.proxy.Enhancer.create()
+methodSources:
+```java
+public Object createDeserializationProxy(Object target, Map<String, ResultLoaderMap.LoadPair> unloadedProperties, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    // PATH: Test should invoke the next CglibProxyFactory$EnhancedDeserializationProxyImpl.createProxy(...) [step in execution path]
+    return EnhancedDeserializationProxyImpl.createProxy(target, unloadedProperties, objectFactory, constructorArgTypes, constructorArgs);
+}
+
+public static Object createProxy(Object target, Map<String, ResultLoaderMap.LoadPair> unloadedProperties, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    final Class<?> type = target.getClass();
+    EnhancedDeserializationProxyImpl callback = new EnhancedDeserializationProxyImpl(type, unloadedProperties, objectFactory, constructorArgTypes, constructorArgs);
+    // PATH: Test should invoke the next CglibProxyFactory.createStaticProxy(...) [step in execution path]
+    Object enhanced = createStaticProxy(type, callback, constructorArgTypes, constructorArgs);
+    PropertyCopier.copyBeanProperties(type, target, enhanced);
+    return enhanced;
+}
+
+static Object createStaticProxy(Class<?> type, Callback callback, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    LogHolder.log.warn("CglibProxyFactory is deprecated. Use another proxy factory implementation.");
+    Enhancer enhancer = new Enhancer();
+    enhancer.setCallback(callback);
+    enhancer.setSuperclass(type);
+    try {
+        type.getDeclaredMethod(WRITE_REPLACE_METHOD);
+        // ObjectOutputStream will call writeReplace of objects returned by writeReplace
+        if (LogHolder.log.isDebugEnabled()) {
+            LogHolder.log.debug(((WRITE_REPLACE_METHOD + " method was found on bean ") + type) + ", make sure it returns this");
+        }
+    } catch (NoSuchMethodException e) {
+        enhancer.setInterfaces(new Class[]{ WriteReplaceInterface.class });
+    } catch (SecurityException e) {
+        // nothing to do here
+    }
+    Object enhanced;
+    if (constructorArgTypes.isEmpty()) {
+        // PATH: Test should invoke the next Enhancer.create(...) [step in execution path]
+        enhanced = enhancer.create();
+    } else {
+        Class<?>[] typesArray = constructorArgTypes.toArray(new Class[constructorArgTypes.size()]);
+        Object[] valuesArray = constructorArgs.toArray(new Object[constructorArgs.size()]);
+        enhanced = enhancer.create(typesArray, valuesArray);
+    }
+    return enhanced;
+}
+```
+constructors:
+```java
+public CglibProxyFactory() {
+    try {
+        Resources.classForName("net.sf.cglib.proxy.Enhancer");
+    } catch (Throwable e) {
+        throw new IllegalStateException("Cannot enable lazy loading because CGLIB is not available. Add CGLIB to your classpath.", e);
+    }
+}
+
+private EnhancedResultObjectProxyImpl(Class<?> type, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    this.type = type;
+    this.lazyLoader = lazyLoader;
+    this.aggressive = configuration.isAggressiveLazyLoading();
+    this.lazyLoadTriggerMethods = configuration.getLazyLoadTriggerMethods();
+    this.objectFactory = objectFactory;
+    this.constructorArgTypes = constructorArgTypes;
+    this.constructorArgs = constructorArgs;
+}
+
+private EnhancedDeserializationProxyImpl(Class<?> type, Map<String, ResultLoaderMap.LoadPair> unloadedProperties, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    super(type, unloadedProperties, objectFactory, constructorArgTypes, constructorArgs);
+}
+
+LogHolder() {
+}
+```
+fieldDeclarations:
+```java
+private static final String FINALIZE_METHOD = "finalize";
+private static final String WRITE_REPLACE_METHOD = "writeReplace";
+```
+setters:
+
+imports: net.sf.cglib.proxy.Callback, net.sf.cglib.proxy.Enhancer, org.apache.ibatis.executor.loader.AbstractEnhancedDeserializationProxy, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.executor.loader.ResultLoaderMap.LoadPair, org.apache.ibatis.executor.loader.WriteReplaceInterface, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.LogHolder, org.apache.ibatis.io.Resources, org.apache.ibatis.logging.Log, org.apache.ibatis.reflection.factory.ObjectFactory, org.apache.ibatis.reflection.property.PropertyCopier, org.apache.ibatis.session.Configuration
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.executor.loader.cglib
+- class name MUST be: CglibProxyFactorycreateStaticProxy_EnhancercreateFikaTest2
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 20/27 — ITERATION 1
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createDeserializationProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.setCallback(net.sf.cglib.proxy.Callback)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createDeserializationProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+thirdPartyMethod: net.sf.cglib.proxy.Enhancer.setCallback(net.sf.cglib.proxy.Callback)
+path: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createDeserializationProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List) -> org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.createProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List) -> org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createStaticProxy(java.lang.Class, net.sf.cglib.proxy.Callback, java.util.List, java.util.List) -> net.sf.cglib.proxy.Enhancer.setCallback(net.sf.cglib.proxy.Callback)
+methodSources:
+```java
+public Object createDeserializationProxy(Object target, Map<String, ResultLoaderMap.LoadPair> unloadedProperties, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    // PATH: Test should invoke the next CglibProxyFactory$EnhancedDeserializationProxyImpl.createProxy(...) [step in execution path]
+    return EnhancedDeserializationProxyImpl.createProxy(target, unloadedProperties, objectFactory, constructorArgTypes, constructorArgs);
+}
+
+public static Object createProxy(Object target, Map<String, ResultLoaderMap.LoadPair> unloadedProperties, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    final Class<?> type = target.getClass();
+    EnhancedDeserializationProxyImpl callback = new EnhancedDeserializationProxyImpl(type, unloadedProperties, objectFactory, constructorArgTypes, constructorArgs);
+    // PATH: Test should invoke the next CglibProxyFactory.createStaticProxy(...) [step in execution path]
+    Object enhanced = createStaticProxy(type, callback, constructorArgTypes, constructorArgs);
+    PropertyCopier.copyBeanProperties(type, target, enhanced);
+    return enhanced;
+}
+
+static Object createStaticProxy(Class<?> type, Callback callback, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) // PATH: Test should invoke the next Enhancer.setCallback(...) [step in execution path]
+{
+    LogHolder.log.warn("CglibProxyFactory is deprecated. Use another proxy factory implementation.");
+    Enhancer enhancer = new Enhancer();
+    enhancer.setCallback(callback);
+    enhancer.setSuperclass(type);
+    try {
+        type.getDeclaredMethod(WRITE_REPLACE_METHOD);
+        // ObjectOutputStream will call writeReplace of objects returned by writeReplace
+        if (LogHolder.log.isDebugEnabled()) {
+            LogHolder.log.debug(((WRITE_REPLACE_METHOD + " method was found on bean ") + type) + ", make sure it returns this");
+        }
+    } catch (NoSuchMethodException e) {
+        enhancer.setInterfaces(new Class[]{ WriteReplaceInterface.class });
+    } catch (SecurityException e) {
+        // nothing to do here
+    }
+    Object enhanced;
+    if (constructorArgTypes.isEmpty()) {
+        enhanced = enhancer.create();
+    } else {
+        Class<?>[] typesArray = constructorArgTypes.toArray(new Class[constructorArgTypes.size()]);
+        Object[] valuesArray = constructorArgs.toArray(new Object[constructorArgs.size()]);
+        enhanced = enhancer.create(typesArray, valuesArray);
+    }
+    return enhanced;
+}
+```
+constructors:
+```java
+public CglibProxyFactory() {
+    try {
+        Resources.classForName("net.sf.cglib.proxy.Enhancer");
+    } catch (Throwable e) {
+        throw new IllegalStateException("Cannot enable lazy loading because CGLIB is not available. Add CGLIB to your classpath.", e);
+    }
+}
+
+private EnhancedResultObjectProxyImpl(Class<?> type, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    this.type = type;
+    this.lazyLoader = lazyLoader;
+    this.aggressive = configuration.isAggressiveLazyLoading();
+    this.lazyLoadTriggerMethods = configuration.getLazyLoadTriggerMethods();
+    this.objectFactory = objectFactory;
+    this.constructorArgTypes = constructorArgTypes;
+    this.constructorArgs = constructorArgs;
+}
+
+private EnhancedDeserializationProxyImpl(Class<?> type, Map<String, ResultLoaderMap.LoadPair> unloadedProperties, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    super(type, unloadedProperties, objectFactory, constructorArgTypes, constructorArgs);
+}
+
+LogHolder() {
+}
+```
+fieldDeclarations:
+```java
+private static final String FINALIZE_METHOD = "finalize";
+private static final String WRITE_REPLACE_METHOD = "writeReplace";
+```
+setters:
+
+imports: net.sf.cglib.proxy.Callback, net.sf.cglib.proxy.Enhancer, org.apache.ibatis.executor.loader.AbstractEnhancedDeserializationProxy, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.executor.loader.ResultLoaderMap.LoadPair, org.apache.ibatis.executor.loader.WriteReplaceInterface, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.LogHolder, org.apache.ibatis.io.Resources, org.apache.ibatis.logging.Log, org.apache.ibatis.reflection.factory.ObjectFactory, org.apache.ibatis.reflection.property.PropertyCopier, org.apache.ibatis.session.Configuration
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.executor.loader.cglib
+- class name MUST be: CglibProxyFactorycreateStaticProxy_EnhancersetCallbackFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 21/27 — ITERATION 1
+Entry Point: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createDeserializationProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+Third Party Method: net.sf.cglib.proxy.Enhancer.setInterfaces(java.lang.Class[])
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createDeserializationProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List)
+thirdPartyMethod: net.sf.cglib.proxy.Enhancer.setInterfaces(java.lang.Class[])
+path: org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createDeserializationProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List) -> org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl.createProxy(java.lang.Object, java.util.Map, org.apache.ibatis.reflection.factory.ObjectFactory, java.util.List, java.util.List) -> org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.createStaticProxy(java.lang.Class, net.sf.cglib.proxy.Callback, java.util.List, java.util.List) -> net.sf.cglib.proxy.Enhancer.setInterfaces(java.lang.Class[])
+methodSources:
+```java
+public Object createDeserializationProxy(Object target, Map<String, ResultLoaderMap.LoadPair> unloadedProperties, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    // PATH: Test should invoke the next CglibProxyFactory$EnhancedDeserializationProxyImpl.createProxy(...) [step in execution path]
+    return EnhancedDeserializationProxyImpl.createProxy(target, unloadedProperties, objectFactory, constructorArgTypes, constructorArgs);
+}
+
+public static Object createProxy(Object target, Map<String, ResultLoaderMap.LoadPair> unloadedProperties, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    final Class<?> type = target.getClass();
+    EnhancedDeserializationProxyImpl callback = new EnhancedDeserializationProxyImpl(type, unloadedProperties, objectFactory, constructorArgTypes, constructorArgs);
+    // PATH: Test should invoke the next CglibProxyFactory.createStaticProxy(...) [step in execution path]
+    Object enhanced = createStaticProxy(type, callback, constructorArgTypes, constructorArgs);
+    PropertyCopier.copyBeanProperties(type, target, enhanced);
+    return enhanced;
+}
+
+static Object createStaticProxy(Class<?> type, Callback callback, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    LogHolder.log.warn("CglibProxyFactory is deprecated. Use another proxy factory implementation.");
+    Enhancer enhancer = new Enhancer();
+    enhancer.setCallback(callback);
+    enhancer.setSuperclass(type);
+    try {
+        type.getDeclaredMethod(WRITE_REPLACE_METHOD);
+        // ObjectOutputStream will call writeReplace of objects returned by writeReplace
+        if (LogHolder.log.isDebugEnabled()) {
+            LogHolder.log.debug(((WRITE_REPLACE_METHOD + " method was found on bean ") + type) + ", make sure it returns this");
+        }
+    } catch (NoSuchMethodException e) // PATH: Test should invoke the next Enhancer.setInterfaces(...) [step in execution path]
+    {
+        enhancer.setInterfaces(new Class[]{ WriteReplaceInterface.class });
+    } catch (SecurityException e) {
+        // nothing to do here
+    }
+    Object enhanced;
+    if (constructorArgTypes.isEmpty()) {
+        enhanced = enhancer.create();
+    } else {
+        Class<?>[] typesArray = constructorArgTypes.toArray(new Class[constructorArgTypes.size()]);
+        Object[] valuesArray = constructorArgs.toArray(new Object[constructorArgs.size()]);
+        enhanced = enhancer.create(typesArray, valuesArray);
+    }
+    return enhanced;
+}
+```
+constructors:
+```java
+public CglibProxyFactory() {
+    try {
+        Resources.classForName("net.sf.cglib.proxy.Enhancer");
+    } catch (Throwable e) {
+        throw new IllegalStateException("Cannot enable lazy loading because CGLIB is not available. Add CGLIB to your classpath.", e);
+    }
+}
+
+private EnhancedResultObjectProxyImpl(Class<?> type, ResultLoaderMap lazyLoader, Configuration configuration, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    this.type = type;
+    this.lazyLoader = lazyLoader;
+    this.aggressive = configuration.isAggressiveLazyLoading();
+    this.lazyLoadTriggerMethods = configuration.getLazyLoadTriggerMethods();
+    this.objectFactory = objectFactory;
+    this.constructorArgTypes = constructorArgTypes;
+    this.constructorArgs = constructorArgs;
+}
+
+private EnhancedDeserializationProxyImpl(Class<?> type, Map<String, ResultLoaderMap.LoadPair> unloadedProperties, ObjectFactory objectFactory, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    super(type, unloadedProperties, objectFactory, constructorArgTypes, constructorArgs);
+}
+
+LogHolder() {
+}
+```
+fieldDeclarations:
+```java
+private static final String FINALIZE_METHOD = "finalize";
+private static final String WRITE_REPLACE_METHOD = "writeReplace";
+```
+setters:
+
+imports: net.sf.cglib.proxy.Callback, net.sf.cglib.proxy.Enhancer, org.apache.ibatis.executor.loader.AbstractEnhancedDeserializationProxy, org.apache.ibatis.executor.loader.ResultLoaderMap, org.apache.ibatis.executor.loader.ResultLoaderMap.LoadPair, org.apache.ibatis.executor.loader.WriteReplaceInterface, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedDeserializationProxyImpl, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.EnhancedResultObjectProxyImpl, org.apache.ibatis.executor.loader.cglib.CglibProxyFactory.LogHolder, org.apache.ibatis.io.Resources, org.apache.ibatis.logging.Log, org.apache.ibatis.reflection.factory.ObjectFactory, org.apache.ibatis.reflection.property.PropertyCopier, org.apache.ibatis.session.Configuration
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.executor.loader.cglib
+- class name MUST be: CglibProxyFactorycreateStaticProxy_EnhancersetInterfacesFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 22/27 — ITERATION 1
+Entry Point: org.apache.ibatis.executor.loader.ResultLoaderMap.addLoader(java.lang.String, org.apache.ibatis.reflection.MetaObject, org.apache.ibatis.executor.loader.ResultLoader)
+Third Party Method: org.apache.logging.log4j.Logger.isDebugEnabled()
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.executor.loader.ResultLoaderMap.addLoader(java.lang.String, org.apache.ibatis.reflection.MetaObject, org.apache.ibatis.executor.loader.ResultLoader)
+thirdPartyMethod: org.apache.logging.log4j.Logger.isDebugEnabled()
+path: org.apache.ibatis.executor.loader.ResultLoaderMap.addLoader(java.lang.String, org.apache.ibatis.reflection.MetaObject, org.apache.ibatis.executor.loader.ResultLoader) -> org.apache.ibatis.executor.loader.ResultLoaderMap.LoadPair.<init>(java.lang.String, org.apache.ibatis.reflection.MetaObject, org.apache.ibatis.executor.loader.ResultLoader) -> org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.isDebugEnabled() -> org.apache.logging.log4j.Logger.isDebugEnabled()
+methodSources:
+```java
+public void addLoader(String property, MetaObject metaResultObject, ResultLoader resultLoader) {
+    String upperFirst = getUppercaseFirstProperty(property);
+    if ((!upperFirst.equalsIgnoreCase(property)) && loaderMap.containsKey(upperFirst)) {
+        throw new ExecutorException(((("Nested lazy loaded result property '" + property) + "' for query id '") + resultLoader.mappedStatement.getId()) + " already exists in the result map. The leftmost property of all lazy loaded properties must be unique within a result map.");
+    }
+    loaderMap.put(upperFirst, new LoadPair(property, metaResultObject, resultLoader));
+}
+
+private (final String property, MetaObject metaResultObject, ResultLoader resultLoader) {
+    this.property = property;
+    this.metaResultObject = metaResultObject;
+    this.resultLoader = resultLoader;
+    /* Save required information only if original object can be serialized. */
+    if ((metaResultObject != null) && (metaResultObject.getOriginalObject() instanceof Serializable)) {
+        final Object mappedStatementParameter = resultLoader.parameterObject;
+        /* @todo May the parameter be null? */
+        if (mappedStatementParameter instanceof Serializable) {
+            this.mappedStatement = resultLoader.mappedStatement.getId();
+            this.mappedParameter = ((Serializable) (mappedStatementParameter));
+            this.configurationFactory = resultLoader.configuration.getConfigurationFactory();
+        } else {
+            Log log = this.getLogger();
+            // PATH: Test should invoke the next Log4j2LoggerImpl.isDebugEnabled(...) [step in execution path]
+            if (log.isDebugEnabled()) {
+                log.debug(((((("Property [" + this.property) + "] of [") + metaResultObject.getOriginalObject().getClass()) + "] cannot be loaded ") + "after deserialization. Make sure it's loaded before serializing ") + "forenamed object.");
+            }
+        }
+    }
+}
+
+@Override
+public boolean isDebugEnabled() {
+    // PATH: Test should invoke the next Logger.isDebugEnabled(...) [step in execution path]
+    return log.isDebugEnabled();
+}
+```
+constructors:
+```java
+ResultLoaderMap() {
+}
+
+private LoadPair(final String property, MetaObject metaResultObject, ResultLoader resultLoader) {
+    this.property = property;
+    this.metaResultObject = metaResultObject;
+    this.resultLoader = resultLoader;
+    /* Save required information only if original object can be serialized. */
+    if ((metaResultObject != null) && (metaResultObject.getOriginalObject() instanceof Serializable)) {
+        final Object mappedStatementParameter = resultLoader.parameterObject;
+        /* @todo May the parameter be null? */
+        if (mappedStatementParameter instanceof Serializable) {
+            this.mappedStatement = resultLoader.mappedStatement.getId();
+            this.mappedParameter = ((Serializable) (mappedStatementParameter));
+            this.configurationFactory = resultLoader.configuration.getConfigurationFactory();
+        } else {
+            Log log = this.getLogger();
+            if (log.isDebugEnabled()) {
+                log.debug(((((("Property [" + this.property) + "] of [") + metaResultObject.getOriginalObject().getClass()) + "] cannot be loaded ") + "after deserialization. Make sure it's loaded before serializing ") + "forenamed object.");
+            }
+        }
+    }
+}
+
+public ClosedExecutor() {
+    super(null, null);
+}
+```
+fieldDeclarations:
+```java
+private final Map<String, LoadPair> loaderMap = new HashMap<>();
+```
+setters:
+```java
+public void addLoader(String property, MetaObject metaResultObject, ResultLoader resultLoader) {
+    String upperFirst = getUppercaseFirstProperty(property);
+    if ((!upperFirst.equalsIgnoreCase(property)) && loaderMap.containsKey(upperFirst)) {
+        throw new ExecutorException(((("Nested lazy loaded result property '" + property) + "' for query id '") + resultLoader.mappedStatement.getId()) + " already exists in the result map. The leftmost property of all lazy loaded properties must be unique within a result map.");
+    }
+    loaderMap.put(upperFirst, new LoadPair(property, metaResultObject, resultLoader));
+}
+
+public void loadAll() throws SQLException {
+    final Set<String> methodNameSet = loaderMap.keySet();
+    String[] methodNames = methodNameSet.toArray(new String[methodNameSet.size()]);
+    for (String methodName : methodNames) {
+        load(methodName);
+    }
+}
+
+public void remove(String property) {
+    loaderMap.remove(property.toUpperCase(Locale.ENGLISH));
+}
+```
+imports: org.apache.ibatis.executor.BaseExecutor, org.apache.ibatis.executor.ExecutorException, org.apache.ibatis.executor.loader.ResultLoaderMap.LoadPair, org.apache.ibatis.logging.Log, org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl, org.apache.ibatis.mapping.MappedStatement, org.apache.ibatis.reflection.MetaObject, org.apache.ibatis.session.Configuration, org.apache.ibatis.transaction.Transaction, org.apache.logging.log4j.Logger
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.executor.loader
+- class name MUST be: ResultLoaderMap_Log4j2LoggerImplisDebugEnabled_LoggerisDebugEnabledFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 23/27 — ITERATION 1
+Entry Point: org.apache.ibatis.io.ResolverUtil.find(org.apache.ibatis.io.ResolverUtil.Test, java.lang.String)
+Third Party Method: org.apache.logging.log4j.Logger.warn(org.apache.logging.log4j.Marker, java.lang.String)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.io.ResolverUtil.find(org.apache.ibatis.io.ResolverUtil.Test, java.lang.String)
+thirdPartyMethod: org.apache.logging.log4j.Logger.warn(org.apache.logging.log4j.Marker, java.lang.String)
+path: org.apache.ibatis.io.ResolverUtil.find(org.apache.ibatis.io.ResolverUtil.Test, java.lang.String) -> org.apache.ibatis.io.ResolverUtil.addIfMatching(org.apache.ibatis.io.ResolverUtil.Test, java.lang.String) -> org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.warn(java.lang.String) -> org.apache.logging.log4j.Logger.warn(org.apache.logging.log4j.Marker, java.lang.String)
+methodSources:
+```java
+/**
+ * Scans for classes starting at the package provided and descending into subpackages. Each class is offered up to the
+ * Test as it is discovered, and if the Test returns true the class is retained. Accumulated classes can be fetched by
+ * calling {@link #getClasses()}.
+ *
+ * @param test
+ * 		an instance of {@link Test} that will be used to filter classes
+ * @param packageName
+ * 		the name of the package from which to start scanning for classes, e.g. {@code net.sourceforge.stripes}
+ * @return the resolver util
+ */
+public ResolverUtil<T> find(Test test, String packageName) {
+    String path = getPackagePath(packageName);
+    try {
+        List<String> children = VFS.getInstance().list(path);
+        for (String child : children) {
+            if (child.endsWith(".class")) // PATH: Test should invoke the next ResolverUtil.addIfMatching(...) [step in execution path]
+            {
+                addIfMatching(test, child);
+            }
+        }
+    } catch (IOException ioe) {
+        log.error("Could not read package: " + packageName, ioe);
+    }
+    return this;
+}
+
+/**
+ * Add the class designated by the fully qualified class name provided to the set of resolved classes if and only if
+ * it is approved by the Test supplied.
+ *
+ * @param test
+ * 		the test used to determine if the class matches
+ * @param fqn
+ * 		the fully qualified name of a class
+ */
+@SuppressWarnings("unchecked")
+protected void addIfMatching(Test test, String fqn) {
+    try {
+        String externalName = fqn.substring(0, fqn.indexOf('.')).replace('/', '.');
+        ClassLoader loader = getClassLoader();
+        if (log.isDebugEnabled()) {
+            log.debug(((("Checking to see if class " + externalName) + " matches criteria [") + test) + "]");
+        }
+        Class<?> type = loader.loadClass(externalName);
+        if (test.matches(type)) {
+            matches.add(((Class<T>) (type)));
+        }
+    } catch (Throwable t) // PATH: Test should invoke the next Log4j2LoggerImpl.warn(...) [step in execution path]
+    {
+        log.warn(((((("Could not examine class '" + fqn) + "'") + " due to a ") + t.getClass().getName()) + " with message: ") + t.getMessage());
+    }
+}
+
+@Override
+public void warn(String s) // PATH: Test should invoke the next Logger.warn(...) [step in execution path]
+{
+    log.warn(MARKER, s);
+}
+```
+constructors:
+```java
+ResolverUtil() {
+}
+
+/**
+ * Constructs an IsA test using the supplied Class as the parent class/interface.
+ *
+ * @param parentType
+ * 		the parent type
+ */
+public IsA(Class<?> parentType) {
+    this.parent = parentType;
+}
+
+/**
+ * Constructs an AnnotatedWith test for the specified annotation type.
+ *
+ * @param annotation
+ * 		the annotation
+ */
+public AnnotatedWith(Class<? extends Annotation> annotation) {
+    this.annotation = annotation;
+}
+```
+fieldDeclarations:
+```java
+/**
+ * An instance of Log to use for logging in this class.
+ */
+private static final Log log = LogFactory.getLog(ResolverUtil.class);
+/**
+ * The set of matches being accumulated.
+ */
+private Set<Class<? extends T>> matches = new HashSet<>();
+/**
+ * The ClassLoader to use when looking for classes. If null then the ClassLoader returned by
+ * Thread.currentThread().getContextClassLoader() will be used.
+ */
+private ClassLoader classloader;
+```
+setters:
+```java
+/**
+ * Add the class designated by the fully qualified class name provided to the set of resolved classes if and only if
+ * it is approved by the Test supplied.
+ *
+ * @param test
+ * 		the test used to determine if the class matches
+ * @param fqn
+ * 		the fully qualified name of a class
+ */
+@SuppressWarnings("unchecked")
+protected void addIfMatching(Test test, String fqn) {
+    try {
+        String externalName = fqn.substring(0, fqn.indexOf('.')).replace('/', '.');
+        ClassLoader loader = getClassLoader();
+        if (log.isDebugEnabled()) {
+            log.debug(((("Checking to see if class " + externalName) + " matches criteria [") + test) + "]");
+        }
+        Class<?> type = loader.loadClass(externalName);
+        if (test.matches(type)) {
+            matches.add(((Class<T>) (type)));
+        }
+    } catch (Throwable t) {
+        log.warn(((((("Could not examine class '" + fqn) + "'") + " due to a ") + t.getClass().getName()) + " with message: ") + t.getMessage());
+    }
+}
+
+/**
+ * Sets an explicit ClassLoader that should be used when scanning for classes. If none is set then the context
+ * classloader will be used.
+ *
+ * @param classloader
+ * 		a ClassLoader to use when scanning for classes
+ */
+public void setClassLoader(ClassLoader classloader) {
+    this.classloader = classloader;
+}
+```
+imports: org.apache.ibatis.io.ResolverUtil.AnnotatedWith, org.apache.ibatis.io.ResolverUtil.IsA, org.apache.ibatis.io.ResolverUtil.Test, org.apache.ibatis.logging.Log, org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl, org.apache.logging.log4j.Logger, org.apache.logging.log4j.Marker
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.io
+- class name MUST be: ResolverUtil_Log4j2LoggerImplwarn_LoggerwarnFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 24/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.jdbc.ResultSetLogger.invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])
+Third Party Method: org.apache.log4j.Logger.isTraceEnabled()
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.jdbc.ResultSetLogger.invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])
+thirdPartyMethod: org.apache.log4j.Logger.isTraceEnabled()
+path: org.apache.ibatis.logging.jdbc.ResultSetLogger.invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[]) -> org.apache.ibatis.logging.jdbc.ResultSetLogger.printColumnHeaders(java.sql.ResultSetMetaData, int) -> org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(java.lang.String, boolean) -> org.apache.ibatis.logging.log4j.Log4jImpl.isTraceEnabled() -> org.apache.log4j.Logger.isTraceEnabled()
+methodSources:
+```java
+@Override
+public Object invoke(Object proxy, Method method, Object[] params) throws Throwable {
+    try {
+        if (Object.class.equals(method.getDeclaringClass())) {
+            return method.invoke(this, params);
+        }
+        Object o = method.invoke(rs, params);
+        if ("next".equals(method.getName())) {
+            if (((Boolean) (o))) {
+                rows++;
+                if (isTraceEnabled()) {
+                    ResultSetMetaData rsmd = rs.getMetaData();
+                    final int columnCount = rsmd.getColumnCount();
+                    if (first) // PATH: Test should invoke the next ResultSetLogger.printColumnHeaders(...) [step in execution path]
+                    {
+                        first = false;
+                        printColumnHeaders(rsmd, columnCount);
+                    }
+                    printColumnValues(columnCount);
+                }
+            } else {
+                debug("     Total: " + rows, false);
+            }
+        }
+        clearColumnInfo();
+        return o;
+    } catch (Throwable t) {
+        throw ExceptionUtil.unwrapThrowable(t);
+    }
+}
+
+private void printColumnHeaders(ResultSetMetaData rsmd, int columnCount) throws SQLException // PATH: Test should invoke the next BaseJdbcLogger.trace(...) [step in execution path]
+{
+    StringJoiner row = new StringJoiner(", ", "   Columns: ", "");
+    for (int i = 1; i <= columnCount; i++) {
+        if (BLOB_TYPES.contains(rsmd.getColumnType(i))) {
+            blobColumns.add(i);
+        }
+        row.add(rsmd.getColumnLabel(i));
+    }
+    trace(row.toString(), false);
+}
+
+protected void trace(String text, boolean input) {
+    // PATH: Test should invoke the next Log4jImpl.isTraceEnabled(...) [step in execution path]
+    if (statementLog.isTraceEnabled()) {
+        statementLog.trace(prefix(input) + text);
+    }
+}
+
+@Override
+public boolean isTraceEnabled() {
+    // PATH: Test should invoke the next Logger.isTraceEnabled(...) [step in execution path]
+    return log.isTraceEnabled();
+}
+```
+constructors:
+```java
+private ResultSetLogger(ResultSet rs, Log statementLog, int queryStack) {
+    super(statementLog, queryStack);
+    this.rs = rs;
+}
+```
+fieldDeclarations:
+```java
+private static final Set<Integer> BLOB_TYPES = new HashSet<>();
+private boolean first = true;
+private int rows;
+private final ResultSet rs;
+private final Set<Integer> blobColumns = new HashSet<>();
+```
+setters:
+```java
+private void printColumnHeaders(ResultSetMetaData rsmd, int columnCount) throws SQLException {
+    StringJoiner row = new StringJoiner(", ", "   Columns: ", "");
+    for (int i = 1; i <= columnCount; i++) {
+        if (BLOB_TYPES.contains(rsmd.getColumnType(i))) {
+            blobColumns.add(i);
+        }
+        row.add(rsmd.getColumnLabel(i));
+    }
+    trace(row.toString(), false);
+}
+
+private void printColumnValues(int columnCount) {
+    StringJoiner row = new StringJoiner(", ", "       Row: ", "");
+    for (int i = 1; i <= columnCount; i++) {
+        try {
+            if (blobColumns.contains(i)) {
+                row.add("<<BLOB>>");
+            } else {
+                row.add(rs.getString(i));
+            }
+        } catch (SQLException e) {
+            // generally can't call getString() on a BLOB column
+            row.add("<<Cannot Display>>");
+        }
+    }
+    trace(row.toString(), false);
+}
+```
+imports: org.apache.ibatis.logging.Log, org.apache.ibatis.logging.log4j.Log4jImpl, org.apache.ibatis.reflection.ExceptionUtil, org.apache.log4j.Logger
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.jdbc
+- class name MUST be: ResultSetLogger_Log4jImplisTraceEnabled_LoggerisTraceEnabledFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 25/27 — ITERATION 1
+Entry Point: org.apache.ibatis.logging.jdbc.ResultSetLogger.invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])
+Third Party Method: org.apache.commons.logging.Log.isTraceEnabled()
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.logging.jdbc.ResultSetLogger.invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])
+thirdPartyMethod: org.apache.commons.logging.Log.isTraceEnabled()
+path: org.apache.ibatis.logging.jdbc.ResultSetLogger.invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[]) -> org.apache.ibatis.logging.jdbc.ResultSetLogger.printColumnHeaders(java.sql.ResultSetMetaData, int) -> org.apache.ibatis.logging.jdbc.BaseJdbcLogger.trace(java.lang.String, boolean) -> org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.isTraceEnabled() -> org.apache.commons.logging.Log.isTraceEnabled()
+methodSources:
+```java
+@Override
+public Object invoke(Object proxy, Method method, Object[] params) throws Throwable {
+    try {
+        if (Object.class.equals(method.getDeclaringClass())) {
+            return method.invoke(this, params);
+        }
+        Object o = method.invoke(rs, params);
+        if ("next".equals(method.getName())) {
+            if (((Boolean) (o))) {
+                rows++;
+                if (isTraceEnabled()) {
+                    ResultSetMetaData rsmd = rs.getMetaData();
+                    final int columnCount = rsmd.getColumnCount();
+                    if (first) // PATH: Test should invoke the next ResultSetLogger.printColumnHeaders(...) [step in execution path]
+                    {
+                        first = false;
+                        printColumnHeaders(rsmd, columnCount);
+                    }
+                    printColumnValues(columnCount);
+                }
+            } else {
+                debug("     Total: " + rows, false);
+            }
+        }
+        clearColumnInfo();
+        return o;
+    } catch (Throwable t) {
+        throw ExceptionUtil.unwrapThrowable(t);
+    }
+}
+
+private void printColumnHeaders(ResultSetMetaData rsmd, int columnCount) throws SQLException // PATH: Test should invoke the next BaseJdbcLogger.trace(...) [step in execution path]
+{
+    StringJoiner row = new StringJoiner(", ", "   Columns: ", "");
+    for (int i = 1; i <= columnCount; i++) {
+        if (BLOB_TYPES.contains(rsmd.getColumnType(i))) {
+            blobColumns.add(i);
+        }
+        row.add(rsmd.getColumnLabel(i));
+    }
+    trace(row.toString(), false);
+}
+
+protected void trace(String text, boolean input) {
+    // PATH: Test should invoke the next JakartaCommonsLoggingImpl.isTraceEnabled(...) [step in execution path]
+    if (statementLog.isTraceEnabled()) {
+        statementLog.trace(prefix(input) + text);
+    }
+}
+
+@Override
+public boolean isTraceEnabled() {
+    // PATH: Test should invoke the next Log.isTraceEnabled(...) [step in execution path]
+    return log.isTraceEnabled();
+}
+```
+constructors:
+```java
+private ResultSetLogger(ResultSet rs, Log statementLog, int queryStack) {
+    super(statementLog, queryStack);
+    this.rs = rs;
+}
+```
+fieldDeclarations:
+```java
+private static final Set<Integer> BLOB_TYPES = new HashSet<>();
+private boolean first = true;
+private int rows;
+private final ResultSet rs;
+private final Set<Integer> blobColumns = new HashSet<>();
+```
+setters:
+```java
+private void printColumnHeaders(ResultSetMetaData rsmd, int columnCount) throws SQLException {
+    StringJoiner row = new StringJoiner(", ", "   Columns: ", "");
+    for (int i = 1; i <= columnCount; i++) {
+        if (BLOB_TYPES.contains(rsmd.getColumnType(i))) {
+            blobColumns.add(i);
+        }
+        row.add(rsmd.getColumnLabel(i));
+    }
+    trace(row.toString(), false);
+}
+
+private void printColumnValues(int columnCount) {
+    StringJoiner row = new StringJoiner(", ", "       Row: ", "");
+    for (int i = 1; i <= columnCount; i++) {
+        try {
+            if (blobColumns.contains(i)) {
+                row.add("<<BLOB>>");
+            } else {
+                row.add(rs.getString(i));
+            }
+        } catch (SQLException e) {
+            // generally can't call getString() on a BLOB column
+            row.add("<<Cannot Display>>");
+        }
+    }
+    trace(row.toString(), false);
+}
+```
+imports: org.apache.commons.logging.Log, org.apache.ibatis.logging.Log, org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl, org.apache.ibatis.reflection.ExceptionUtil
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.logging.jdbc
+- class name MUST be: ResultSetLogger_JakartaCommonsLoggingImplisTraceEnabled_LogisTraceEnabledFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 26/27 — ITERATION 1
+Entry Point: org.apache.ibatis.transaction.jdbc.JdbcTransaction.getConnection()
+Third Party Method: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.transaction.jdbc.JdbcTransaction.getConnection()
+thirdPartyMethod: org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+path: org.apache.ibatis.transaction.jdbc.JdbcTransaction.getConnection() -> org.apache.ibatis.transaction.jdbc.JdbcTransaction.openConnection() -> org.apache.ibatis.transaction.jdbc.JdbcTransaction.setDesiredAutoCommit(boolean) -> org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.debug(java.lang.String) -> org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl.<clinit>() -> org.apache.logging.log4j.MarkerManager.getMarker(java.lang.String)
+methodSources:
+```java
+@Override
+public Connection getConnection() throws SQLException {
+    if (connection == null) // PATH: Test should invoke the next JdbcTransaction.openConnection(...) [step in execution path]
+    {
+        openConnection();
+    }
+    return connection;
+}
+
+protected void openConnection() throws SQLException // PATH: Test should invoke the next JdbcTransaction.setDesiredAutoCommit(...) [step in execution path]
+{
+    if (log.isDebugEnabled()) {
+        log.debug("Opening JDBC Connection");
+    }
+    connection = dataSource.getConnection();
+    if (level != null) {
+        connection.setTransactionIsolation(level.getLevel());
+    }
+    setDesiredAutoCommit(autoCommit);
+}
+
+protected void setDesiredAutoCommit(boolean desiredAutoCommit) {
+    try {
+        if (connection.getAutoCommit() != desiredAutoCommit) {
+            if (log.isDebugEnabled()) // PATH: Test should invoke the next Log4j2AbstractLoggerImpl.debug(...) [step in execution path]
+            {
+                log.debug(((("Setting autocommit to " + desiredAutoCommit) + " on JDBC Connection [") + connection) + "]");
+            }
+            connection.setAutoCommit(desiredAutoCommit);
+        }
+    } catch (SQLException e) {
+        // Only a very poorly implemented driver would fail here,
+        // and there's not much we can do about that.
+        throw new TransactionException((((("Error configuring AutoCommit.  " + "Your driver may not support getAutoCommit() or setAutoCommit(). ") + "Requested setting: ") + desiredAutoCommit) + ".  Cause: ") + e, e);
+    }
+}
+
+@Override
+public void debug(String s) {
+    log.logIfEnabled(FQCN, Level.DEBUG, MARKER, ((Message) (new SimpleMessage(s))), null);
+}
+
+org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl
+
+// Static field initializations
+private static final Marker MARKER = MarkerManager.getMarker(LogFactory.MARKER);
+private static final String FQCN = Log4j2Impl.class.getName();
+
+```
+constructors:
+```java
+public JdbcTransaction(DataSource ds, TransactionIsolationLevel desiredLevel, boolean desiredAutoCommit) {
+    this(ds, desiredLevel, desiredAutoCommit, false);
+}
+
+public JdbcTransaction(DataSource ds, TransactionIsolationLevel desiredLevel, boolean desiredAutoCommit, boolean skipSetAutoCommitOnClose) {
+    dataSource = ds;
+    level = desiredLevel;
+    autoCommit = desiredAutoCommit;
+    this.skipSetAutoCommitOnClose = skipSetAutoCommitOnClose;
+}
+
+public JdbcTransaction(Connection connection) {
+    this.connection = connection;
+}
+```
+fieldDeclarations:
+```java
+private static final Log log = LogFactory.getLog(JdbcTransaction.class);
+protected Connection connection;
+protected DataSource dataSource;
+protected TransactionIsolationLevel level;
+protected boolean autoCommit;
+protected boolean skipSetAutoCommitOnClose;
+```
+setters:
+```java
+@Override
+public void close() throws SQLException {
+    if (connection != null) {
+        resetAutoCommit();
+        if (log.isDebugEnabled()) {
+            log.debug(("Closing JDBC Connection [" + connection) + "]");
+        }
+        connection.close();
+    }
+}
+
+@Override
+public void commit() throws SQLException {
+    if ((connection != null) && (!connection.getAutoCommit())) {
+        if (log.isDebugEnabled()) {
+            log.debug(("Committing JDBC Connection [" + connection) + "]");
+        }
+        connection.commit();
+    }
+}
+
+protected void openConnection() throws SQLException {
+    if (log.isDebugEnabled()) {
+        log.debug("Opening JDBC Connection");
+    }
+    connection = dataSource.getConnection();
+    if (level != null) {
+        connection.setTransactionIsolation(level.getLevel());
+    }
+    setDesiredAutoCommit(autoCommit);
+}
+
+protected void resetAutoCommit() {
+    try {
+        if ((!skipSetAutoCommitOnClose) && (!connection.getAutoCommit())) {
+            // MyBatis does not call commit/rollback on a connection if just selects were performed.
+            // Some databases start transactions with select statements
+            // and they mandate a commit/rollback before closing the connection.
+            // A workaround is setting the autocommit to true before closing the connection.
+            // Sybase throws an exception here.
+            if (log.isDebugEnabled()) {
+                log.debug(("Resetting autocommit to true on JDBC Connection [" + connection) + "]");
+            }
+            connection.setAutoCommit(true);
+        }
+    } catch (SQLException e) {
+        if (log.isDebugEnabled()) {
+            log.debug(("Error resetting autocommit to true " + "before closing the connection.  Cause: ") + e);
+        }
+    }
+}
+
+@Override
+public void rollback() throws SQLException {
+    if ((connection != null) && (!connection.getAutoCommit())) {
+        if (log.isDebugEnabled()) {
+            log.debug(("Rolling back JDBC Connection [" + connection) + "]");
+        }
+        connection.rollback();
+    }
+}
+
+protected void setDesiredAutoCommit(boolean desiredAutoCommit) {
+    try {
+        if (connection.getAutoCommit() != desiredAutoCommit) {
+            if (log.isDebugEnabled()) {
+                log.debug(((("Setting autocommit to " + desiredAutoCommit) + " on JDBC Connection [") + connection) + "]");
+            }
+            connection.setAutoCommit(desiredAutoCommit);
+        }
+    } catch (SQLException e) {
+        // Only a very poorly implemented driver would fail here,
+        // and there's not much we can do about that.
+        throw new TransactionException((((("Error configuring AutoCommit.  " + "Your driver may not support getAutoCommit() or setAutoCommit(). ") + "Requested setting: ") + desiredAutoCommit) + ".  Cause: ") + e, e);
+    }
+}
+```
+imports: javax.sql.DataSource, org.apache.ibatis.logging.Log, org.apache.ibatis.logging.LogFactory, org.apache.ibatis.logging.log4j2.Log4j2AbstractLoggerImpl, org.apache.ibatis.logging.log4j2.Log4j2Impl, org.apache.ibatis.session.TransactionIsolationLevel, org.apache.ibatis.transaction.TransactionException, org.apache.logging.log4j.Level, org.apache.logging.log4j.Marker, org.apache.logging.log4j.MarkerManager, org.apache.logging.log4j.message.Message, org.apache.logging.log4j.message.SimpleMessage, org.apache.logging.log4j.spi.AbstractLogger, org.apache.logging.log4j.spi.ExtendedLoggerWrapper
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.transaction.jdbc
+- class name MUST be: JdbcTransaction_Log4j2AbstractLoggerImplmethod_MarkerManagergetMarkerFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
+====================================================================================================
+TEST CASE 27/27 — ITERATION 1
+Entry Point: org.apache.ibatis.cache.decorators.SerializedCache.getObject(java.lang.Object)
+Third Party Method: org.apache.logging.log4j.Logger.debug(org.apache.logging.log4j.Marker, java.lang.String)
+====================================================================================================
+You are an expert Java developer who writes good unit tests in order to maximize code coverage. You are specialized in Maven and JUnit 5 testing framework.
+
+Generate a JUnit 5 test that executes the full chain of method calls starting from the specified entry point method and reaching the specified third-party method. No assertions, inspections, or verifications are required. The test’s only goal is to try invoking the given third-party method during execution. 
+
+You are provided with:
+entryPoint: Fully qualified public method where execution must begin.
+thirdPartyMethod: Fully qualified third-party method that must be invoked.
+path: Ordered list of method calls that must be traversed during execution.
+methodSources: Complete and exact source code for all methods in the call chain.
+constructors: All constructors of the class containing the entryPoint. Use one of these constructors to instantiate the class in the test. Then use that instance to call the entryPoint method.
+fieldDeclarations: Instance variables and class variables of the class containing the entryPoint. These are the fields that can be accessed or set when creating the test.
+setters: All setters of the entryPoint class that can modify the declared fields.
+imports: All non-core-java imports that may be required by the test.
+
+entryPoint: org.apache.ibatis.cache.decorators.SerializedCache.getObject(java.lang.Object)
+thirdPartyMethod: org.apache.logging.log4j.Logger.debug(org.apache.logging.log4j.Marker, java.lang.String)
+path: org.apache.ibatis.cache.decorators.SerializedCache.getObject(java.lang.Object) -> org.apache.ibatis.cache.decorators.LruCache.getObject(java.lang.Object) -> org.apache.ibatis.cache.decorators.BlockingCache.getObject(java.lang.Object) -> org.apache.ibatis.cache.decorators.FifoCache.getObject(java.lang.Object) -> org.apache.ibatis.cache.decorators.SoftCache.getObject(java.lang.Object) -> org.apache.ibatis.cache.decorators.LoggingCache.getObject(java.lang.Object) -> org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl.debug(java.lang.String) -> org.apache.logging.log4j.Logger.debug(org.apache.logging.log4j.Marker, java.lang.String)
+methodSources:
+```java
+@Override
+public Object getObject(Object key) {
+    // PATH: Test should invoke the next LruCache.getObject(...) [step in execution path]
+    Object object = delegate.getObject(key);
+    return object == null ? null : deserialize(((byte[]) (object)));
+}
+
+@Override
+public Object getObject(Object key) {
+    keyMap.get(key);// touch
+
+    // PATH: Test should invoke the next BlockingCache.getObject(...) [step in execution path]
+    return delegate.getObject(key);
+}
+
+@Override
+public Object getObject(Object key) {
+    acquireLock(key);
+    // PATH: Test should invoke the next FifoCache.getObject(...) [step in execution path]
+    Object value = delegate.getObject(key);
+    if (value != null) {
+        releaseLock(key);
+    }
+    return value;
+}
+
+@Override
+public Object getObject(Object key) {
+    // PATH: Test should invoke the next SoftCache.getObject(...) [step in execution path]
+    return delegate.getObject(key);
+}
+
+@Override
+public Object getObject(Object key) {
+    Object result = null;
+    // assumed delegate cache is totally managed by this cache
+    // PATH: Test should invoke the next LoggingCache.getObject(...) [step in execution path]
+    @SuppressWarnings("unchecked")
+    SoftReference<Object> softReference = ((SoftReference<Object>) (delegate.getObject(key)));
+    if (softReference != null) {
+        result = softReference.get();
+        if (result == null) {
+            delegate.removeObject(key);
+        } else {
+            // See #586 (and #335) modifications need more than a read lock
+            lock.lock();
+            try {
+                hardLinksToAvoidGarbageCollection.addFirst(result);
+                if (hardLinksToAvoidGarbageCollection.size() > numberOfHardLinks) {
+                    hardLinksToAvoidGarbageCollection.removeLast();
+                }
+            } finally {
+                lock.unlock();
+            }
+        }
+    }
+    return result;
+}
+
+@Override
+public Object getObject(Object key) {
+    requests++;
+    final Object value = delegate.getObject(key);
+    if (value != null) {
+        hits++;
+    }
+    if (log.isDebugEnabled()) // PATH: Test should invoke the next Log4j2LoggerImpl.debug(...) [step in execution path]
+    {
+        log.debug((("Cache Hit Ratio [" + getId()) + "]: ") + getHitRatio());
+    }
+    return value;
+}
+
+@Override
+public void debug(String s) // PATH: Test should invoke the next Logger.debug(...) [step in execution path]
+{
+    log.debug(MARKER, s);
+}
+```
+constructors:
+```java
+public SerializedCache(Cache delegate) {
+    this.delegate = delegate;
+}
+
+public CustomObjectInputStream(InputStream in) throws IOException {
+    super(in);
+}
+```
+fieldDeclarations:
+```java
+private final Cache delegate;
+```
+setters:
+```java
+@Override
+public void clear() {
+    delegate.clear();
+}
+
+@Override
+public void putObject(Object key, Object object) {
+    if ((object != null) && (!(object instanceof Serializable))) {
+        throw new CacheException("SharedCache failed to make a copy of a non-serializable object: " + object);
+    }
+    delegate.putObject(key, serialize(((Serializable) (object))));
+}
+```
+imports: org.apache.ibatis.cache.Cache, org.apache.ibatis.cache.CacheException, org.apache.ibatis.logging.Log, org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl, org.apache.logging.log4j.Logger, org.apache.logging.log4j.Marker
+
+Hard constraints:
+- The test class MUST NOT extend any other class (no 'extends' keyword).
+- The test class MUST NOT override any methods (no @Override annotations).
+- Do NOT create anonymous inner classes (e.g., new ClassName() { ... }).
+- Use real objects whenever possible.
+- Use mocks only when necessary, and ONLY for objects required as constructor parameters when instantiating the class that contains the entry-point method, provided those objects are not directly related to the target method call.
+- Do NOT mock or spy on the class under test.
+- Do NOT alter, stub, or control the behavior of ANY method in the call path.
+- Use only the following test-related libraries: junit-jupiter, mockito-core, and mockito-junit-jupiter. Do not use any other testing or mocking libraries.
+- Do NOT add any assertions, verifications, or inspections of state/logs/output.
+- package declaration MUST be: org.apache.ibatis.cache.decorators
+- class name MUST be: SerializedCache_Log4j2LoggerImpldebug_LoggerdebugFikaTest
+- exactly ONE @Test method
+- Return ONLY the complete Java source code.
+- Do NOT include explanations, markdown, or extra text.
+
+
+Previous Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):
+
+
+
