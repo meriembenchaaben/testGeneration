@@ -1,14 +1,16 @@
-# LangGraph JUnit Agent
+# LLM Pipeline for Reachability Scenario Generation
 
-LangGraph-powered loop that generates a minimal JUnit 5 *reachability* test for a Maven Java project, runs it, and iterates until the test compiles/runs and the requested third‑party method is reached (based on JaCoCo coverage).
+A LangGraph-based pipeline that synthesizes a minimal JUnit 5 *reachability scenario* for a Maven Java project, runs it, and iterates until the scenario compiles/runs and the requested third‑party method is reached, as verified through JaCoCo coverage.
+
+The generated artifact is not a general-purpose test suite, but a targeted reachability scenario designed to exercise a specified call chain and confirm that a particular third‑party method is reached.
 
 ## How it works
 Given a JSON description of a call chain:
 
 1) **Load input**: reads `entryPoint`, `thirdPartyMethod`, the expected `path`, and supporting `methodSources` (+ optional constructors/setters/fields/imports/template).
-2) **Generate**: prompts an LLM to output a single Java file (JUnit 5) whose only goal is to execute the call chain and invoke the target third‑party method (no assertions).
-3) **Write**: saves the generated test under `src/test/java/...` in the target Maven project.
-4) **Run**: executes Maven tests (either only the generated test class, or the full suite).
+2) **Generate**: prompts an LLM to produce a single Java file containing a JUnit 5 reachability scenario whose purpose is to execute the call chain and invoke the target third‑party method (no assertions beyond the scenario itself).
+3) **Write**: saves the generated scenario under `src/test/java/...` in the target Maven project.
+4) **Run**: executes Maven tests (either only the generated scenario class, or the full suite).
 5) **Check coverage**: parses JaCoCo output to determine whether the target method was executed.
 6) **Loop**: if the build fails or coverage is missing, Maven feedback + coverage info are fed back to the model and steps 2–5 repeat until success or `--iters` is reached.
 
@@ -25,7 +27,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-### 2) Run the agent (local Hugging Face model)
+### 2) Run the pipeline (local Hugging Face model)
 ```bash
 python -m junit_agent.main \
   /path/to/maven-project \
@@ -33,7 +35,7 @@ python -m junit_agent.main \
   --log-file agent.log
 ```
 
-### 3) Run the agent (DeepSeek API)
+### 3) Run the pipeline (DeepSeek API)
 ```bash
 python -m junit_agent.main /path/to/maven-project input.json \
   --api deepseek \
@@ -93,28 +95,28 @@ Common fields per test case:
 - Optional output control: `testPackage`, `testClassName`
 - `covered` (bool, optional): if true, the agent will skip that record
 
-## LangGraph execution flow
+## Pipeline execution flow
 
-    ┌───────────┐
-    │  Generate │  ← LLM creates / fixes JUnit test
-    └─────┬─────┘
-      │
-    ┌─────▼─────┐
-    │   Write   │  ← Write test file into Maven repo
-    └─────┬─────┘
-      │
-    ┌─────▼─────┐
-    │    Run    │  ← Run Maven tests
-    └─────┬─────┘
-      │
-    ┌─────▼─────────┐
-    │ Check Coverage│  ← Verify target method is reached
-    └─────┬─────────┘
-      │
-    ┌─────▼─────┐
-    │  Decide   │  ← Approve or retry
-    └─────┬─────┘
-      │
-    ┌─────▼─────┐
-    │ Finalize  │  ← Success or failure
-    └───────────┘
+    ┌───────────────┐
+    │   Generate    │  ← LLM creates / fixes reachability scenario
+    └──────┬────────┘
+           │
+    ┌──────▼────────┐
+    │     Write     │  ← Write scenario file into Maven repo
+    └──────┬────────┘
+           │
+    ┌──────▼────────┐
+    │      Run      │  ← Run Maven tests for the scenario
+    └──────┬────────┘
+           │
+    ┌──────▼──────────┐
+    │ Check Coverage  │  ← Verify target method is reached
+    └──────┬──────────┘
+           │
+    ┌──────▼────────┐
+    │    Decide     │  ← Approve or retry
+    └──────┬────────┘
+           │
+    ┌──────▼────────┐
+    │   Finalize    │  ← Success or failure
+    └───────────────┘
