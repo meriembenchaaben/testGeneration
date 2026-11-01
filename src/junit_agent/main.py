@@ -431,7 +431,8 @@ def main() -> int:
         
         # Separate file for full prompts (untruncated)
         if text_log_path:
-            prompts_log_path = text_log_path.parent / "prompts.log"
+            prompts_log_name = f"prompts_{text_log_path.stem}.log"
+            prompts_log_path = text_log_path.parent / prompts_log_name
             prompts_log_fh = open(prompts_log_path, "a", encoding="utf-8")
             
             def _plog(line: str) -> None:

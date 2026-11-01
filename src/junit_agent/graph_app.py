@@ -455,9 +455,9 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
 
     prompt = PromptTemplate(
         input_variables=[
-            "entryPoint", "thirdPartyMethod", "path", "methodSources", 
+            "entryPoint", "thirdPartyMethod", "path", "methodSources",
             "constructors", "setters", "fieldDeclarations", "imports",
-            "test_package", "test_class_name", "last_run_output",
+            "test_package", "test_class_name", "iteration_history",
             "testTemplate", "conditionCount"
 
         ],
@@ -465,8 +465,7 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
             SYSTEM_PROMPT
             + "\n\n"
             + USER_PROMPT_TEMPLATE
-            + "\n\nPrevious Maven test output (if any; fix compilation/runtime issues while keeping ALL constraints):\n"
-            + "{last_run_output}\n"
+            + "\n\n{iteration_history}\n"
         ),
     )
 
@@ -489,6 +488,41 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
         setters_str = "```java\n" + "\n\n".join(setters) + "\n```" if setters else ""
         field_declarations_str = "```java\n" + "\n".join(field_declarations) + "\n```" if field_declarations else ""
         
+        # Build cumulative iteration history from all prior iterations
+        iteration_history = ""
+        prev_log = state.get("iteration_log", [])
+        if prev_log:
+            parts = ["Previous iteration outputs (fix ALL issues while keeping ALL constraints):"]
+            for entry in prev_log:
+                iter_num = entry.get("iteration", "?")
+                parts.append(f"\n--- Iteration {iter_num} ---")
+                gen_java = entry.get("generated_java", "")
+                if gen_java:
+                    parts.append(f"Generated test:\n```java\n{gen_java}\n```")
+                feedback = entry.get("maven_feedback", "")
+                if feedback:
+                    parts.append(f"Maven output:\n{feedback}")
+                coverage = entry.get("coverage")
+                if coverage:
+                    if coverage.get("method_covered"):
+                        parts.append("Coverage: target method COVERED")
+                    else:
+                        parts.append("Coverage: target method NOT covered")
+                        details = coverage.get("path_coverage_details", [])
+                        for d in details:
+                            status = "✓" if d.get("covered") else "✗"
+                            parts.append(f"  {status} {d.get('method', '?')}")
+                cov_feedback = entry.get("coverage_feedback", "")
+                if cov_feedback:
+                    parts.append(f"Coverage feedback:\n{cov_feedback}")
+                constraint = entry.get("constraint_validation")
+                if constraint and not constraint.get("passed"):
+                    parts.append(f"Constraint violation:\n{constraint.get('errors', '')}")
+                reason = entry.get("decision_reason", "")
+                if reason:
+                    parts.append(f"Decision: {reason}")
+            iteration_history = "\n".join(parts)
+
         rendered = prompt.format(
             entryPoint=state["entryPoint"],
             thirdPartyMethod=state["thirdPartyMethod"],
@@ -501,7 +535,7 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
             testTemplate=decode_code(state.get("testTemplate", "")),
             test_package=state["test_package"],
             test_class_name=state["test_class_name"],
-            last_run_output=state.get("last_run_output", "") or "",
+            iteration_history=iteration_history,
         )
         state["last_prompt"] = rendered
 
@@ -795,6 +829,7 @@ def build_graph(llm: Runnable, cfg: AppConfig) -> Any:
             coverage_feedback += "=" * 80 + "\n"
             # Replace (not append) the Maven output with just the coverage summary
             state["last_run_output"] = coverage_feedback
+            state["iteration_log"][-1]["coverage_feedback"] = coverage_feedback
         else:
             state["approved"] = False
             state.setdefault("trace", []).append(
